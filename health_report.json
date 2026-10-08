@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-08T06:19:51.738Z",
+  "timestamp": "2026-10-08T06:42:45.943Z",
   "score": 100,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
@@ -266,7 +266,7 @@
       "name": "projects",
       "path": "projects",
       "isDir": true,
-      "sizeBytes": 700300,
+      "sizeBytes": 709124,
       "itemCount": 7,
       "status": "healthy",
       "note": "",
@@ -660,17 +660,27 @@
           "name": "workspace_health_monitor",
           "path": "projects/workspace_health_monitor",
           "isDir": true,
-          "sizeBytes": 47190,
-          "itemCount": 7,
+          "sizeBytes": 56014,
+          "itemCount": 10,
           "status": "healthy",
           "note": "",
           "children": [
+            {
+              "name": "avatar_crop.png",
+              "path": "projects/workspace_health_monitor/avatar_crop.png",
+              "isDir": false,
+              "sizeBytes": 1137,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
             {
               "name": "dist",
               "path": "projects/workspace_health_monitor/dist",
               "isDir": true,
               "sizeBytes": 0,
-              "itemCount": 2,
+              "itemCount": 3,
               "status": "healthy",
               "note": "",
               "children": []
@@ -730,6 +740,26 @@
               "path": "projects/workspace_health_monitor/run_health_check.bat",
               "isDir": false,
               "sizeBytes": 558,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "token_crop.png",
+              "path": "projects/workspace_health_monitor/token_crop.png",
+              "isDir": false,
+              "sizeBytes": 2723,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "token_enlarged.png",
+              "path": "projects/workspace_health_monitor/token_enlarged.png",
+              "isDir": false,
+              "sizeBytes": 4964,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1057,8 +1087,8 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 79931,
-      "itemCount": 4,
+      "sizeBytes": 81531,
+      "itemCount": 5,
       "status": "healthy",
       "note": "",
       "children": [
@@ -1077,6 +1107,16 @@
           "path": "docs/PT学生向け解剖生理学_全10回マスター講座.md",
           "isDir": false,
           "sizeBytes": 13598,
+          "itemCount": 0,
+          "status": "healthy",
+          "note": "",
+          "children": []
+        },
+        {
+          "name": "WEBSITE_PORTAL.md",
+          "path": "docs/WEBSITE_PORTAL.md",
+          "isDir": false,
+          "sizeBytes": 1600,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -5488,7 +5528,7 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-08T06:19:51.738Z",
+    "lastCheck": "2026-10-08T06:42:45.943Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
