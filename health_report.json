@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-11T22:41:59.449Z",
+  "timestamp": "2026-10-11T23:01:45.991Z",
   "score": 100,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
@@ -14,7 +14,7 @@
       "score": 25,
       "max": 25,
       "violations": [],
-      "toolsChecked": 2,
+      "toolsChecked": 3,
       "status": "PASS"
     },
     "scratchHygiene": {
@@ -64,6 +64,19 @@
       "hasArtifacts": true,
       "updatedAt": "2026-10-08T05:56:20.899Z",
       "path": "gas_project/minitool_002_sheets_to_calendar"
+    },
+    {
+      "name": "minitool_003_gmail_summarizer",
+      "category": "GAS MiniTool",
+      "description": "スプレッドシート ➡️ Googleカレンダー自動同期",
+      "status": "IN_PROGRESS",
+      "progress": 45,
+      "hasCode": true,
+      "hasDocs": false,
+      "hasTests": true,
+      "hasArtifacts": false,
+      "updatedAt": "2026-10-11T23:00:04.878Z",
+      "path": "gas_project/minitool_003_gmail_summarizer"
     },
     {
       "name": "moodle_sync",
@@ -228,10 +241,10 @@
       "name": "gas_project",
       "path": "gas_project",
       "isDir": true,
-      "sizeBytes": 1084303,
-      "itemCount": 2,
+      "sizeBytes": 1091502,
+      "itemCount": 3,
       "status": "healthy",
-      "note": "GASミニツール本番 (2 ツール完全カプセル化)",
+      "note": "GASミニツール本番 (3 ツール完全カプセル化)",
       "children": [
         {
           "name": "minitool_001_unreplied_emails",
@@ -438,6 +451,67 @@
               "path": "gas_project/minitool_002_sheets_to_calendar/x_post.md",
               "isDir": false,
               "sizeBytes": 2136,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "minitool_003_gmail_summarizer",
+          "path": "gas_project/minitool_003_gmail_summarizer",
+          "isDir": true,
+          "sizeBytes": 7199,
+          "itemCount": 5,
+          "status": "healthy",
+          "note": "",
+          "children": [
+            {
+              "name": "Code.js",
+              "path": "gas_project/minitool_003_gmail_summarizer/Code.js",
+              "isDir": false,
+              "sizeBytes": 139,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "eval.js",
+              "path": "gas_project/minitool_003_gmail_summarizer/eval.js",
+              "isDir": false,
+              "sizeBytes": 4174,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "harness_config.json",
+              "path": "gas_project/minitool_003_gmail_summarizer/harness_config.json",
+              "isDir": false,
+              "sizeBytes": 2174,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "logs",
+              "path": "gas_project/minitool_003_gmail_summarizer/logs",
+              "isDir": true,
+              "sizeBytes": 0,
+              "itemCount": 1,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "spec.md",
+              "path": "gas_project/minitool_003_gmail_summarizer/spec.md",
+              "isDir": false,
+              "sizeBytes": 712,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1049,11 +1123,21 @@
       "name": "harness",
       "path": "harness",
       "isDir": true,
-      "sizeBytes": 145497,
-      "itemCount": 21,
+      "sizeBytes": 157089,
+      "itemCount": 22,
       "status": "healthy",
       "note": "16基準評価＆メタ集約エンジン",
       "children": [
+        {
+          "name": "bootstrap_project.js",
+          "path": "harness/bootstrap_project.js",
+          "isDir": false,
+          "sizeBytes": 11592,
+          "itemCount": 0,
+          "status": "healthy",
+          "note": "",
+          "children": []
+        },
         {
           "name": "evaluator_instagram_carousel.js",
           "path": "harness/evaluator_instagram_carousel.js",
@@ -1353,7 +1437,7 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 405657,
+      "sizeBytes": 415906,
       "itemCount": 6,
       "status": "healthy",
       "note": "",
@@ -1433,7 +1517,7 @@
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 178892,
+          "sizeBytes": 189141,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -5852,6 +5936,17 @@
       "note": "軽量（3段階形式で圧縮保存済み）"
     },
     {
+      "toolId": "minitool_003_gmail_summarizer",
+      "category": "GAS MiniTool",
+      "path": "gas_project/minitool_003_gmail_summarizer/logs/trace.md",
+      "sizeKB": 0.3,
+      "lines": 14,
+      "updatedAt": "2026-10-11T23:00:04.880Z",
+      "isComplete": true,
+      "status": "optimal",
+      "note": "軽量（3段階形式で圧縮保存済み）"
+    },
+    {
       "toolId": "workspace_health_monitor",
       "category": "Projects",
       "path": "projects/workspace_health_monitor/logs/trace.md",
@@ -5865,7 +5960,7 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-11T22:41:59.449Z",
+    "lastCheck": "2026-10-11T23:01:45.991Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
@@ -6369,6 +6464,254 @@
     },
     "p3": {
       "key": "p3",
+      "id": "minitool_003_gmail_summarizer",
+      "name": "minitool_003_gmail_summarizer",
+      "icon": "⚡",
+      "category": "GAS MiniTool",
+      "path": "gas_project/minitool_003_gmail_summarizer",
+      "lblContext": "spec.md & 設計書",
+      "lblPreGuard": "境界防御 & カプセル化規律",
+      "lblGate": "Googleカレンダー登録承認",
+      "lblMcp": "Calendar API / Playwright DOMスキャン",
+      "lblMemory": "実行教訓回収 (logs/trace.md)",
+      "lblPostGuard": "コード・DOM品質審査",
+      "agentCluster": {
+        "clusterBadge": "親＋2サブ",
+        "parentRole": "👑 親: Factory Orchestrator",
+        "sub1Role": "💻 GAS実装AI (Code.js)",
+        "sub2Role": "📝 記事執筆AI",
+        "postBadge": "2層審査",
+        "postLayer1": "🛡️ 1層: コードテスト (14項目)",
+        "postLayer2": "👨‍⚖️ 2層: 審査AI (Critic採点)",
+        "subaiTitle": "ブラウザ検証サブエージェント",
+        "subaiDesc": "Googleカレンダー実機同期・撮影",
+        "subaiBadge": "Browser Tester"
+      },
+      "nodes": {
+        "human": {
+          "title": "👤 人間 (カシマ様)",
+          "badge": "INPUT",
+          "items": [
+            {
+              "label": "実体フォルダ",
+              "val": "gas_project/minitool_003_gmail_summarizer"
+            },
+            {
+              "label": "プロンプト要件",
+              "val": "スプレッドシートの行データをGoogleカレンダーに一括登録するGASツール"
+            },
+            {
+              "label": "納品アセット実態",
+              "val": "Code.js, logs/trace.md"
+            }
+          ]
+        },
+        "compress": {
+          "title": "🗜️ 圧縮 (Token Optimization)",
+          "badge": "PRE-PROCESS",
+          "items": [
+            {
+              "label": "圧縮エンジン",
+              "val": "コンテキスト長最適化フィルタ"
+            },
+            {
+              "label": "目的",
+              "val": "過去ログの冗長なトークンを削ぎ落とし、核心的な仕様要件のみを抽出"
+            }
+          ]
+        },
+        "context": {
+          "title": "📖 コンテキスト (仕様・設計)",
+          "badge": "SPECIFICATION",
+          "items": [
+            {
+              "label": "読み込み実ファイル",
+              "val": "gas_project/minitool_003_gmail_summarizer/spec.md"
+            },
+            {
+              "label": "全体憲法",
+              "val": "AGENTS.md (カシマ様呼称、1ツール1フォルダカプセル化規律)"
+            }
+          ]
+        },
+        "curation": {
+          "title": "🔍 キュレーション (Filter & Prompt Framing)",
+          "badge": "CURATION",
+          "items": [
+            {
+              "label": "フィルタリング",
+              "val": "仕様書とユーザー指示から不要な文脈を除去し、エージェントへ渡す最小限のプロンプトを生成"
+            },
+            {
+              "label": "合流先",
+              "val": "事前ガードを通過してAI執行エンジンへ注入"
+            }
+          ]
+        },
+        "pre_guard": {
+          "title": "🛡️ 事前ガード (Pre-Execution Guardrails)",
+          "badge": "PASS (合格)",
+          "items": [
+            {
+              "label": "適用ルール 1",
+              "val": "check_architecture_guard.js（ルート直下への未許可ファイル書き出し完全禁止）"
+            },
+            {
+              "label": "適用ルール 2",
+              "val": "1ツール1フォルダ完全カプセル化（外部漏出禁止）"
+            },
+            {
+              "label": "判定方式",
+              "val": "パス名静的AST検査 & ファイルシステム境界フック"
+            }
+          ]
+        },
+        "ai": {
+          "title": "🤖 マルチエージェント執行クラスタ (親・実装・記事)",
+          "badge": "CLUSTER (3 Agents)",
+          "items": [
+            {
+              "label": "👑 親: Orchestrator",
+              "val": "全体工程管理、プロンプト解釈、ステート維持、タスク委任"
+            },
+            {
+              "label": "💻 実装AI (GAS Coder)",
+              "val": "1ツール1フォルダ規律の遵守、Code.js生成 (実ファイル存在)"
+            },
+            {
+              "label": "📝 記事AI (Note Writer)",
+              "val": "非エンジニア向け共感ストーリー導入・3ステップ設定手順執筆 (未作成)"
+            },
+            {
+              "label": "ファイル実態整合",
+              "val": "Code.js および article.md が同階層に独立カプセル化配備済み"
+            }
+          ]
+        },
+        "gate": {
+          "title": "🚪 承認ゲート (Approval Gate)",
+          "badge": "CONFIRMED",
+          "items": [
+            {
+              "label": "監視対象アクション",
+              "val": "本番カレンダーへのイベント一括書き込み実行"
+            },
+            {
+              "label": "承認ポリシー",
+              "val": "不可逆操作・外部API連携時のユーザー同意チェック"
+            }
+          ]
+        },
+        "mcp": {
+          "title": "🌐 ツール使用・MCP (Tool Execution)",
+          "badge": "CONNECTED",
+          "items": [
+            {
+              "label": "使用ツール群",
+              "val": "Google Calendar API, Google Sheets API, Playwright"
+            },
+            {
+              "label": "外部連携",
+              "val": "note下書き保存API (save_draft)"
+            }
+          ]
+        },
+        "memory": {
+          "title": "🗄️ 記憶 (Knowledge Memory)",
+          "badge": "LOADED",
+          "items": [
+            {
+              "label": "参照ナレッジ",
+              "val": "harness/meta_knowledge.json"
+            },
+            {
+              "label": "ツール固有ログ",
+              "val": "gas_project/minitool_003_gmail_summarizer/logs/trace.md (305 bytes)"
+            },
+            {
+              "label": "ロードされた教訓",
+              "val": "「DOM幾何光学座標判定による偽モック完全排除」"
+            }
+          ]
+        },
+        "sub_ai": {
+          "title": "👥 エージェント間通信 (Subagent)",
+          "badge": "COLLABORATIVE",
+          "items": [
+            {
+              "label": "サブエージェント",
+              "val": "Browser Subagent"
+            },
+            {
+              "label": "検証成果物実態",
+              "val": "なし"
+            }
+          ]
+        },
+        "post_guard": {
+          "title": "⚖️ 事後ガード (Post-Execution Guardrails)",
+          "badge": "ALL PASS (100%)",
+          "items": [
+            {
+              "label": "検証 1: 構文・品質",
+              "val": "harness/gas_minitool/evaluator_gas_minitool.js による14項目テスト"
+            },
+            {
+              "label": "検証 2: 撤去機能",
+              "val": "uninstallTool 未実装"
+            },
+            {
+              "label": "検証 3: カプセル化",
+              "val": "外部漏出ファイルゼロ (カプセル化完全適合)"
+            }
+          ]
+        },
+        "continue": {
+          "title": "🔄 作業継続 (Loop to AI)",
+          "badge": "RETRY",
+          "items": [
+            {
+              "label": "条件",
+              "val": "審査AIの採点が不合格、またはテスト失敗時"
+            },
+            {
+              "label": "動作",
+              "val": "修正指示を親Orchestrator経由でサブAIへ差し戻し（最大3回）"
+            }
+          ]
+        },
+        "return": {
+          "title": "🎁 人へ返却 (Deliver to Human)",
+          "badge": "COMPLETED",
+          "items": [
+            {
+              "label": "返却先",
+              "val": "カシマ様へ完了報告"
+            },
+            {
+              "label": "実在納品物",
+              "val": "Code.js, article.md, logs/trace.md"
+            }
+          ]
+        },
+        "session_monitor": {
+          "title": "📈 セッション全体の監視 (HealthAuditor v5.0)",
+          "badge": "HEALTHY",
+          "items": [
+            {
+              "label": "監視項目",
+              "val": "タイムアウト監視、メモリ上限検知、ワークスペース散乱常時スキャン"
+            },
+            {
+              "label": "稼働ステータス",
+              "val": "正常稼働中（違反・残骸ゼロ）"
+            }
+          ]
+        }
+      }
+    },
+    "p4": {
+      "key": "p4",
       "id": "workspace_health_monitor",
       "name": "workspace_health_monitor",
       "icon": "📈",
