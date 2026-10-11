@@ -41,7 +41,7 @@
       --wire-color: #8c8275;        /* トポロジー配線カラー */
       --shadow-sm: 0 1px 3px rgba(45, 35, 25, 0.04), 0 1px 2px rgba(45, 35, 25, 0.02);
       --shadow-md: 0 4px 14px rgba(45, 35, 25, 0.06), 0 1px 3px rgba(45, 35, 25, 0.03);
-      --grade-color: #2e7d32;
+      --grade-color: #8b5e34;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -267,7 +267,7 @@
       stroke-width: 12;
       stroke-linecap: round;
       stroke-dasharray: 439.822971502571;
-      stroke-dashoffset: 0;
+      stroke-dashoffset: 35.185837720205654;
       transition: stroke-dashoffset 1s ease;
     }
     .circle-content {
@@ -606,90 +606,146 @@
       line-height: 1.4;
     }
 
-    /* Rubric Matrix Styles */
-    .rubric-tab-bar {
+    /* Master-Detail 2-Pane Rubric Styles */
+    .rubric-master-detail {
       display: flex;
-      gap: 10px;
-      border-bottom: 2px solid var(--card-border);
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-      overflow-x: auto;
+      gap: 20px;
+      align-items: flex-start;
     }
-    .rubric-tab-btn {
-      padding: 9px 18px;
-      border-radius: 8px;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--text-muted);
+    .rubric-sidebar-pane {
+      width: 290px;
+      flex-shrink: 0;
+      background: var(--card-bg-subtle);
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid var(--card-border);
+      max-height: 850px;
+      overflow-y: auto;
+    }
+    .rubric-proj-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .rubric-proj-item {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .rubric-proj-item:hover {
+      border-color: var(--accent-border);
+      transform: translateX(2px);
+    }
+    .rubric-proj-item.active {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .r-item-title {
       font-size: 13px;
       font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      font-family: inherit;
-    }
-    .rubric-tab-btn:hover {
-      background: var(--card-bg-subtle);
       color: var(--text-main);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .rubric-tab-btn.active {
-      background: #ffffff;
-      color: var(--accent);
-      border-color: var(--card-border);
-      box-shadow: var(--shadow-sm);
+    .r-item-sub {
+      font-size: 11px;
+      color: var(--text-muted);
     }
-    .rubric-panel {
-      display: none;
+    .rubric-content-pane {
+      flex: 1;
+      min-width: 0;
     }
-    .rubric-panel.active {
-      display: block;
+
+    /* Accordion Styles */
+    .rubric-accordion-group {
+      margin-bottom: 24px;
     }
-    .rubric-card {
-      background: #ffffff;
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 22px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-    .rubric-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .rubric-title {
-      font-size: 15px;
+    .rubric-group-header {
+      font-size: 14px;
       font-weight: 800;
       color: var(--text-main);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .accordion-item {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .accordion-item:hover {
+      border-color: var(--accent-border);
+    }
+    .accordion-header {
+      padding: 13px 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      background: #ffffff;
+      transition: background 0.2s;
+    }
+    .accordion-header:hover {
+      background: var(--card-bg-subtle);
+    }
+    .accordion-item.open .accordion-header {
+      background: var(--card-bg-subtle);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .accordion-title-wrap {
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-    .rubric-meta {
-      display: flex;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
     }
-    .rubric-badge {
-      padding: 4px 10px;
-      border-radius: 6px;
+    .accordion-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .accordion-arrow {
       font-size: 11px;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+    .accordion-item.open .accordion-arrow {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      display: none;
+      padding: 16px 20px 20px 20px;
+      background: #ffffff;
+    }
+    .accordion-item.open .accordion-body {
+      display: block;
+    }
+    .rubric-badge {
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 10.5px;
       font-weight: 700;
     }
     .rubric-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 12px;
-      margin-top: 14px;
+      margin-top: 10px;
     }
     .rubric-table th, .rubric-table td {
-      padding: 10px 14px;
+      padding: 9px 12px;
       border: 1px solid var(--card-border);
       text-align: left;
     }
@@ -700,7 +756,7 @@
     }
     .score-cell {
       font-weight: 800;
-      width: 65px;
+      width: 60px;
       text-align: center;
     }
     .score-5 { background: #f0fdf4; color: #166534; }
@@ -783,6 +839,11 @@
           </button>
         </li>
         <li>
+          <button class="nav-btn" onclick="switchView('view-rubrics')">
+            <span>📊</span> ルーブリック評価基準
+          </button>
+        </li>
+        <li>
           <button class="nav-btn" onclick="switchView('view-tree')">
             <span>🌲</span> ディレクトリ構造
           </button>
@@ -800,7 +861,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-11 07:38:17</div>
+        <div>最終同期: 2026-10-11 12:34:59</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -836,8 +897,8 @@
                 <circle class="circle-progress" cx="85" cy="85" r="70"></circle>
               </svg>
               <div class="circle-content">
-                <span class="score-number">100</span>
-                <span class="score-grade">GRADE S</span>
+                <span class="score-number">92</span>
+                <span class="score-grade">GRADE A</span>
               </div>
             </div>
             <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">総合ディレクトリ衛生スコア</h3>
@@ -861,10 +922,10 @@
               <div class="metric-row">
                 <div class="metric-header">
                   <span>一時スクラッチ完全隔離</span>
-                  <span class="metric-status status-PASS">PASS</span>
+                  <span class="metric-status status-WARN">WARN</span>
                 </div>
-                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
-                <div class="metric-detail"><span>残骸ファイル: 0 件</span><span>20 / 20 pt</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 60%;"></div></div>
+                <div class="metric-detail"><span>残骸ファイル: 2 件</span><span>12 / 20 pt</span></div>
               </div>
 
               <div class="metric-row">
@@ -1610,252 +1671,101 @@
 
           </div>
 
-          <!-- セクション3: ハーネス・ノード別 ルーブリック評価マトリックス -->
-          <div class="card" id="section-rubrics" style="margin-top: 24px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <h3 class="section-title" style="margin-bottom:0;">📊 ハーネス・ノード別 ルーブリック評価マトリックス（1〜5点 採点基準表カタログ）</h3>
-              <span class="code-badge" style="color:var(--accent);">Model Grader 仕様書</span>
-            </div>
-            <p style="font-size:13px; color:var(--text-muted); margin-bottom:18px;">
-              各ハーネス工程（事前ガード・AI推論・事後ガード・メタ進化）において、審査員AIが合否や自律リトライを判定する具体的な「採点基準表（ルーブリック）」です。タブを切り替えて各ノードの採点基準を確認できます。
-            </p>
-
-            <!-- ルーブリック用タブバー -->
-            <div class="rubric-tab-bar">
-              <button class="rubric-tab-btn active" id="btn-rubric-preguard" onclick="switchRubricTab('rubric-preguard')">
-                <span>🛡️</span> 事前ガード (Pre-Guard)
-              </button>
-              <button class="rubric-tab-btn" id="btn-rubric-ai" onclick="switchRubricTab('rubric-ai')">
-                <span>🤖</span> AI推論・回答 (AI Core)
-              </button>
-              <button class="rubric-tab-btn" id="btn-rubric-postguard" onclick="switchRubricTab('rubric-postguard')">
-                <span>⚖️</span> 事後ガード (Post-Guard)
-              </button>
-              <button class="rubric-tab-btn" id="btn-rubric-meta" onclick="switchRubricTab('rubric-meta')">
-                <span>🔄</span> メタ自己進化 (Meta-Harness)
+          <!-- セクション3: ルーブリック画面への誘導バナー -->
+          <div class="card" style="margin-top: 24px; background: linear-gradient(135deg, #fcfbf8 0%, #f7f3ec 100%); border-color: var(--accent-border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+              <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                  <span style="font-size:20px;">📊</span>
+                  <h3 style="font-size:16px; font-weight:800; color:var(--text-main); margin:0;">各ノードの1〜5点 採点基準表（ルーブリック）カタログ</h3>
+                  <span class="code-badge" style="color:var(--accent);">独立カタログ化</span>
+                </div>
+                <p style="font-size:13px; color:var(--text-muted); margin:0;">
+                  全社共通規律（6項目）、各プロジェクト固有基準（5項目）、全体総合出荷判定（1項目）の全12項目を「2ペイン・アコーディオン形式」で体系化しました。
+                </p>
+              </div>
+              <button class="nav-btn" onclick="switchView('view-rubrics')" style="width:auto; padding:10px 20px; background:var(--accent); color:#ffffff; border-radius:8px; font-weight:700; display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer;">
+                <span>ルーブリック評価基準を開く</span>
+                <span>➔</span>
               </button>
             </div>
-
-            <!-- タブ1: 事前ガード -->
-            <div class="rubric-panel active" id="rubric-preguard">
-              <div class="rubric-card">
-                <div class="rubric-header">
-                  <div class="rubric-title">
-                    <span>1. プロンプト・要件定義の明確性 (Spec & Prompt Clarity)</span>
-                  </div>
-                  <div class="rubric-meta">
-                    <span class="rubric-badge" style="background:#eff6ff; color:#1d4ed8;">配備先: 👤 人間 ➔ 🛡️ 事前ガード</span>
-                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
-                  </div>
-                </div>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-                  エージェントが開発に着手する前に、ユーザーの指示やPRD（設計書）に致命的な曖昧さがないかを審査。3点以下の場合は勝手に作らず明確化質問を返す。
-                </p>
-                <table class="rubric-table">
-                  <thead>
-                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="score-cell score-1">1点</td><td>致命的 (Vague)</td><td>「いい感じのGASを作って」等、目的や仕様、データ元が完全に不明。</td><td>即時拒絶・質問要求</td></tr>
-                    <tr><td class="score-cell score-2">2点</td><td>不十分 (Incomplete)</td><td>やりたいことは分かるが、対象ファイル形式や操作対象（Gmail/Sheets）が欠落。</td><td>補足確認を挟む</td></tr>
-                    <tr><td class="score-cell score-3">3点</td><td>許容 (Acceptable)</td><td>基本要件はあるが、エラー時挙動や削除ポリシーなどの境界条件が未定義。</td><td>前提を宣言して着手</td></tr>
-                    <tr><td class="score-cell score-4">4点</td><td>良好 (Clear)</td><td>目的、対象サービス、入出力フォーマットが過不足なく明記されている。</td><td><strong>PASS (開発着手)</strong></td></tr>
-                    <tr><td class="score-cell score-5">5点</td><td>模範 (Perfect)</td><td>非機能要件、セキュリティ境界、例外フロー、完了定義まで完全に定義。</td><td><strong>PASS (即時実行)</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="rubric-card">
-                <div class="rubric-header">
-                  <div class="rubric-title">
-                    <span>2. ワークスペース境界防御規律 (Workspace Boundary Protection)</span>
-                  </div>
-                  <div class="rubric-meta">
-                    <span class="rubric-badge" style="background:#eff6ff; color:#1d4ed8;">配備先: 🛡️ 事前ガード (check_architecture_guard)</span>
-                    <span class="rubric-badge" style="background:#fef2f2; color:#b91c1c;">合格ライン: スコア 5 のみ (絶対遵守)</span>
-                  </div>
-                </div>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-                  1ツール1フォルダカプセル化（<code>gas_project/*/</code>）を厳守し、ルート直下に単発スクリプトを散乱させないか、隠しファイル実行を強要しないかを事前検査。
-                </p>
-                <table class="rubric-table">
-                  <thead>
-                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="score-cell score-1">1点</td><td>違反 (Violation)</td><td>ルート直下に一時スクリプトを作成しようとしたり、隠しフォルダの手動実行を要求。</td><td><strong>即時BLOCK</strong></td></tr>
-                    <tr><td class="score-cell score-3">3点</td><td>境界グレー (Uncertain)</td><td><code>scratch/</code> に作成したが、検証完了後の破棄または <code>archive/</code> 隔離ルールが不明。</td><td>警告・隔離指示</td></tr>
-                    <tr><td class="score-cell score-5">5点</td><td>完全統制 (Clean)</td><td>指定されたカプセル化フォルダ内に全成果物を閉じ込め、外部漏出がゼロ。</td><td><strong>PASS</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- タブ2: AI推論・回答 -->
-            <div class="rubric-panel" id="rubric-ai">
-              <div class="rubric-card">
-                <div class="rubric-header">
-                  <div class="rubric-title">
-                    <span>3. 情報鮮度・時間軸整合性 (Freshness & Temporal Grounding)</span>
-                  </div>
-                  <div class="rubric-meta">
-                    <span class="rubric-badge" style="background:#f5f3ff; color:#7c3aed;">配備先: 🤖 AI (Antigravity 執行エンジン)</span>
-                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
-                  </div>
-                </div>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-                  ★今回の教訓から策定。現在システム時刻（2026年）と一次情報を照合し、旧世代モデル（Gemini 1.5 Flash等）の知識をそのまま出力するのを防止。
-                </p>
-                <table class="rubric-table">
-                  <thead>
-                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="score-cell score-1">1点</td><td>致命的 (Stale)</td><td>2〜3年以上前の旧モデル（Gemini 1.5 Flash等）を現行最新と断定して回答。</td><td><strong>即時FAIL（自律リトライ）</strong></td></tr>
-                    <tr><td class="score-cell score-2">2点</td><td>不十分 (Mixed)</td><td>最新状況に触れつつも、過去の料金体系や前提が混在して誤認を与える。</td><td>要修正・再生成</td></tr>
-                    <tr><td class="score-cell score-3">3点</td><td>許容 (Contextual)</td><td>古い情報であることを明記し、歴史的経緯として現行最新と区別して言及。</td><td>条件付きPASS</td></tr>
-                    <tr><td class="score-cell score-4">4点</td><td>良好 (Fresh)</td><td>現在（2026年）の最新モデル（Gemini 3.8 Flash等）をベースに論理を展開。</td><td><strong>PASS</strong></td></tr>
-                    <tr><td class="score-cell score-5">5点</td><td>模範 (Exceptional)</td><td>現行最新の仕様・料金を一次情報に即して提示し、将来リスクまで客観言及。</td><td><strong>PASS (EXCELLENT)</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="rubric-card">
-                <div class="rubric-header">
-                  <div class="rubric-title">
-                    <span>4. 自己欺瞞テスト排除 (Anti-Self-Deception & Objective Verification)</span>
-                  </div>
-                  <div class="rubric-meta">
-                    <span class="rubric-badge" style="background:#f5f3ff; color:#7c3aed;">配備先: 🤖 AI ➔ ⚖️ 事後ガード</span>
-                    <span class="rubric-badge" style="background:#fef2f2; color:#b91c1c;">合格ライン: スコア 5 のみ (絶対遵守)</span>
-                  </div>
-                </div>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-                  AI自身が都合の良いモックを作って「合格しました」と自己判定するエコーチェンバーを根絶。外部の客観的検証ハーネスのみで判定を確定させる。
-                </p>
-                <table class="rubric-table">
-                  <thead>
-                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="score-cell score-1">1点</td><td>自己欺瞞 (Deceptive)</td><td>自作HTMLモック等で動いたように見せかけ、実機公式DOMの崩れを無視して合格判定。</td><td><strong>即時FAIL</strong></td></tr>
-                    <tr><td class="score-cell score-3">3点</td><td>部分検証 (Partial)</td><td>テストはあるが、境界値やエッジケース（空配列、権限エラー）がモックされている。</td><td>追加テスト要求</td></tr>
-                    <tr><td class="score-cell score-5">5点</td><td>客観立証 (Sound)</td><td>改ざん不可の外部ハーネススクリプトにより、本物実機・公式仕様で100%適合を証明。</td><td><strong>PASS</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- タブ3: 事後ガード -->
-            <div class="rubric-panel" id="rubric-postguard">
-              <div class="rubric-card">
-                <div class="rubric-header">
-                  <div class="rubric-title">
-                    <span>5. システム回路図・UIの認知的明確性 (Cognitive Clarity Rubric)</span>
-                  </div>
-                  <div class="rubric-meta">
-                    <span class="rubric-badge" style="background:#ecfdf5; color:#047857;">配備先: ⚖️ 事後ガード ➔ 🎁 人へ返却</span>
-                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
-                  </div>
-                </div>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-                  ★今回のダッシュボード改修で適用。単なるカード列ではなく、トポロジー配線・有向矢印・再帰フィードバック・インスペクターが機能しているかを審査。
-                </p>
-                <table class="rubric-table">
-                  <thead>
-                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="score-cell score-1">1点</td><td>致命的 (Flat)</td><td>単なる静的カード列や箇条書きで、データの流れやノード間の因果関係が見えない。</td><td><strong>即時FAIL（再設計）</strong></td></tr>
-                    <tr><td class="score-cell score-2">2点</td><td>不十分 (Broken)</td><td>矢印はあるが上下左右の接続関係が断絶し、どこへ流れるか追うのに強い負荷がかかる。</td><td>配線再修正</td></tr>
-                    <tr><td class="score-cell score-3">3点</td><td>許容 (Basic)</td><td>主幹線の流れは分かるが、例外処理やフィードバック再帰ループが省略されている。</td><td>ループ線追加指示</td></tr>
-                    <tr><td class="score-cell score-4">4点</td><td>良好 (Clear)</td><td>ベクター配線と矢印で入力〜ガード〜AI〜出力〜再帰ループが整理され、迷わず追える。</td><td><strong>PASS</strong></td></tr>
-                    <tr><td class="score-cell score-5">5点</td><td>模範 (Interactive)</td><td>全体サイクルが一目で直感でき、各ノードクリックで詳細が展開される最高水準の体験。</td><td><strong>PASS (EXCELLENT)</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="rubric-card">
-                <div class="rubric-header">
-                  <div class="rubric-title">
-                    <span>6. GAS安全性＆ライフサイクル管理 (GAS Safety & Lifecycle)</span>
-                  </div>
-                  <div class="rubric-meta">
-                    <span class="rubric-badge" style="background:#ecfdf5; color:#047857;">配備先: ⚖️ 事後ガード (evaluator_gas_minitool)</span>
-                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
-                  </div>
-                </div>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-                  minitool_001の教訓より。「安全に使い始める」だけでなく、「安全にトリガーを解除してやめる（uninstall）」機能が実装されているかを検査。
-                </p>
-                <table class="rubric-table">
-                  <thead>
-                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="score-cell score-1">1点</td><td>致命的 (Dangerous)</td><td>自動トリガーを作成するが、ユーザーが解除する <code>uninstallTool</code> 関数が存在しない。</td><td><strong>即時FAIL</strong></td></tr>
-                    <tr><td class="score-cell score-3">3点</td><td>許容 (Basic)</td><td>uninstall関数はあるが、エラーハンドリングや通知機能が欠落している。</td><td>補正要求</td></tr>
-                    <tr><td class="score-cell score-5">5点</td><td>完全適合 (Safe)</td><td>uninstall関数、OAuth最小権限、全エラー捕捉通知、実行クォータ管理が完備。</td><td><strong>PASS (納品可能)</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- タブ4: メタ自己進化 -->
-            <div class="rubric-panel" id="rubric-meta">
-              <div class="rubric-card">
-                <div class="rubric-header">
-                  <div class="rubric-title">
-                    <span>7. 局所教訓ログの圧縮品質 (Trace Summary Quality)</span>
-                  </div>
-                  <div class="rubric-meta">
-                    <span class="rubric-badge" style="background:#fffbeb; color:#b45309;">配備先: 📝 局所教訓ログ ➔ ⚙️ メタ回収バッチ</span>
-                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
-                  </div>
-                </div>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-                  各プロジェクトの <code>logs/trace.md</code> に巨大な生ログを放置せず、「1. 失敗 / 2. 解決 / 3. 教訓」の3段階で高密度圧縮されているかを審査。
-                </p>
-                <table class="rubric-table">
-                  <thead>
-                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="score-cell score-1">1点</td><td>低品質 (Bloated)</td><td>数十KBのスタックトレースやチャット全文を生のまま貼り付けて放置。</td><td>即時要約要求</td></tr>
-                    <tr><td class="score-cell score-3">3点</td><td>許容 (Narrative)</td><td>経緯は書かれているが、他のプロジェクトで再利用可能な「普遍的教訓」に抽象化されていない。</td><td>教訓の再抽象化指示</td></tr>
-                    <tr><td class="score-cell score-5">5点</td><td>模範 (Distilled)</td><td>3段階フォーマットで数KB以内に要約され、即座に次期ガードレールへ変換可能。</td><td><strong>PASS (DB昇格)</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="rubric-card">
-                <div class="rubric-header">
-                  <div class="rubric-title">
-                    <span>8. ルーブリック自動蒸留＆マージ性 (Auto-Rubric Distillation)</span>
-                  </div>
-                  <div class="rubric-meta">
-                    <span class="rubric-badge" style="background:#fffbeb; color:#b45309;">配備先: ⚡ メタ生成エンジン ➔ 🛡️ 次期事前/事後ガード</span>
-                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
-                  </div>
-                </div>
-                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
-                  ★カシマさんが指摘された「生ログから採点表を更新する流れ」。失敗を単なるテキストで終わらせず、1〜5点の判定刻み幅を持つルーブリックとして再生成・統合できるかを審査。
-                </p>
-                <table class="rubric-table">
-                  <thead>
-                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="score-cell score-1">1点</td><td>未反映 (Static)</td><td>失敗しても採点表が更新されず、同じ失敗が次期案件でも再発可能な状態。</td><td><strong>即時FAIL</strong></td></tr>
-                    <tr><td class="score-cell score-3">3点</td><td>新規乱立 (Bloating)</td><td>採点表は作ったが、既存の類似ルーブリック（Freshness等）と統合されず別ファイルが乱立。</td><td>既存ファイルへマージ</td></tr>
-                    <tr><td class="score-cell score-5">5点</td><td>完全自己進化 (Self-Evolved)</td><td>失敗からスコア1〜5点の判定条件を自動生成し、既存ルーブリックへ差分マージ完了。</td><td><strong>PASS (次世代展開)</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
           </div>
 
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- VIEW: ルーブリック評価基準 (Rubrics 2-Pane Catalog) -->
+      <!-- ============================================== -->
+      <div id="view-rubrics" class="view-panel">
+        <div class="card" style="margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <h2 style="font-size: 18px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
+                <span>📊</span> 審査員AI（Critic / Evaluator）採点基準表マスター
+              </h2>
+              <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
+                全社共通6規律 ＋ プロジェクト固有基準 ＋ 全体総合出荷判定の全マトリックス。アコーディオンを開いて1〜5点の詳細基準を確認できます。
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="badge" onclick="toggleAllAccordions(true)" style="cursor: pointer; background: #ffffff; border: 1px solid var(--card-border);">
+                <span>➕ すべて展開</span>
+              </button>
+              <button class="badge" onclick="toggleAllAccordions(false)" style="cursor: pointer; background: #ffffff; border: 1px solid var(--card-border);">
+                <span>➖ すべて折りたたむ</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Pane Master-Detail Container -->
+        <div class="rubric-master-detail">
+          <!-- 左ペイン: プロジェクト＆規律選択リスト (幅290px) -->
+          <div class="rubric-sidebar-pane">
+            <div style="margin-bottom: 14px;">
+              <input type="text" id="rubric-search-input" placeholder="🔍 基準・ツールを検索..." oninput="filterRubricProjects(this.value)" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--card-border); font-size: 12px; font-family: inherit; background: #ffffff;">
+            </div>
+
+            <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; padding-left: 4px;">
+              全社共通・全体判定
+            </div>
+            <div class="rubric-proj-list" id="rubric-list-common" style="margin-bottom: 16px;">
+              <div class="rubric-proj-item active" id="r-item-common" onclick="selectRubricProject('common')">
+                <div class="r-item-title">🌐 全社共通規律 (Common)</div>
+                <div class="r-item-sub">全ツール適用・6大必須基準</div>
+              </div>
+              <div class="rubric-proj-item" id="r-item-overall" onclick="selectRubricProject('overall')">
+                <div class="r-item-title">🏆 全体総合出荷判定 (Release)</div>
+                <div class="r-item-sub">受入・note公開・手直しゼロ基準</div>
+              </div>
+            </div>
+
+            <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; padding-left: 4px;">
+              GASミニツール（プロジェクト別）
+            </div>
+            <div class="rubric-proj-list" id="rubric-list-projects">
+              <div class="rubric-proj-item" id="r-item-p1" onclick="selectRubricProject('p1')">
+                <div class="r-item-title">📧 minitool_001_unreplied_emails</div>
+                <div class="r-item-sub">未返信メール抽出＆スプレッドシート</div>
+              </div>
+              <div class="rubric-proj-item" id="r-item-p2" onclick="selectRubricProject('p2')">
+                <div class="r-item-title">📅 minitool_002_schedule_conflict</div>
+                <div class="r-item-sub">予定重複検知＆カレンダー同期</div>
+              </div>
+              <div class="rubric-proj-item" id="r-item-p3" onclick="selectRubricProject('p3')">
+                <div class="r-item-title">📈 workspace_health_monitor</div>
+                <div class="r-item-sub">ワークスペース健全性コンソール</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右ペイン: 選択された基準のアコーディオン一覧 -->
+          <div class="rubric-content-pane">
+            <div class="card" id="rubric-detail-card" style="padding: 24px;">
+              <!-- JavaScript selectRubricProject() で動的生成 -->
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1970,7 +1880,8 @@
       const titleMap = {
         'view-overview': ['🏠 ワークスペース総合ヘルス概要', '境界防御・ディレクトリ健全性・全プロジェクト状況のリアルタイム監視'],
         'view-projects': ['🚀 全プロジェクト進捗・完成度トラッカー', '各ツールの成果物構成・仕様書・テスト適合状況の客観判定'],
-        'view-harness': ['🛡️ エージェントハーネス全体像 ＆ ルーブリック評価基準', '行動トポロジー（入力・ガード・AI・出力）＆ ノード別1〜5点採点基準表カタログ'],
+        'view-harness': ['🛡️ エージェントハーネス全体像', '行動トポロジー回路図（入力・事前ガード・AI・事後ガード・出力・メタ進化）'],
+        'view-rubrics': ['📊 ルーブリック評価基準（採点表カタログ）', '全社共通6規律 ＋ プロジェクト固有基準 ＋ 全体出荷判定マスター'],
         'view-tree': ['🌲 ワークスペース階層構造エクスプローラー', '主要フォルダの展開・容量・衛生度マップ'],
         'view-logs': ['📜 失敗と教訓の完全アーカイブ', '各プロジェクトの trace.md から抽出された恒久教訓一覧'],
         'view-automation': ['⏰ 自動巡回＆定期スキャン運用', 'GitHub Actions日次巡回およびローカル常時統制の構成']
@@ -2507,19 +2418,454 @@
       });
     }
 
-    // ルーブリックタブの切り替え
-    function switchRubricTab(tabKey) {
-      document.querySelectorAll('.rubric-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.rubric-tab-btn').forEach(b => b.classList.remove('active'));
-      const activePanel = document.getElementById(tabKey);
-      if (activePanel) activePanel.classList.add('active');
-      const activeBtn = document.getElementById('btn-' + tabKey);
-      if (activeBtn) activeBtn.classList.add('active');
+    // ==========================================
+    // ルーブリック評価基準マスター (RUBRICS_DATA)
+    // ==========================================
+    const RUBRICS_DATA = {
+      'common': {
+        title: '🌐 全社共通規律 (Common Rubrics)',
+        badge: '全ツール無条件適用 (6項目)',
+        summary: 'すべてのGASミニツール・自動化スクリプトが満たすべき、境界防御・情報鮮度・自己欺瞞排除・クォータ安全・最小権限・ログ圧縮の6大規律です。',
+        items: [
+          {
+            id: 'c1',
+            title: '1. 情報鮮度・時間軸整合性 (Freshness & Temporal Grounding)',
+            deploy: '🤖 AI (Antigravity 執行エンジン)',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '現在年（2026年）および現行最新モデル（Gemini 3.8 Flash等）の一次情報と整合しているか。過去情報混入を排除。',
+            rows: [
+              { score: '1点', rank: '致命的', color: 'danger', desc: '2〜3年以上前の旧モデル（Gemini 1.5 Flash等）を現行最新と断定して回答。', action: '即時自律リトライ' },
+              { score: '2点', rank: '不十分', color: 'warning', desc: '最新状況に触れつつも、過去の料金体系や前提が混在して誤認を与える。', action: '再検索・鮮度補正' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '古い情報であることを明記し、歴史的経緯として現行最新と区別して言及。', action: '注記付きPASS' },
+              { score: '4点', rank: '良好', color: 'success', desc: '現在（2026年）の最新モデル（Gemini 3.8 Flash等）をベースに論理を展開。', action: 'PASS' },
+              { score: '5点', rank: '模範', color: 'success', desc: '現行最新の仕様・料金を一次情報に即して提示し、将来リスクまで客観言及。', action: 'PASS (EXCELLENT)' }
+            ]
+          },
+          {
+            id: 'c2',
+            title: '2. ワークスペース境界防御規律 (Workspace Boundary Protection)',
+            deploy: '🛡️ 事前ガード (check_architecture_guard)',
+            passScore: '5点のみ (絶対遵守)',
+            passType: 'danger',
+            summary: '1ツール1フォルダ完全カプセル化（gas_project/*/）を死守し、ルート直下のファイル汚染や外部漏出を完全ゼロにする。',
+            rows: [
+              { score: '1点', rank: '違反', color: 'danger', desc: 'ルート直下に単発スクリプトを作成したり、隠しフォルダの手動実行を要求。', action: '即時BLOCK・強制是正' },
+              { score: '3点', rank: '境界グレー', color: 'amber', desc: 'scratch/ に作成したが、検証完了後の即時破棄または archive/ 隔離が不明瞭。', action: '警告・即時隔離指示' },
+              { score: '5点', rank: '完全統制', color: 'success', desc: '指定されたカプセル化フォルダ内に全成果物を閉じ込め、外部漏出がゼロ。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'c3',
+            title: '3. 自己欺瞞テスト排除 (Anti-Self-Deception & Objective Verification)',
+            deploy: '🤖 AI ➔ ⚖️ 事後ガード',
+            passScore: '5点のみ (絶対遵守)',
+            passType: 'danger',
+            summary: 'AI自身の「自己申告」や自作モックでの成功を信用せず、改ざん不可の外部ハーネススクリプトで客観立証する。',
+            rows: [
+              { score: '1点', rank: '自己欺瞞', color: 'danger', desc: '自作HTMLモック等で動いたように見せかけ、実機公式DOMの崩れを無視して合格判定。', action: '即時FAIL・実機強制' },
+              { score: '3点', rank: '部分検証', color: 'amber', desc: 'テストはあるが、境界値やエッジケース（空配列、権限エラー）がモックされている。', action: '追加実機テスト要求' },
+              { score: '5点', rank: '客観立証', color: 'success', desc: '改ざん不可の外部ハーネススクリプトにより、本物実機・公式仕様で100%適合を証明。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'c4',
+            title: '4. 実行クォータ・タイムアウト安全対策 (Execution Quota & Safety)',
+            deploy: '⚖️ 事後ガード',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: 'GAS 6分制限対策、APIレートリミット（429）、指数バックオフリトライ、安全な自律中断。',
+            rows: [
+              { score: '1点', rank: '危険', color: 'danger', desc: '無限ループの危険性があり、GASの6分制限やAPI制限で即時死する設計。', action: '即時FAIL' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '単発実行では動くが、大量データ処理時のバッチ分割やページネーションが未実装。', action: '警告・要改善' },
+              { score: '5点', rank: '堅牢', color: 'success', desc: '実行時間計測による自律中断・再スケジュール、APIエラーの指数バックオフが完備。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'c5',
+            title: '5. 最小権限原則 (Least Privilege OAuth)',
+            deploy: '🛡️ 事前ガード',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: 'appsscript.json の oauthScopes が必要最小限に制限されているか。過剰なDrive/Gmail全権限を排除。',
+            rows: [
+              { score: '1点', rank: '過剰権限', color: 'danger', desc: '不要なGoogle Drive全権限やGmail全権限を無邪気に要求。', action: '即時FAIL' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '主要スコープは絞られているが、読み取り専用で足りる箇所に書き込み権限を要求。', action: '権限縮小指示' },
+              { score: '5点', rank: '最小権限', color: 'success', desc: '読み取り専用スコープ（.readonly）やスプレッドシート単体権限のみに厳密制限。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'c6',
+            title: '6. 局所教訓ログ圧縮品質 (Trace Summary Quality)',
+            deploy: '📝 局所教訓ログ ➔ ⚙️ メタ回収バッチ',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: 'logs/trace.md の3段階フォーマット（1.失敗 / 2.解決 / 3.教訓）が高密度に数KB以内で凝縮されているか。',
+            rows: [
+              { score: '1点', rank: '低品質', color: 'danger', desc: '数十KBのスタックトレースやチャット全文を生のまま貼り付けて放置。', action: '即時要約要求' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '経緯は書かれているが、他のプロジェクトで再利用可能な「普遍的教訓」に抽象化されていない。', action: '再抽象化指示' },
+              { score: '5点', rank: '模範', color: 'success', desc: '「1. 失敗 / 2. 解決 / 3. 教訓」の3段階で高密度要約され、即座に次期ガードレールへ変換可能。', action: 'PASS (DB昇格)' }
+            ]
+          }
+        ]
+      },
+      'overall': {
+        title: '🏆 全体総合出荷判定 (Overall Delivery Rubric)',
+        badge: '受入・note公開判定 (1項目)',
+        summary: '全ノードの個別合格（各項目4点以上）を前提とした、最終完成パッケージ（成果物出荷）の合否判定基準です。カシマ様の手直しゼロを目指します。',
+        items: [
+          {
+            id: 'ov1',
+            title: '受入出荷・完成パッケージ総合判定 (Release Readiness)',
+            deploy: '🏆 最終出荷ゲート (人へ返却の直前)',
+            passScore: '4点以上 (手動修正ゼロ)',
+            passType: 'success',
+            summary: '一気通貫の結合動作、初心者向け設定手順の完全性、note記事原稿の魅力、メタ教訓のDB還元。',
+            rows: [
+              { score: '1点', rank: '出荷不可', color: 'danger', desc: '各パーツは個別パスしているが、実際に動かすと連携エラー。境界破壊や重大セキュリティ欠陥が存在。', action: '即時FAIL（出荷禁止）' },
+              { score: '2点', rank: '要手動修正', color: 'warning', desc: '動作はするが、初期設定手順とコードの変数名に食い違いがあり、カシマ様が手動で直さないと使えない。', action: '要修正（エスカレーション）' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '一連の業務フローは完結するが、エラー時のリカバリ案内やnoteの導入が粗削り。', action: '条件付きPASS' },
+              { score: '4点', rank: '出荷合格', color: 'success', desc: '全個別ノードが4点以上をクリアし、コード・設定・記事が完全に整合。カシマ様の手直しゼロで即座に配布可能。', action: '出荷合格 (PASS)' },
+              { score: '5点', rank: '卓越', color: 'success', desc: '完璧な動作、親切なトースト通知、美しいデモGIF、さらに教訓がメタ知識DBへ自動還元されている完全な状態。', action: '出荷合格 (EXCELLENT)' }
+            ]
+          }
+        ]
+      },
+      'p1': {
+        title: '📧 minitool_001_unreplied_emails 固有ルーブリック',
+        badge: '個別ツール固有基準 (5項目)',
+        summary: '未返信メール自動抽出＆スプレッドシート管理GASミニツールの業務・データ・安全性・記事・UX審査基準です。',
+        items: [
+          {
+            id: 'p1_1',
+            title: '1. [固有:業務] 未返信判定ロジックの正確性',
+            deploy: '⚖️ 事後ガード',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '下書き除外、自分送信スレッド除外、スレッド内最新メッセージの日時判定が正確か。',
+            rows: [
+              { score: '1点', rank: '欠陥', color: 'danger', desc: '下書きや自分宛てメモ、自分が最後に返信したスレッドまで未返信として誤判定。', action: '即時FAIL' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '基本的な未返信判定は通るが、CCで自分が入っているスレッドの扱いが曖昧。', action: '条件調整要求' },
+              { score: '5点', rank: '完璧', color: 'success', desc: '下書き完全除外、自分が最終送信者のスレッド除外、最新受信日時の厳密比較が完全。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p1_2',
+            title: '2. [固有:データ] スプレッドシート出力の完全性',
+            deploy: '⚖️ 事後ガード',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '列ずれゼロ、ISO日付フォーマット統一、見出し行自動凍結、Gmail直通リンク生成。',
+            rows: [
+              { score: '1点', rank: '破損', color: 'danger', desc: '送信者名や件名にカンマ・改行が含まれると列がずれ、データ構造が崩れる。', action: '即時FAIL' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '列ずれはないが、日付フォーマットが混在したりスレッドURLリンクが未整備。', action: 'フォーマット修正' },
+              { score: '5点', rank: '完璧', color: 'success', desc: '件名、送信者、受信日時、Gmail直通リンクが完璧に整形され、見出し行も自動凍結。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p1_3',
+            title: '3. [固有:安全] トリガー完全解除性 (uninstallTool必須)',
+            deploy: '⚖️ 事後ガード',
+            passScore: '5点のみ (教訓必須)',
+            passType: 'danger',
+            summary: 'uninstallTool() 関数の存在と、ScriptApp.deleteTrigger() の正常動作。',
+            rows: [
+              { score: '1点', rank: '致命的', color: 'danger', desc: '自動トリガーを設定するが、解除する uninstallTool 関数が存在しない。', action: '即時FAIL' },
+              { score: '3点', rank: '不完全', color: 'amber', desc: '関数はあるが、個別トリガーの指定削除のみで残骸トリガーが残る。', action: '全トリガー消去へ' },
+              { score: '5点', rank: '完全安全', color: 'success', desc: 'ワンクリックで全定期実行トリガーを消去し、完了メッセージをログ出力。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p1_4',
+            title: '4. [固有:記事] note記事の共感導入と初心者再現性',
+            deploy: '📝 ドキュメント審査',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '「未返信で冷や汗をかいた経験」の導入、スプレッドシート初期設定手順の明確さ。',
+            rows: [
+              { score: '1点', rank: '退屈', color: 'danger', desc: 'コードだけが貼られており、読者が「なぜこれを使うべきか」が分からない。', action: '導入全面書き直し' },
+              { score: '3点', rank: '説明的', color: 'amber', desc: '手順はあるが専門用語が多く、非エンジニアがコピペで動かすのに迷う。', action: '手順画像追加指示' },
+              { score: '5点', rank: '魅力的', color: 'success', desc: '読者の共感を誘うストーリー導入、3ステップ完結手順、デモGIFが完璧に揃う。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p1_5',
+            title: '5. [固有:UX] 実行完了時・エラー時のユーザー通知品質',
+            deploy: '👥 UX審査',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: 'SpreadsheetApp.getActiveSpreadsheet().toast() による日本語通知。',
+            rows: [
+              { score: '1点', rank: '沈黙', color: 'danger', desc: '実行しても画面に何も出ず、終わったのかエラーなのか分からない。', action: '即時FAIL' },
+              { score: '3点', rank: '最低限', color: 'amber', desc: 'Logger.log には出るが、スプレッドシート画面側に通知が出ない。', action: 'トースト通知追加' },
+              { score: '5点', rank: '親切', color: 'success', desc: '「〇件の未返信メールを抽出しました」等の分かりやすいトースト通知が即座に出る。', action: 'PASS' }
+            ]
+          }
+        ]
+      },
+      'p2': {
+        title: '📅 minitool_002_schedule_conflict 固有ルーブリック',
+        badge: '個別ツール固有基準 (5項目)',
+        summary: 'Googleカレンダー予定重複検知＆差分更新GASミニツールの審査基準です。',
+        items: [
+          {
+            id: 'p2_1',
+            title: '1. [固有:業務] 重複検知アルゴリズム・終日予定判定',
+            deploy: '⚖️ 事後ガード',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: 'ミリ秒単位の重複判定、終日予定（祝日やメモ）の柔軟なフィルタリング。',
+            rows: [
+              { score: '1点', rank: '誤検知', color: 'danger', desc: '連続する前後の予定（10:00終了と10:00開始）を重複と判定してしまう。', action: '即時FAIL' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '時間重複は正確だが、終日イベントの除外設定が固定化されている。', action: 'オプション拡張' },
+              { score: '5点', rank: '完璧', color: 'success', desc: '完全な時間交差判定、終日予定のスマート除外、参加承諾ステータス判定完備。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p2_2',
+            title: '2. [固有:データ] カレンダー差分更新・パフォーマンス',
+            deploy: '⚖️ 事後ガード',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '過去取得キャッシュの活用、API呼出回数の削減、6分制限の回避。',
+            rows: [
+              { score: '1点', rank: '重過負荷', color: 'danger', desc: '毎回数年分の全予定を取得し、GASのAPI制限でタイムアウト死する。', action: '即時FAIL' },
+              { score: '3点', rank: '標準', color: 'amber', desc: '直近2週間に絞っているが、予定ごとに個別APIを叩いており最適化の余地あり。', action: 'バッチ取得化' },
+              { score: '5点', rank: '超高速', color: 'success', desc: '期間指定の一括取得、PropertiesServiceによる差分比較で最小APIコールを実現。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p2_3',
+            title: '3. [固有:安全] 予定変更・削除の不可逆操作防止',
+            deploy: '🛡️ 事前ガード',
+            passScore: '5点のみ (安全厳守)',
+            passType: 'danger',
+            summary: 'ユーザーの承認なしに勝手にカレンダー予定を移動・削除しない安全設計。',
+            rows: [
+              { score: '1点', rank: '破壊的', color: 'danger', desc: '重複した予定をAIが勝手に判断して削除・時刻変更してしまう。', action: '即時BLOCK' },
+              { score: '3点', rank: '警告付与', color: 'amber', desc: '変更前に確認ダイアログは出るが、変更前の予定バックアップがない。', action: 'バックアップ機構追加' },
+              { score: '5点', rank: '絶対安全', color: 'success', desc: '重複の「検知・一覧提示」に徹し、変更はユーザーの明示操作でのみ実行。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p2_4',
+            title: '4. [固有:記事] タイムマネジメント視点のnoteストーリー',
+            deploy: '📝 ドキュメント審査',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '「ダブルブッキングで信用を失いかけた恐怖」から始まる実践的ライフハック記事。',
+            rows: [
+              { score: '1点', rank: '無機質', color: 'danger', desc: 'GASの仕様説明のみで、ビジネスパーソンの痛みに寄り添っていない。', action: 'ストーリー再構成' },
+              { score: '3点', rank: '良好', color: 'amber', desc: '導入はあるが、スマホ通知や毎朝の自動チェックの具体的な使い方が薄い。', action: '利用シーン加筆' },
+              { score: '5点', rank: '感動的', color: 'success', desc: 'カレンダー破綻を防ぐ実践知、毎朝のルーティン化、読者の行動変容を促す記事。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p2_5',
+            title: '5. [固有:UX] 解決候補スロットの直感的提示',
+            deploy: '👥 UX審査',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '「どちらをどうずらせば空いているか」の代替時間帯候補の提示品質。',
+            rows: [
+              { score: '1点', rank: '不親切', color: 'danger', desc: '「重複しています」とだけ言って、どの時間が空いているかを教えない。', action: '改善要求' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '空き時間は提示するが、就業時間外や深夜のスロットが含まれる。', action: '時間帯フィルタ追加' },
+              { score: '5点', rank: '快適', color: 'success', desc: '就業時間内の最短空きスロット3候補を提示し、ワンクリックで選べるUI。', action: 'PASS' }
+            ]
+          }
+        ]
+      },
+      'p3': {
+        title: '📈 workspace_health_monitor 固有ルーブリック',
+        badge: '個別ツール固有基準 (5項目)',
+        summary: 'ワークスペース健全性コンソール＆トポロジーダッシュボード自体の品質基準です。',
+        items: [
+          {
+            id: 'p3_1',
+            title: '1. [固有:客観] 14項目ヘルス判定の改ざん不能性',
+            deploy: '🛡️ ハーネス基盤',
+            passScore: '5点のみ (絶対遵守)',
+            passType: 'danger',
+            summary: '自己欺瞞を排し、ファイルシステムとCIの生データから客観的にスコアを算出。',
+            rows: [
+              { score: '1点', rank: 'ハードコード', color: 'danger', desc: 'ダッシュボードの点数を100点固定でハードコードし、実態の違反を隠蔽。', action: '即時FAIL' },
+              { score: '3点', rank: '静的検証', color: 'amber', desc: '動的判定はあるが、一部のチェック項目がスタブ関数になっている。', action: '全実装義務付け' },
+              { score: '5点', rank: '完全客観', color: 'success', desc: '14項目すべてが実ファイル探索・構文解析・テスト実行結果から動的生成。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p3_2',
+            title: '2. [固有:美観] SVG配線トポロジーの認知的明確性',
+            deploy: '🎨 UI/UX基盤',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '直線・直交ベクター配線、矢印マーカー、アニメーション破線、完全な因果追跡性。',
+            rows: [
+              { score: '1点', rank: '線画崩壊', color: 'danger', desc: '配線がノードの文字に被る、矢印の向きが逆、交差が多すぎて追えない。', action: 'トポロジー再計算' },
+              { score: '3点', rank: '許容', color: 'amber', desc: '主要な線は綺麗だが、ループバック（自律リトライ）の線が他と重なっている。', action: 'オフセット調整' },
+              { score: '5点', rank: '極上', color: 'success', desc: 'ピクセルパーフェクトな直交配線、ホバー時のパスハイライト、芸術的視線誘導。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p3_3',
+            title: '3. [固有:操作] 2ペイン ＆ アコーディオンの軽快性',
+            deploy: '🎨 UI/UX基盤',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: '左ペインでの即時切替、アコーディオンのスムーズな開閉、一括操作の軽快性。',
+            rows: [
+              { score: '1点', rank: '操作不能', color: 'danger', desc: 'クリックしても反応しない、アコーディオンの中身が欠落している。', action: '即時バグ修正' },
+              { score: '3点', rank: '標準', color: 'amber', desc: '動作するが、プロジェクトを切り替えた時のスクロール位置やアニメーションがぎこちない。', action: 'UIポリッシュ' },
+              { score: '5点', rank: '快適極上', color: 'success', desc: 'ミリ秒単位の俊敏な切替、開閉状態の明確な視覚フィードバック、検索絞り込みの即時性。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p3_4',
+            title: '4. [固有:同期] ルーブリック定義（.md）との100%整合性',
+            deploy: '⚙️ メタ同期',
+            passScore: '4点以上',
+            passType: 'success',
+            summary: 'harness/rubrics/ 配下のMarkdownファイルとダッシュボード表示の完全一致。',
+            rows: [
+              { score: '1点', rank: '乖離', color: 'danger', desc: 'Markdownとダッシュボードで書いてある採点基準や合格ラインが矛盾している。', action: '同期不整合FAIL' },
+              { score: '3点', rank: '一部相違', color: 'amber', desc: '基準は一致しているが、補足説明やアクションの表現に細かなズレがある。', action: '文言統一指示' },
+              { score: '5点', rank: '完全同期', color: 'success', desc: '共通・個別・全体の全12項目がMarkdown定義と一言一句違わず同期。', action: 'PASS' }
+            ]
+          },
+          {
+            id: 'p3_5',
+            title: '5. [固有:配信] GitHub Pages公開・キャッシュ破棄の自動化',
+            deploy: '🚀 CI/CD配信',
+            passScore: '5点のみ (配信保証)',
+            passType: 'danger',
+            summary: 'docs/index.html への自動反映、クエリパラメータによるキャッシュ回避、実機URLアクセス性。',
+            rows: [
+              { score: '1点', rank: '配信事故', color: 'danger', desc: 'ビルドしてもdocs/が更新されず、GitHub Pagesに古いバージョンが表示され続ける。', action: '即時配信修復' },
+              { score: '3点', rank: '手動更新', color: 'amber', desc: '自動コピーはあるが、ブラウザキャッシュでF5を押さないと最新にならない。', action: 'キャッシュバスティング追加' },
+              { score: '5点', rank: '完全自動配信', color: 'success', desc: 'ビルド時にdocs/index.htmlが自動更新され、バージョンクエリ付きURLで即座に最新が閲覧可能。', action: 'PASS' }
+            ]
+          }
+        ]
+      }
+    };
+
+    // ルーブリック プロジェクト選択
+    function selectRubricProject(pKey) {
+      document.querySelectorAll('.rubric-proj-item').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      const activeItem = document.getElementById('r-item-' + pKey);
+      if (activeItem) activeItem.classList.add('active');
+
+      const data = RUBRICS_DATA[pKey];
+      if (!data) return;
+
+      const card = document.getElementById('rubric-detail-card');
+      if (!card) return;
+
+      let html = '<div style="margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--card-border);">';
+      html += '<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">';
+      html += '<h3 style="font-size:18px; font-weight:800; color:var(--text-main); margin:0;">' + data.title + '</h3>';
+      html += '<span class="badge" style="background:var(--accent-light); color:var(--accent); border-color:var(--accent-border);">' + data.badge + '</span>';
+      html += '</div>';
+      html += '<p style="font-size:13px; color:var(--text-muted); margin:0; line-height:1.6;">' + data.summary + '</p>';
+      html += '</div>';
+
+      html += '<div class="rubric-accordion-list">';
+      data.items.forEach(function(item, idx) {
+        const passBadgeBg = item.passType === 'danger' ? 'background:#fef2f2; color:#b91c1c;' : 'background:var(--success-bg); color:var(--success);';
+        html += '<div class="accordion-item' + (idx === 0 ? ' open' : '') + '" id="acc-' + item.id + '">';
+        html += '  <div class="accordion-header" onclick="toggleAccordion(\'' + item.id + '\')">';
+        html += '    <div class="accordion-title-wrap">';
+        html += '      <span class="accordion-title">' + item.title + '</span>';
+        html += '      <span class="rubric-badge" style="background:#eff6ff; color:#1d4ed8;">配備: ' + item.deploy + '</span>';
+        html += '      <span class="rubric-badge" style="' + passBadgeBg + '">合格: ' + item.passScore + '</span>';
+        html += '    </div>';
+        html += '    <span class="accordion-arrow">▼</span>';
+        html += '  </div>';
+        html += '  <div class="accordion-body">';
+        html += '    <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px; background:var(--card-bg-subtle); padding:10px 14px; border-radius:8px; border:1px solid var(--card-border);">';
+        html += '      <strong>💡 評価観点:</strong> ' + item.summary;
+        html += '    </div>';
+        html += '    <table class="rubric-table">';
+        html += '      <thead>';
+        html += '        <tr>';
+        html += '          <th style="width:65px;">スコア</th>';
+        html += '          <th style="width:85px;">ランク</th>';
+        html += '          <th>判定基準・具象状態</th>';
+        html += '          <th style="width:140px;">ハーネス挙動 / アクション</th>';
+        html += '        </tr>';
+        html += '      </thead>';
+        html += '      <tbody>';
+        item.rows.forEach(function(r) {
+          let scoreColor = 'var(--text-main)';
+          let badgeStyle = 'background:#f3f4f6; color:#4b5563;';
+          if (r.color === 'danger') {
+            scoreColor = 'var(--danger)';
+            badgeStyle = 'background:var(--danger-bg); color:var(--danger);';
+          } else if (r.color === 'warning') {
+            scoreColor = 'var(--warning)';
+            badgeStyle = 'background:var(--warning-bg); color:var(--warning);';
+          } else if (r.color === 'amber') {
+            scoreColor = '#d97706';
+            badgeStyle = 'background:#fef3c7; color:#b45309;';
+          } else if (r.color === 'success') {
+            scoreColor = 'var(--success)';
+            badgeStyle = 'background:var(--success-bg); color:var(--success);';
+          }
+          html += '<tr>';
+          html += '  <td class="score-cell" style="color:' + scoreColor + ';">' + r.score + '</td>';
+          html += '  <td><span class="rubric-badge" style="' + badgeStyle + '">' + r.rank + '</span></td>';
+          html += '  <td style="line-height:1.5;">' + r.desc + '</td>';
+          html += '  <td><strong>' + r.action + '</strong></td>';
+          html += '</tr>';
+        });
+        html += '      </tbody>';
+        html += '    </table>';
+        html += '  </div>';
+        html += '</div>';
+      });
+      html += '</div>';
+
+      card.innerHTML = html;
+    }
+
+    // アコーディオンの開閉
+    function toggleAccordion(itemId) {
+      const el = document.getElementById('acc-' + itemId);
+      if (el) {
+        el.classList.toggle('open');
+      }
+    }
+
+    // 全アコーディオンの一括開閉
+    function toggleAllAccordions(expand) {
+      document.querySelectorAll('.accordion-item').forEach(function(el) {
+        if (expand) {
+          el.classList.add('open');
+        } else {
+          el.classList.remove('open');
+        }
+      });
+    }
+
+    // 左ペインのプロジェクト検索フィルター
+    function filterRubricProjects(q) {
+      const query = (q || '').toLowerCase().trim();
+      document.querySelectorAll('.rubric-proj-item').forEach(function(item) {
+        const text = item.innerText.toLowerCase();
+        if (text.includes(query)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
     }
 
     // 初期化
     window.addEventListener('DOMContentLoaded', function() {
       selectProjectHarness('p1');
+      selectRubricProject('common');
     });
   </script>
 </body>
