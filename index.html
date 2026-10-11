@@ -267,7 +267,7 @@
       stroke-width: 12;
       stroke-linecap: round;
       stroke-dasharray: 439.822971502571;
-      stroke-dashoffset: 0;
+      stroke-dashoffset: 17.592918860102884;
       transition: stroke-dashoffset 1s ease;
     }
     .circle-content {
@@ -861,7 +861,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-11 13:16:01</div>
+        <div>最終同期: 2026-10-11 13:22:29</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -897,7 +897,7 @@
                 <circle class="circle-progress" cx="85" cy="85" r="70"></circle>
               </svg>
               <div class="circle-content">
-                <span class="score-number">100</span>
+                <span class="score-number">96</span>
                 <span class="score-grade">GRADE S</span>
               </div>
             </div>
@@ -922,10 +922,10 @@
               <div class="metric-row">
                 <div class="metric-header">
                   <span>一時スクラッチ完全隔離</span>
-                  <span class="metric-status status-PASS">PASS</span>
+                  <span class="metric-status status-WARN">WARN</span>
                 </div>
-                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
-                <div class="metric-detail"><span>残骸ファイル: 0 件</span><span>20 / 20 pt</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+                <div class="metric-detail"><span>残骸ファイル: 1 件</span><span>16 / 20 pt</span></div>
               </div>
 
               <div class="metric-row">
@@ -1337,14 +1337,14 @@
                   <!-- ⑤ 事前ガード ➔ AI執行クラスタ（メイン幹線） -->
                   <path d="M 420 243 L 460 243" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
-                  <!-- ⑥ AI ➔ 承認ゲート（上分岐） -->
-                  <path d="M 550 175 L 550 94" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <!-- ⑥ AI ➔ 承認ゲート（上分岐: x=530） -->
+                  <path d="M 530 175 L 530 94" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
-                  <!-- ⑦ 承認ゲート ➔ ツール使用・MCP -->
-                  <path d="M 610 62 L 660 62" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <!-- ⑦ 承認ゲート ➔ ツール使用・MCP (590 ➔ 625) -->
+                  <path d="M 590 62 L 625 62" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
-                  <!-- ⑧ AI ➔ 記憶（右上折れ線） -->
-                  <path d="M 640 175 L 640 140 L 865 140 L 865 94" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <!-- ⑧ AI ➔ 記憶（右上折れ線: x=650 ➔ 885） -->
+                  <path d="M 650 175 L 650 135 L 885 135 L 885 94" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
                   <!-- ⑨ 審査AI ➔ 実装AI 差戻しReflexionループ（オレンジ破線・最大3回） -->
                   <path d="M 770 175 L 770 150 L 610 150 L 610 175" stroke="#b45309" stroke-width="2" stroke-dasharray="4,3" fill="none" marker-end="url(#arrow-retry)" />
@@ -1402,8 +1402,8 @@
                   </div>
                 </foreignObject>
 
-                <!-- 上段: 承認ゲート -->
-                <foreignObject x="490" y="30" width="120" height="64">
+                <!-- 上段: 承認ゲート (x: 470〜590) -->
+                <foreignObject x="470" y="30" width="120" height="64">
                   <div class="svg-node-card card-gate" id="node-gate" onclick="inspectNode('gate')">
                     <span class="s-icon">🚪</span>
                     <span class="s-title">承認ゲート</span>
@@ -1412,8 +1412,8 @@
                   </div>
                 </foreignObject>
 
-                <!-- 上段: ツール使用・MCP -->
-                <foreignObject x="660" y="30" width="160" height="64">
+                <!-- 上段: ツール使用・MCP (x: 625〜775, マージン35px) -->
+                <foreignObject x="625" y="30" width="150" height="64">
                   <div class="svg-node-card card-tool" id="node-mcp" onclick="inspectNode('mcp')">
                     <span class="s-icon">🌐</span>
                     <span class="s-title">ツール使用・MCP</span>
@@ -1422,8 +1422,8 @@
                   </div>
                 </foreignObject>
 
-                <!-- 上段: 記憶 (Memory) -->
-                <foreignObject x="800" y="30" width="130" height="64">
+                <!-- 上段: 記憶 (Memory) (x: 815〜955, マージン40px 完全分離) -->
+                <foreignObject x="815" y="30" width="140" height="64">
                   <div class="svg-node-card card-memory" id="node-memory" onclick="inspectNode('memory')">
                     <span class="s-icon">🗄️</span>
                     <span class="s-title">記憶 (Memory)</span>
@@ -1459,40 +1459,40 @@
                       <span class="s-title" style="font-size:11.5px; display:flex; align-items:center; gap:5px; font-weight:800; color:var(--text-main);">
                         <span>🤖</span> マルチエージェント
                       </span>
-                      <span class="s-badge" style="background:var(--accent-light); color:var(--accent); font-size:9.5px; padding:2px 6px;">親＋2サブ</span>
+                      <span class="s-badge" id="lbl-ai-badge" style="background:var(--accent-light); color:var(--accent); font-size:9.5px; padding:2px 6px;">親＋2サブ</span>
                     </div>
-                    <!-- スタック構造 -->
+                    <!-- スタック構造 (プロジェクト別に動的更新) -->
                     <div style="width:100%; display:flex; flex-direction:column; gap:4px; font-size:10px;">
-                      <div style="background:var(--card-bg-subtle); padding:4px 6px; border-radius:5px; border:1px solid var(--card-border); text-align:left; font-weight:700; color:var(--text-main);">
+                      <div id="lbl-ai-parent" style="background:var(--card-bg-subtle); padding:4px 6px; border-radius:5px; border:1px solid var(--card-border); text-align:left; font-weight:700; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
                         👑 親: Factory Orchestrator
                       </div>
                       <div style="display:flex; gap:4px; width:100%;">
-                        <div style="flex:1; background:#ffffff; padding:4px 2px; border-radius:5px; border:1px solid var(--card-border); text-align:center; color:var(--text-muted);">
-                          💻 実装AI
+                        <div id="lbl-ai-sub1" style="flex:1; background:#ffffff; padding:4px 2px; border-radius:5px; border:1px solid var(--card-border); text-align:center; color:var(--text-muted); font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                          💻 GAS実装AI
                         </div>
-                        <div style="flex:1; background:#ffffff; padding:4px 2px; border-radius:5px; border:1px solid var(--card-border); text-align:center; color:var(--text-muted);">
-                          📝 記事AI
+                        <div id="lbl-ai-sub2" style="flex:1; background:#ffffff; padding:4px 2px; border-radius:5px; border:1px solid var(--card-border); text-align:center; color:var(--text-muted); font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                          📝 note記事AI
                         </div>
                       </div>
                     </div>
                   </div>
                 </foreignObject>
 
-                <!-- 中段（主幹線）: 事後ガード (2層審査: コードテスト + 審査AI) -->
+                <!-- 中段（主幹線）: 事後ガード (2層審査: プロジェクト別に動的更新) -->
                 <foreignObject x="720" y="175" width="200" height="135">
                   <div class="svg-node-card card-guard" id="node-post-guard" onclick="inspectNode('post_guard')" style="padding:7px 9px; justify-content:flex-start; border:2px solid var(--success); background:#ffffff;">
                     <div style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom:5px;">
                       <span class="s-title" style="font-size:11.5px; display:flex; align-items:center; gap:5px; font-weight:800; color:var(--text-main);">
                         <span>⚖️</span> 事後ガード
                       </span>
-                      <span class="s-badge" style="background:var(--success-bg); color:var(--success); font-size:9.5px; padding:2px 6px;">2層審査</span>
+                      <span class="s-badge" id="lbl-post-badge" style="background:var(--success-bg); color:var(--success); font-size:9.5px; padding:2px 6px;">2層審査</span>
                     </div>
                     <!-- 2層構造 -->
                     <div style="width:100%; display:flex; flex-direction:column; gap:4px; font-size:10px;">
-                      <div style="background:var(--card-bg-subtle); padding:4px 6px; border-radius:5px; border:1px solid var(--card-border); text-align:left; color:var(--text-main);">
+                      <div id="lbl-post-layer1" style="background:var(--card-bg-subtle); padding:4px 6px; border-radius:5px; border:1px solid var(--card-border); text-align:left; color:var(--text-main); font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
                         🛡️ 1層: コードテスト (14項目)
                       </div>
-                      <div style="background:#f5f3ff; color:#7c3aed; padding:4px 6px; border-radius:5px; border:1px solid #ddd6fe; text-align:left; font-weight:700;">
+                      <div id="lbl-post-layer2" style="background:#f5f3ff; color:#7c3aed; padding:4px 6px; border-radius:5px; border:1px solid #ddd6fe; text-align:left; font-weight:700; font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
                         👨‍⚖️ 2層: 審査AI (Critic採点)
                       </div>
                     </div>
@@ -1515,17 +1515,17 @@
                   </div>
                 </foreignObject>
 
-                <!-- 下段: ブラウザ検証サブエージェント -->
+                <!-- 下段: ブラウザ検証サブエージェント (動的更新) -->
                 <foreignObject x="480" y="355" width="240" height="60">
                   <div class="svg-node-card card-ai" id="node-sub-ai" onclick="inspectNode('sub_ai')" style="flex-direction:row; justify-content:space-between; padding:8px 14px;">
                     <div style="display:flex; align-items:center; gap:8px;">
                       <span style="font-size:18px;">🌐</span>
                       <div style="text-align:left;">
-                        <div class="s-title" style="font-size:11px;">ブラウザ検証サブエージェント</div>
-                        <div class="s-desc" style="font-size:9.5px; margin:0;">実機DOM幾何検査 ＆ デモ撮影</div>
+                        <div class="s-title" id="lbl-subai-title" style="font-size:11px;">ブラウザ検証サブエージェント</div>
+                        <div class="s-desc" id="lbl-subai-desc" style="font-size:9.5px; margin:0;">実機DOM幾何検査 ＆ デモ撮影</div>
                       </div>
                     </div>
-                    <span class="s-badge" style="background:#e0f2fe; color:#0369a1; font-size:9px;">Browser Tester</span>
+                    <span class="s-badge" id="lbl-subai-badge" style="background:#e0f2fe; color:#0369a1; font-size:9px;">Browser Tester</span>
                   </div>
                 </foreignObject>
 
@@ -2180,7 +2180,7 @@
       // ラベル更新 (null安全)
       const setLabel = (id, val) => {
         const el = document.getElementById(id);
-        if (el) el.innerText = val;
+        if (el && val !== undefined) el.innerText = val;
       };
       setLabel('active-project-badge', data.name);
       setLabel('lbl-context', data.lblContext);
@@ -2189,6 +2189,20 @@
       setLabel('lbl-mcp', data.lblMcp);
       setLabel('lbl-memory', data.lblMemory);
       setLabel('lbl-post-guard', data.lblPostGuard);
+
+      // プロジェクト固有のマルチエージェント編成 ＆ 事後ガード動的更新
+      if (data.agentCluster) {
+        setLabel('lbl-ai-badge', data.agentCluster.clusterBadge);
+        setLabel('lbl-ai-parent', data.agentCluster.parentRole);
+        setLabel('lbl-ai-sub1', data.agentCluster.sub1Role);
+        setLabel('lbl-ai-sub2', data.agentCluster.sub2Role);
+        setLabel('lbl-post-badge', data.agentCluster.postBadge);
+        setLabel('lbl-post-layer1', data.agentCluster.postLayer1);
+        setLabel('lbl-post-layer2', data.agentCluster.postLayer2);
+        setLabel('lbl-subai-title', data.agentCluster.subaiTitle);
+        setLabel('lbl-subai-desc', data.agentCluster.subaiDesc);
+        setLabel('lbl-subai-badge', data.agentCluster.subaiBadge);
+      }
 
       // 現在選択中のノードを再描画
       inspectNode(currentSelectedNode);

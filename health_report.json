@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-11T13:16:01.326Z",
-  "score": 100,
+  "timestamp": "2026-10-11T13:22:29.401Z",
+  "score": 96,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
   "metrics": {
@@ -18,11 +18,11 @@
       "status": "PASS"
     },
     "scratchHygiene": {
-      "score": 20,
+      "score": 16,
       "max": 20,
-      "filesCount": 0,
+      "filesCount": 1,
       "totalBytes": 0,
-      "status": "PASS"
+      "status": "WARN"
     },
     "metaHarness": {
       "score": 15,
@@ -451,7 +451,7 @@
       "name": "projects",
       "path": "projects",
       "isDir": true,
-      "sizeBytes": 815364,
+      "sizeBytes": 816944,
       "itemCount": 7,
       "status": "healthy",
       "note": "",
@@ -845,7 +845,7 @@
           "name": "workspace_health_monitor",
           "path": "projects/workspace_health_monitor",
           "isDir": true,
-          "sizeBytes": 162254,
+          "sizeBytes": 163834,
           "itemCount": 10,
           "status": "healthy",
           "note": "",
@@ -874,7 +874,7 @@
               "name": "generate_dashboard.js",
               "path": "projects/workspace_health_monitor/generate_dashboard.js",
               "isDir": false,
-              "sizeBytes": 131402,
+              "sizeBytes": 132982,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1343,7 +1343,7 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 367558,
+      "sizeBytes": 369153,
       "itemCount": 6,
       "status": "healthy",
       "note": "",
@@ -1423,7 +1423,7 @@
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 140793,
+          "sizeBytes": 142388,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1475,11 +1475,22 @@
       "name": "scratch",
       "path": "scratch",
       "isDir": true,
-      "sizeBytes": 0,
-      "itemCount": 0,
-      "status": "healthy",
-      "note": "",
-      "children": []
+      "sizeBytes": 28166,
+      "itemCount": 1,
+      "status": "warning",
+      "note": "残骸 1 件放置中",
+      "children": [
+        {
+          "name": "fix_dynamic_agents_and_overlap.js",
+          "path": "scratch/fix_dynamic_agents_and_overlap.js",
+          "isDir": false,
+          "sizeBytes": 28166,
+          "itemCount": 0,
+          "status": "healthy",
+          "note": "",
+          "children": []
+        }
+      ]
     },
     {
       "name": "archive",
@@ -5855,9 +5866,11 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-11T13:16:01.326Z",
+    "lastCheck": "2026-10-11T13:22:29.401Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
-  "recommendations": []
+  "recommendations": [
+    "scratch/ に放置された検証ファイルが 1 件あります。即時破棄または archive/ へ隔離してください。"
+  ]
 }
