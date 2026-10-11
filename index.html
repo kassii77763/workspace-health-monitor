@@ -697,7 +697,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-11 06:59:02</div>
+        <div>最終同期: 2026-10-11 07:10:18</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -1126,36 +1126,141 @@
               全プロジェクト横断の自己進化ハーネス回路です。現場で発生した失敗がどのように集約・圧縮され、次期プロジェクトのガードレールへ自動再注入されるかを規定します。
             </p>
 
-            <div class="meta-loop-diagram">
-              <div class="meta-step-card" onclick="inspectMetaStep('step1')">
-                <div class="meta-step-icon">❌</div>
-                <div class="meta-step-title">① 失敗・試行錯誤</div>
-                <div class="meta-step-sub">事後ガードで弾かれた不合格や予期せぬエラー</div>
-              </div>
-              <div style="color:#a8a29e; font-size:18px; font-weight:800;">➔</div>
-              <div class="meta-step-card" onclick="inspectMetaStep('step2')">
-                <div class="meta-step-icon">📝</div>
-                <div class="meta-step-title">② 教訓テキスト抽出</div>
-                <div class="meta-step-sub"><span class="code-badge">logs/trace.md</span><br>失敗/解決/教訓の3段階記録</div>
-              </div>
-              <div style="color:#a8a29e; font-size:18px; font-weight:800;">➔</div>
-              <div class="meta-step-card" onclick="inspectMetaStep('step3')">
-                <div class="meta-step-icon">⚙️</div>
-                <div class="meta-step-title">③ メタ回収バッチ</div>
-                <div class="meta-step-sub"><span class="code-badge">meta_harness_collector.js</span><br>全プロジェクトから機械的収集</div>
-              </div>
-              <div style="color:#a8a29e; font-size:18px; font-weight:800;">➔</div>
-              <div class="meta-step-card" onclick="inspectMetaStep('step4')">
-                <div class="meta-step-icon">🗄️</div>
-                <div class="meta-step-title">④ 構造化ナレッジDB</div>
-                <div class="meta-step-sub"><span class="code-badge">meta_knowledge.json</span><br>3件の恒久教訓を圧縮保存</div>
-              </div>
-              <div style="color:#a8a29e; font-size:18px; font-weight:800;">➔</div>
-              <div class="meta-step-card" onclick="inspectMetaStep('step5')">
-                <div class="meta-step-icon">⚡</div>
-                <div class="meta-step-title">⑤ 次期ガード自動生成</div>
-                <div class="meta-step-sub"><span class="code-badge">meta_harness_generator.js</span><br>新案件の事前・事後ガードへ注入</div>
-              </div>
+            <!-- 完全SVGベクター配線キャンバス: メタハーネス全体像マッピング -->
+            <div class="topology-canvas" style="margin-bottom: 24px;">
+              <svg class="topology-svg" viewBox="0 0 1080 340">
+                <defs>
+                  <marker id="meta-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#8c8275" />
+                  </marker>
+                  <marker id="meta-arrow-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#2e7d32" />
+                  </marker>
+                  <marker id="meta-arrow-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#7c3aed" />
+                  </marker>
+                </defs>
+
+                <!-- 配線コネクタ群 -->
+                <g class="flow-wires">
+                  <!-- ① 現場 ➔ 失敗検知 -->
+                  <path d="M 190 63 L 240 63" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
+                  <!-- ② 失敗 ➔ 局所教訓ログ -->
+                  <path d="M 390 63 L 440 63" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
+                  <!-- ③ 教訓ログ ➔ メタ回収バッチ -->
+                  <path d="M 590 63 L 640 63" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
+                  <!-- ④ 回収バッチ ➔ ナレッジDB -->
+                  <path d="M 790 63 L 840 63" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow-purple)" />
+                  
+                  <!-- ⑤ ナレッジDB ➔ メタ生成エンジン (垂直落下) -->
+                  <path d="M 935 96 L 935 180" stroke="#7c3aed" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow-purple)" />
+                  
+                  <!-- ⑥ メタ生成エンジン ➔ 事前ガード & 事後ガード (分岐) -->
+                  <path d="M 840 213 L 770 213 L 770 160 L 710 160" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
+                  <path d="M 770 213 L 770 266 L 710 266" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
+                  
+                  <!-- ⑦ 事前ガード & 事後ガード ➔ 新世代エージェント (合流) -->
+                  <path d="M 540 160 L 490 160 L 490 213 L 440 213" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
+                  <path d="M 540 266 L 490 266 L 490 213" stroke="var(--wire-color)" stroke-width="2.5" fill="none" />
+                  
+                  <!-- ⑧ 新世代エージェント ➔ 現場への再帰ループ (緑色太破線フィードバック) -->
+                  <path d="M 260 213 L 115 213 L 115 96" stroke="var(--success)" stroke-width="3" stroke-dasharray="6,4" fill="none" marker-end="url(#meta-arrow-green)" />
+
+                  <!-- 注釈テキスト -->
+                  <text x="948" y="142" font-size="11" fill="#7c3aed" font-weight="600">教訓JSON抽出</text>
+                  <text x="445" y="195" font-size="11" fill="var(--accent)" font-weight="600">次世代ガード適用</text>
+                  <text x="125" y="160" font-size="11" fill="var(--success)" font-weight="700">🔄 自己進化ループ（現場再配備）</text>
+                </g>
+
+                <!-- ノード配置 (foreignObject) -->
+                <!-- 上段: 全プロジェクト現場 -->
+                <foreignObject x="40" y="30" width="150" height="66">
+                  <div class="svg-node-card" id="meta-node-agents" onclick="inspectMetaStep('meta_agents')">
+                    <span class="s-icon">🏢</span>
+                    <span class="s-title">全プロジェクト現場</span>
+                    <span class="s-desc">minitool_001, 002等</span>
+                    <span class="s-badge">ACTIVE_AGENTS</span>
+                  </div>
+                </foreignObject>
+
+                <!-- 上段: ① 失敗・試行錯誤 -->
+                <foreignObject x="240" y="30" width="150" height="66">
+                  <div class="svg-node-card" id="meta-node-fail" onclick="inspectMetaStep('meta_fail')" style="border-color:#fca5a5;">
+                    <span class="s-icon">❌</span>
+                    <span class="s-title">① 失敗・試行錯誤</span>
+                    <span class="s-desc">事後不合格・例外検知</span>
+                    <span class="s-badge" style="background:#fef2f2; color:#b91c1c;">ERROR_EVENT</span>
+                  </div>
+                </foreignObject>
+
+                <!-- 上段: ② 教訓テキスト抽出 -->
+                <foreignObject x="440" y="30" width="150" height="66">
+                  <div class="svg-node-card" id="meta-node-trace" onclick="inspectMetaStep('meta_trace')">
+                    <span class="s-icon">📝</span>
+                    <span class="s-title">② 教訓テキスト抽出</span>
+                    <span class="s-desc">logs/trace.md</span>
+                    <span class="s-badge">3行サマリー規定</span>
+                  </div>
+                </foreignObject>
+
+                <!-- 上段: ③ メタ回収バッチ -->
+                <foreignObject x="640" y="30" width="150" height="66">
+                  <div class="svg-node-card" id="meta-node-collector" onclick="inspectMetaStep('meta_collector')" style="border-color:#fcd34d;">
+                    <span class="s-icon">⚙️</span>
+                    <span class="s-title">③ メタ回収バッチ</span>
+                    <span class="s-desc">collector.js 巡回</span>
+                    <span class="s-badge" style="background:#fefce8; color:#b45309;">BATCH_JOB</span>
+                  </div>
+                </foreignObject>
+
+                <!-- 上段右端: ④ 構造化ナレッジDB -->
+                <foreignObject x="840" y="30" width="190" height="66">
+                  <div class="svg-node-card card-memory" id="meta-node-db" onclick="inspectMetaStep('meta_db')" style="border-color:#c4b5fd;">
+                    <span class="s-icon">🧠</span>
+                    <span class="s-title">④ 構造化ナレッジDB</span>
+                    <span class="s-desc">meta_knowledge.json</span>
+                    <span class="s-badge" style="background:#f5f3ff; color:#7c3aed;">教訓アーカイブ</span>
+                  </div>
+                </foreignObject>
+
+                <!-- 下段右端: ⑤ メタ生成エンジン -->
+                <foreignObject x="840" y="180" width="190" height="66">
+                  <div class="svg-node-card" id="meta-node-generator" onclick="inspectMetaStep('meta_generator')" style="border-color:#93c5fd;">
+                    <span class="s-icon">⚡</span>
+                    <span class="s-title">⑤ メタ生成エンジン</span>
+                    <span class="s-desc">generator.js 合成</span>
+                    <span class="s-badge" style="background:#eff6ff; color:#1d4ed8;">GENERATOR</span>
+                  </div>
+                </foreignObject>
+
+                <!-- 下段中央上: ⑥ 次期事前ガード注入 -->
+                <foreignObject x="540" y="130" width="170" height="60">
+                  <div class="svg-node-card card-guard" id="meta-node-preguard" onclick="inspectMetaStep('meta_preguard')">
+                    <span class="s-icon">🛡️</span>
+                    <span class="s-title">⑥ 次期事前ガード注入</span>
+                    <span class="s-desc">AGENTS.md / プロンプト</span>
+                  </div>
+                </foreignObject>
+
+                <!-- 下段中央下: ⑦ 次期事後ガード注入 -->
+                <foreignObject x="540" y="236" width="170" height="60">
+                  <div class="svg-node-card card-guard" id="meta-node-postguard" onclick="inspectMetaStep('meta_postguard')">
+                    <span class="s-icon">⚖️</span>
+                    <span class="s-title">⑦ 次期事後ガード注入</span>
+                    <span class="s-desc">test_*.js / CIハーネス</span>
+                  </div>
+                </foreignObject>
+
+                <!-- 下段左: ⑧ 新世代エージェント -->
+                <foreignObject x="260" y="180" width="180" height="66">
+                  <div class="svg-node-card card-ai" id="meta-node-nextgen" onclick="inspectMetaStep('meta_nextgen')" style="border-color:var(--success-border);">
+                    <span class="s-icon">🚀</span>
+                    <span class="s-title">⑧ 新世代エージェント</span>
+                    <span class="s-desc">進化適応済み自律開発</span>
+                    <span class="s-badge" style="background:var(--success-bg); color:var(--success);">SELF_EVOLVED</span>
+                  </div>
+                </foreignObject>
+              </svg>
             </div>
           </div>
 
@@ -1965,30 +2070,64 @@
     // メタステップのインスペクト
     function inspectMetaStep(stepKey) {
       const stepDetails = {
-        'step1': { title: '① 失敗・試行錯誤', badge: 'FAIL_EVENT', items: [
-          { label: '発生契機', val: '事後ガードで検証不合格（例: uninstall忘れ、自作モック判定）となった瞬間' },
-          { label: '処置', val: 'エラーメッセージと試行錯誤の履歴をエージェント内メモリに保持' }
+        'meta_agents': { title: '全プロジェクト現場 (Active Agents)', badge: 'ACTIVE_AGENTS', items: [
+          { label: '稼働対象', val: 'gas_project/minitool_001, minitool_002, projects/workspace_health_monitor 等' },
+          { label: '役割', val: '実案件の開発・デバッグ・検証を実行する最前線。ここで試行錯誤やエラーが発生する。' }
         ]},
-        'step2': { title: '② 教訓テキスト抽出', badge: 'PARSING', items: [
+        'meta_fail': { title: '① 失敗・試行錯誤 (Failure Detection)', badge: 'ERROR_EVENT', items: [
+          { label: '発生契機', val: '事後ガードで検証不合格（例: uninstall忘れ、自作モック判定、API制約不一致）となった瞬間' },
+          { label: '検知方法', val: '各プロジェクトの harness/test_*.js による判定およびコンソールエラー' },
+          { label: '処置', val: 'エラーメッセージと試行錯誤の履歴をエージェント内メモリに保持し、即座に修正を試みる' }
+        ]},
+        'meta_trace': { title: '② 教訓テキスト抽出 (Local Trace)', badge: '3-STEP_LOG', items: [
           { label: '保存先', val: 'gas_project/*/logs/trace.md' },
-          { label: '必須フォーマット', val: '1. 失敗: ... / 2. 解決: ... / 3. 教訓: ... の3段階要約テキスト' }
+          { label: '必須フォーマット', val: '1. 失敗の事実 / 2. 解決の道筋 / 3. 恒久教訓 の3段階要約テキスト（数KB以内）' },
+          { label: '目的', val: '巨大な生ログを破棄し、再利用可能なエッセンスのみを1プロジェクト内にカプセル化保存' }
         ]},
-        'step3': { title: '③ メタ回収バッチ', badge: 'BATCH_JOB', items: [
+        'meta_collector': { title: '③ メタ回収バッチ (Cross-Project Harvester)', badge: 'BATCH_JOB', items: [
           { label: '実行スクリプト', val: 'harness/meta_harness_collector.js' },
-          { label: '動作', val: 'ワークスペース全域の trace.md を再帰走査し、最新の失敗教訓をパース・回収' }
+          { label: '動作', val: 'ワークスペース全域の trace.md を再帰走査し、最新の失敗教訓をパース・重複排除して回収' },
+          { label: '定期実行', val: '開発セッション終了時、または CI/CD パイプライン内で自動実行' }
         ]},
-        'step4': { title: '④ 構造化ナレッジDB', badge: 'DATABASE', items: [
+        'meta_db': { title: '④ 構造化ナレッジDB (Permanent Wisdom DB)', badge: 'KNOWLEDGE_BASE', items: [
           { label: '保存ファイル', val: 'harness/meta_knowledge.json' },
-          { label: '現在の蓄積', val: '3件（トリガー解除、DOM幾何判定、監視自己欺瞞防止）' }
+          { label: '蓄積データ', val: '現在蓄積中: トリガー解除漏れ対策、DOM幾何フォールバック、監視自己欺瞞防止' },
+          { label: '構造', val: 'カテゴリ・重要度・アンチパターン・推奨ガードルールを含む構造化JSON' }
         ]},
-        'step5': { title: '⑤ 次期ガード自動生成', badge: 'GENERATOR', items: [
+        'meta_generator': { title: '⑤ メタ生成エンジン (Rule & Harness Synthesizer)', badge: 'GENERATOR', items: [
           { label: 'エンジン', val: 'harness/meta_harness_generator.js' },
-          { label: '動作', val: '新案件のPRDと過去教訓を照合し、回帰防止テストを事前/事後ガードへ自動注入' }
-        ]}
+          { label: '動作', val: 'ナレッジDBの教訓をインプットとし、次期案件向けの「事前ガード(ルール)」と「事後ガード(テスト)」を自動合成' },
+          { label: '出力', val: '新規プロジェクト用の AGENTS.md 追記規律、および自動テストハーネス' }
+        ]},
+        'meta_preguard': { title: '⑥ 次期事前ガード注入 (Pre-Guard Injection)', badge: 'PROMPT_RULES', items: [
+          { label: '反映先', val: 'AGENTS.md / SKILL.md / プロンプト規律' },
+          { label: '効果', val: '過去の全失敗パターン（例: uninstall忘れ）を開発着手前の思考制約として先回り注入' },
+          { label: '抑止率', val: '既知の失敗パターンの再発を設計段階で100%防止' }
+        ]},
+        'meta_postguard': { title: '⑦ 次期事後ガード注入 (Post-Guard Harness)', badge: 'REGRESSION_TEST', items: [
+          { label: '反映先', val: 'harness/test_*.js / CI Gates' },
+          { label: '効果', val: '過去の失敗を再現する回帰テストケースを自動的にテストスイートへ追加配備' },
+          { label: '厳格性', val: '改ざん不可テスト（自己欺瞞ハーネスの排除）として実装' }
+        ]},
+        'meta_nextgen': { title: '⑧ 新世代エージェント (Self-Evolved Agent)', badge: 'NEXT_GEN', items: [
+          { label: '能力', val: '過去の全失敗知見を最初からインストールされた進化したエージェント' },
+          { label: '循環ループ', val: '開発した次期成果物は再び「全プロジェクト現場」へ投入され、新たな進化サイクルを開始する' }
+        ]},
+        // 旧キー互換
+        'step1': { title: '① 失敗・試行錯誤', badge: 'FAIL_EVENT', items: [{ label: '契機', val: '事後ガード不合格' }] },
+        'step2': { title: '② 教訓テキスト抽出', badge: 'PARSING', items: [{ label: '保存先', val: 'logs/trace.md' }] },
+        'step3': { title: '③ メタ回収バッチ', badge: 'BATCH_JOB', items: [{ label: 'スクリプト', val: 'meta_harness_collector.js' }] },
+        'step4': { title: '④ 構造化ナレッジDB', badge: 'DATABASE', items: [{ label: '保存先', val: 'meta_knowledge.json' }] },
+        'step5': { title: '⑤ 次期ガード自動生成', badge: 'GENERATOR', items: [{ label: 'エンジン', val: 'meta_harness_generator.js' }] }
       };
 
       const info = stepDetails[stepKey];
       if (!info) return;
+
+      // 選択ノードのハイライト切り替え
+      document.querySelectorAll('#view-harness .svg-node-card').forEach(el => el.classList.remove('selected'));
+      const activeEl = document.getElementById(stepKey.startsWith('meta_') ? 'meta-node-' + stepKey.replace('meta_', '') : stepKey);
+      if (activeEl) activeEl.classList.add('selected');
 
       document.getElementById('insp-title').innerText = '🧠 メタハーネス工程: ' + info.title;
       document.getElementById('insp-badge').innerText = info.badge;
