@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-10-11T12:34:59.234Z",
-  "score": 92,
-  "grade": "A",
-  "summary": "概ね良好ですが、一部カプセル化や一時ファイルの整理が推奨されます。",
+  "timestamp": "2026-10-11T13:03:24.904Z",
+  "score": 96,
+  "grade": "S",
+  "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
   "metrics": {
     "rootBoundary": {
       "score": 25,
@@ -18,9 +18,9 @@
       "status": "PASS"
     },
     "scratchHygiene": {
-      "score": 12,
+      "score": 16,
       "max": 20,
-      "filesCount": 2,
+      "filesCount": 1,
       "totalBytes": 0,
       "status": "WARN"
     },
@@ -451,7 +451,7 @@
       "name": "projects",
       "path": "projects",
       "isDir": true,
-      "sizeBytes": 821293,
+      "sizeBytes": 814268,
       "itemCount": 7,
       "status": "healthy",
       "note": "",
@@ -845,7 +845,7 @@
           "name": "workspace_health_monitor",
           "path": "projects/workspace_health_monitor",
           "isDir": true,
-          "sizeBytes": 168183,
+          "sizeBytes": 161158,
           "itemCount": 10,
           "status": "healthy",
           "note": "",
@@ -874,7 +874,7 @@
               "name": "generate_dashboard.js",
               "path": "projects/workspace_health_monitor/generate_dashboard.js",
               "isDir": false,
-              "sizeBytes": 137331,
+              "sizeBytes": 130306,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1343,7 +1343,7 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 373502,
+      "sizeBytes": 366477,
       "itemCount": 6,
       "status": "healthy",
       "note": "",
@@ -1423,7 +1423,7 @@
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 146737,
+          "sizeBytes": 139712,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1475,26 +1475,16 @@
       "name": "scratch",
       "path": "scratch",
       "isDir": true,
-      "sizeBytes": 43875,
-      "itemCount": 2,
+      "sizeBytes": 22211,
+      "itemCount": 1,
       "status": "warning",
-      "note": "残骸 2 件放置中",
+      "note": "残骸 1 件放置中",
       "children": [
         {
-          "name": "update_dashboard_scripts.js",
-          "path": "scratch/update_dashboard_scripts.js",
+          "name": "update_topology_multiagent.js",
+          "path": "scratch/update_topology_multiagent.js",
           "isDir": false,
-          "sizeBytes": 35972,
-          "itemCount": 0,
-          "status": "healthy",
-          "note": "",
-          "children": []
-        },
-        {
-          "name": "update_dashboard_views.js",
-          "path": "scratch/update_dashboard_views.js",
-          "isDir": false,
-          "sizeBytes": 7903,
+          "sizeBytes": 22211,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -5876,11 +5866,11 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-11T12:34:59.234Z",
+    "lastCheck": "2026-10-11T13:03:24.904Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
   "recommendations": [
-    "scratch/ に放置された検証ファイルが 2 件あります。即時破棄または archive/ へ隔離してください。"
+    "scratch/ に放置された検証ファイルが 1 件あります。即時破棄または archive/ へ隔離してください。"
   ]
 }

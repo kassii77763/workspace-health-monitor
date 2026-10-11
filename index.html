@@ -41,7 +41,7 @@
       --wire-color: #8c8275;        /* トポロジー配線カラー */
       --shadow-sm: 0 1px 3px rgba(45, 35, 25, 0.04), 0 1px 2px rgba(45, 35, 25, 0.02);
       --shadow-md: 0 4px 14px rgba(45, 35, 25, 0.06), 0 1px 3px rgba(45, 35, 25, 0.03);
-      --grade-color: #8b5e34;
+      --grade-color: #2e7d32;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -267,7 +267,7 @@
       stroke-width: 12;
       stroke-linecap: round;
       stroke-dasharray: 439.822971502571;
-      stroke-dashoffset: 35.185837720205654;
+      stroke-dashoffset: 17.592918860102884;
       transition: stroke-dashoffset 1s ease;
     }
     .circle-content {
@@ -861,7 +861,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-11 12:34:59</div>
+        <div>最終同期: 2026-10-11 13:03:24</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -897,8 +897,8 @@
                 <circle class="circle-progress" cx="85" cy="85" r="70"></circle>
               </svg>
               <div class="circle-content">
-                <span class="score-number">92</span>
-                <span class="score-grade">GRADE A</span>
+                <span class="score-number">96</span>
+                <span class="score-grade">GRADE S</span>
               </div>
             </div>
             <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">総合ディレクトリ衛生スコア</h3>
@@ -924,8 +924,8 @@
                   <span>一時スクラッチ完全隔離</span>
                   <span class="metric-status status-WARN">WARN</span>
                 </div>
-                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 60%;"></div></div>
-                <div class="metric-detail"><span>残骸ファイル: 2 件</span><span>12 / 20 pt</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+                <div class="metric-detail"><span>残骸ファイル: 1 件</span><span>16 / 20 pt</span></div>
               </div>
 
               <div class="metric-row">
@@ -1307,172 +1307,6 @@
 
                 <!-- 配線コネクタ群 -->
                 <g class="flow-wires">
-                  <!-- ① 現場 ➔ 失敗検知 -->
-                  <path d="M 190 63 L 240 63" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
-                  <!-- ② 失敗 ➔ 局所教訓ログ -->
-                  <path d="M 390 63 L 440 63" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
-                  <!-- ③ 教訓ログ ➔ メタ回収バッチ -->
-                  <path d="M 590 63 L 640 63" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
-                  <!-- ④ 回収バッチ ➔ ナレッジDB -->
-                  <path d="M 790 63 L 840 63" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow-purple)" />
-                  
-                  <!-- ⑤ ナレッジDB ➔ メタ生成エンジン (垂直落下) -->
-                  <path d="M 935 96 L 935 180" stroke="#7c3aed" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow-purple)" />
-                  
-                  <!-- ⑥ メタ生成エンジン ➔ 事前ガード & 事後ガード (分岐) -->
-                  <path d="M 840 213 L 770 213 L 770 160 L 710 160" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
-                  <path d="M 770 213 L 770 266 L 710 266" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
-                  
-                  <!-- ⑦ 事前ガード & 事後ガード ➔ 新世代エージェント (合流) -->
-                  <path d="M 540 160 L 490 160 L 490 213 L 440 213" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#meta-arrow)" />
-                  <path d="M 540 266 L 490 266 L 490 213" stroke="var(--wire-color)" stroke-width="2.5" fill="none" />
-                  
-                  <!-- ⑧ 新世代エージェント ➔ 現場への再帰ループ (緑色太破線フィードバック) -->
-                  <path d="M 260 213 L 115 213 L 115 96" stroke="var(--success)" stroke-width="3" stroke-dasharray="6,4" fill="none" marker-end="url(#meta-arrow-green)" />
-
-                  <!-- 注釈テキスト -->
-                  <text x="948" y="142" font-size="11" fill="#7c3aed" font-weight="600">教訓JSON抽出</text>
-                  <text x="445" y="195" font-size="11" fill="var(--accent)" font-weight="600">次世代ガード適用</text>
-                  <text x="125" y="160" font-size="11" fill="var(--success)" font-weight="700">🔄 自己進化ループ（現場再配備）</text>
-                </g>
-
-                <!-- ノード配置 (foreignObject) -->
-                <!-- 上段: 全プロジェクト現場 -->
-                <foreignObject x="40" y="30" width="150" height="66">
-                  <div class="svg-node-card" id="meta-node-agents" onclick="inspectMetaStep('meta_agents')">
-                    <span class="s-icon">🏢</span>
-                    <span class="s-title">全プロジェクト現場</span>
-                    <span class="s-desc">minitool_001, 002等</span>
-                    <span class="s-badge">ACTIVE_AGENTS</span>
-                  </div>
-                </foreignObject>
-
-                <!-- 上段: ① 失敗・試行錯誤 -->
-                <foreignObject x="240" y="30" width="150" height="66">
-                  <div class="svg-node-card" id="meta-node-fail" onclick="inspectMetaStep('meta_fail')" style="border-color:#fca5a5;">
-                    <span class="s-icon">❌</span>
-                    <span class="s-title">① 失敗・試行錯誤</span>
-                    <span class="s-desc">事後不合格・例外検知</span>
-                    <span class="s-badge" style="background:#fef2f2; color:#b91c1c;">ERROR_EVENT</span>
-                  </div>
-                </foreignObject>
-
-                <!-- 上段: ② 教訓テキスト抽出 -->
-                <foreignObject x="440" y="30" width="150" height="66">
-                  <div class="svg-node-card" id="meta-node-trace" onclick="inspectMetaStep('meta_trace')">
-                    <span class="s-icon">📝</span>
-                    <span class="s-title">② 教訓テキスト抽出</span>
-                    <span class="s-desc">logs/trace.md</span>
-                    <span class="s-badge">3行サマリー規定</span>
-                  </div>
-                </foreignObject>
-
-                <!-- 上段: ③ メタ回収バッチ -->
-                <foreignObject x="640" y="30" width="150" height="66">
-                  <div class="svg-node-card" id="meta-node-collector" onclick="inspectMetaStep('meta_collector')" style="border-color:#fcd34d;">
-                    <span class="s-icon">⚙️</span>
-                    <span class="s-title">③ メタ回収バッチ</span>
-                    <span class="s-desc">collector.js 巡回</span>
-                    <span class="s-badge" style="background:#fefce8; color:#b45309;">BATCH_JOB</span>
-                  </div>
-                </foreignObject>
-
-                <!-- 上段右端: ④ 構造化ナレッジDB -->
-                <foreignObject x="840" y="30" width="190" height="66">
-                  <div class="svg-node-card card-memory" id="meta-node-db" onclick="inspectMetaStep('meta_db')" style="border-color:#c4b5fd;">
-                    <span class="s-icon">🧠</span>
-                    <span class="s-title">④ 構造化ナレッジDB</span>
-                    <span class="s-desc">meta_knowledge.json</span>
-                    <span class="s-badge" style="background:#f5f3ff; color:#7c3aed;">教訓アーカイブ</span>
-                  </div>
-                </foreignObject>
-
-                <!-- 下段右端: ⑤ メタ生成エンジン -->
-                <foreignObject x="840" y="180" width="190" height="66">
-                  <div class="svg-node-card" id="meta-node-generator" onclick="inspectMetaStep('meta_generator')" style="border-color:#93c5fd;">
-                    <span class="s-icon">⚡</span>
-                    <span class="s-title">⑤ メタ生成エンジン</span>
-                    <span class="s-desc">generator.js 合成</span>
-                    <span class="s-badge" style="background:#eff6ff; color:#1d4ed8;">GENERATOR</span>
-                  </div>
-                </foreignObject>
-
-                <!-- 下段中央上: ⑥ 次期事前ガード注入 -->
-                <foreignObject x="540" y="130" width="170" height="60">
-                  <div class="svg-node-card card-guard" id="meta-node-preguard" onclick="inspectMetaStep('meta_preguard')">
-                    <span class="s-icon">🛡️</span>
-                    <span class="s-title">⑥ 次期事前ガード注入</span>
-                    <span class="s-desc">AGENTS.md / プロンプト</span>
-                  </div>
-                </foreignObject>
-
-                <!-- 下段中央下: ⑦ 次期事後ガード注入 -->
-                <foreignObject x="540" y="236" width="170" height="60">
-                  <div class="svg-node-card card-guard" id="meta-node-postguard" onclick="inspectMetaStep('meta_postguard')">
-                    <span class="s-icon">⚖️</span>
-                    <span class="s-title">⑦ 次期事後ガード注入</span>
-                    <span class="s-desc">test_*.js / CIハーネス</span>
-                  </div>
-                </foreignObject>
-
-                <!-- 下段左: ⑧ 新世代エージェント -->
-                <foreignObject x="260" y="180" width="180" height="66">
-                  <div class="svg-node-card card-ai" id="meta-node-nextgen" onclick="inspectMetaStep('meta_nextgen')" style="border-color:var(--success-border);">
-                    <span class="s-icon">🚀</span>
-                    <span class="s-title">⑧ 新世代エージェント</span>
-                    <span class="s-desc">進化適応済み自律開発</span>
-                    <span class="s-badge" style="background:var(--success-bg); color:var(--success);">SELF_EVOLVED</span>
-                  </div>
-                </foreignObject>
-              </svg>
-            </div>
-          </div>
-
-          <!-- セクション2: プロジェクト別エージェントハーネス全体像マッピング -->
-          <div class="card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <h3 class="section-title" style="margin-bottom:0;">🧭 プロジェクト別 エージェントハーネス全体像マッピング</h3>
-              <span id="active-project-badge" class="code-badge">minitool_001_unreplied_emails</span>
-            </div>
-            <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">
-              入力〜出力までの行動パス、事前/事後ガードレール、承認ゲート、MCP、記憶の接続関係をマッピングしています。各ノードをクリックすると詳細が展開されます。
-            </p>
-
-            <!-- 検索 & プロジェクトタブ（拡張性対応） -->
-            <div class="tab-controller">
-              <div class="search-box-wrap">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-input" id="project-search-input" placeholder="プロジェクトを検索..." oninput="filterProjectTabs(this.value)">
-              </div>
-              <div class="p-tabs-scroll" id="project-tabs-container">
-                <button class="p-tab-btn active" data-pname="minitool_001_unreplied_emails" onclick="selectProjectHarness('p1')">minitool_001_unreplied_emails</button>
-                <button class="p-tab-btn" data-pname="minitool_002_sheets_to_calendar" onclick="selectProjectHarness('p2')">minitool_002_sheets_to_calendar</button>
-                <button class="p-tab-btn" data-pname="workspace_health_monitor" onclick="selectProjectHarness('p3')">workspace_health_monitor</button>
-              </div>
-            </div>
-
-            <!-- 完全SVGベクター配線キャンバス -->
-            <div class="topology-canvas">
-              <svg class="topology-svg" viewBox="0 0 1080 500">
-                <defs>
-                  <!-- 矢印マーカー（メイン配線用） -->
-                  <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#8c8275" />
-                  </marker>
-                  <!-- 逆向き矢印マーカー（双方向通信用） -->
-                  <marker id="arrow-rev" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto">
-                    <path d="M 10 0 L 0 4 L 10 8 Z" fill="#8c8275" />
-                  </marker>
-                  <!-- 緑色ループマーカー（AIへの再帰ループ用） -->
-                  <marker id="arrow-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#2e7d32" />
-                  </marker>
-                </defs>
-
-                <!-- ============================================== -->
-                <!-- 1. SVGベクター接続線（配線コネクタ群） -->
-                <!-- ============================================== -->
-                <g class="flow-wires">
                   <!-- ① 圧縮 ➔ コンテキスト -->
                   <path d="M 160 62 L 210 62" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
                   
@@ -1480,38 +1314,44 @@
                   <path d="M 280 94 L 280 120" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
                   
                   <!-- ③ キュレーション ➔ 事前ガード入力幹線へ合流 -->
-                  <path d="M 280 172 L 280 252 L 300 252" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <path d="M 280 172 L 280 243 L 285 243" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
                   <!-- ④ 人間 ➔ 事前ガード（メイン幹線） -->
-                  <path d="M 160 252 L 300 252" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <path d="M 160 243 L 285 243" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
-                  <!-- ⑤ 事前ガード ➔ AI（メイン幹線） -->
-                  <path d="M 440 252 L 490 252" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <!-- ⑤ 事前ガード ➔ AI執行クラスタ（メイン幹線） -->
+                  <path d="M 420 243 L 460 243" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
                   <!-- ⑥ AI ➔ 承認ゲート（上分岐） -->
-                  <path d="M 550 215 L 550 94" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <path d="M 550 175 L 550 94" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
                   <!-- ⑦ 承認ゲート ➔ ツール使用・MCP -->
                   <path d="M 610 62 L 660 62" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
                   <!-- ⑧ AI ➔ 記憶（右上折れ線） -->
-                  <path d="M 620 220 L 620 150 L 865 150 L 865 94" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <path d="M 640 175 L 640 140 L 865 140 L 865 94" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
-                  <!-- ⑨ AI ➔ エージェント間通信（下部双方向破線） -->
-                  <path d="M 570 289 L 570 350" stroke="var(--wire-color)" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-start="url(#arrow-rev)" marker-end="url(#arrow)" />
+                  <!-- ⑨ 審査AI ➔ 実装AI 差戻しReflexionループ（オレンジ破線・最大3回） -->
+                  <path d="M 770 175 L 770 150 L 610 150 L 610 175" stroke="#b45309" stroke-width="2" stroke-dasharray="4,3" fill="none" marker-end="url(#arrow-retry)" />
 
-                  <!-- ⑩ AI ➔ 事後ガード（メイン幹線） -->
-                  <path d="M 650 252 L 700 252" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <!-- ⑩ AI執行クラスタ ➔ 事後ガード（メイン幹線） -->
+                  <path d="M 680 243 L 720 243" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
-                  <!-- ⑪ 事後ガード ➔ 分岐（作業継続 & 人へ返却） -->
-                  <path d="M 840 252 L 870 252 L 870 205 L 900 205" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
-                  <path d="M 840 252 L 870 252 L 870 305 L 900 305" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <!-- ⑪ 事後ガード ➔ ブラウザ検証サブエージェント（審査通過後テスト） -->
+                  <path d="M 780 310 L 780 335 L 600 335 L 600 355" stroke="var(--wire-color)" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arrow)" />
 
-                  <!-- ⑫ 作業継続 ➔ AIへのループバック破線（緑色） -->
-                  <path d="M 965 180 L 965 125 L 580 125 L 580 215" stroke="var(--success)" stroke-width="2" stroke-dasharray="5,4" fill="none" marker-end="url(#arrow-green)" />
+                  <!-- ⑫ 事後ガード ➔ 分岐（作業継続 & 人へ返却） -->
+                  <path d="M 920 243 L 940 243 L 940 213 L 955 213" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
+                  <path d="M 920 243 L 940 243 L 940 278 L 955 278" stroke="var(--wire-color)" stroke-width="2.5" fill="none" marker-end="url(#arrow)" />
 
-                  <!-- ⑬ セッション全体の監視バーへの垂直ガイド点線 -->
-                  <path d="M 570 410 L 570 440" stroke="#d6d3d1" stroke-width="1.5" stroke-dasharray="3,3" fill="none" />
+                  <!-- ⑬ ブラウザ検証 ➔ 人へ返却（実機合格パス） -->
+                  <path d="M 720 385 L 940 385 L 940 278 L 955 278" stroke="var(--success)" stroke-width="1.8" fill="none" />
+
+                  <!-- ⑭ 作業継続 ➔ AIへのループバック破線（緑色） -->
+                  <path d="M 1010 190 L 1010 125 L 570 125 L 570 175" stroke="var(--success)" stroke-width="2" stroke-dasharray="5,4" fill="none" marker-end="url(#arrow-green)" />
+
+                  <!-- ⑮ セッション全体の監視バーへの垂直ガイド点線 -->
+                  <path d="M 600 415 L 600 440" stroke="#d6d3d1" stroke-width="1.5" stroke-dasharray="3,3" fill="none" />
                 </g>
 
                 <!-- ============================================== -->
@@ -1578,7 +1418,7 @@
                 </foreignObject>
 
                 <!-- 中段（主幹線）: 人間 -->
-                <foreignObject x="40" y="220" width="120" height="64">
+                <foreignObject x="40" y="210" width="120" height="66">
                   <div class="svg-node-card card-human" id="node-human" onclick="inspectNode('human')">
                     <span class="s-icon">👤</span>
                     <span class="s-title">人間</span>
@@ -1588,7 +1428,7 @@
                 </foreignObject>
 
                 <!-- 中段（主幹線）: 事前ガード -->
-                <foreignObject x="300" y="220" width="140" height="64">
+                <foreignObject x="285" y="210" width="135" height="66">
                   <div class="svg-node-card card-guard" id="node-pre-guard" onclick="inspectNode('pre_guard')">
                     <span class="s-icon">🛡️</span>
                     <span class="s-title">事前ガード</span>
@@ -1597,49 +1437,80 @@
                   </div>
                 </foreignObject>
 
-                <!-- 中段（主幹線）: AI (Antigravity) -->
-                <foreignObject x="490" y="215" width="160" height="74">
-                  <div class="svg-node-card card-ai selected" id="node-ai" onclick="inspectNode('ai')">
-                    <span class="s-icon">🤖</span>
-                    <span class="s-title">AI (Antigravity)</span>
-                    <span class="s-desc">自律推論＆実装</span>
-                    <span class="s-badge" style="background:var(--accent-light); color:var(--accent);">執行エンジン</span>
+                <!-- 中段（主幹線）: AIマルチエージェント協調クラスタ -->
+                <foreignObject x="460" y="175" width="220" height="135">
+                  <div class="svg-node-card card-ai selected" id="node-ai" onclick="inspectNode('ai')" style="padding:7px 9px; justify-content:flex-start; border:2px solid var(--accent); background:#ffffff;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom:5px;">
+                      <span class="s-title" style="font-size:11.5px; display:flex; align-items:center; gap:5px; font-weight:800; color:var(--text-main);">
+                        <span>🤖</span> マルチエージェント
+                      </span>
+                      <span class="s-badge" style="background:var(--accent-light); color:var(--accent); font-size:9.5px; padding:2px 6px;">親＋2サブ</span>
+                    </div>
+                    <!-- スタック構造 -->
+                    <div style="width:100%; display:flex; flex-direction:column; gap:4px; font-size:10px;">
+                      <div style="background:var(--card-bg-subtle); padding:4px 6px; border-radius:5px; border:1px solid var(--card-border); text-align:left; font-weight:700; color:var(--text-main);">
+                        👑 親: Factory Orchestrator
+                      </div>
+                      <div style="display:flex; gap:4px; width:100%;">
+                        <div style="flex:1; background:#ffffff; padding:4px 2px; border-radius:5px; border:1px solid var(--card-border); text-align:center; color:var(--text-muted);">
+                          💻 実装AI
+                        </div>
+                        <div style="flex:1; background:#ffffff; padding:4px 2px; border-radius:5px; border:1px solid var(--card-border); text-align:center; color:var(--text-muted);">
+                          📝 記事AI
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </foreignObject>
 
-                <!-- 中段（主幹線）: 事後ガード -->
-                <foreignObject x="700" y="220" width="140" height="64">
-                  <div class="svg-node-card card-guard" id="node-post-guard" onclick="inspectNode('post_guard')">
-                    <span class="s-icon">⚖️</span>
-                    <span class="s-title">事後ガード</span>
-                    <span class="s-desc" id="lbl-post-guard">仕様テスト＆教訓検証</span>
-                    <span class="s-badge" style="background:var(--success-bg); color:var(--success);">100% 適合</span>
+                <!-- 中段（主幹線）: 事後ガード (2層審査: コードテスト + 審査AI) -->
+                <foreignObject x="720" y="175" width="200" height="135">
+                  <div class="svg-node-card card-guard" id="node-post-guard" onclick="inspectNode('post_guard')" style="padding:7px 9px; justify-content:flex-start; border:2px solid var(--success); background:#ffffff;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom:5px;">
+                      <span class="s-title" style="font-size:11.5px; display:flex; align-items:center; gap:5px; font-weight:800; color:var(--text-main);">
+                        <span>⚖️</span> 事後ガード
+                      </span>
+                      <span class="s-badge" style="background:var(--success-bg); color:var(--success); font-size:9.5px; padding:2px 6px;">2層審査</span>
+                    </div>
+                    <!-- 2層構造 -->
+                    <div style="width:100%; display:flex; flex-direction:column; gap:4px; font-size:10px;">
+                      <div style="background:var(--card-bg-subtle); padding:4px 6px; border-radius:5px; border:1px solid var(--card-border); text-align:left; color:var(--text-main);">
+                        🛡️ 1層: コードテスト (14項目)
+                      </div>
+                      <div style="background:#f5f3ff; color:#7c3aed; padding:4px 6px; border-radius:5px; border:1px solid #ddd6fe; text-align:left; font-weight:700;">
+                        👨‍⚖️ 2層: 審査AI (Critic採点)
+                      </div>
+                    </div>
                   </div>
                 </foreignObject>
 
                 <!-- 右側分岐: 作業継続 -->
-                <foreignObject x="900" y="180" width="130" height="50">
-                  <div class="svg-node-card" id="node-continue" onclick="inspectNode('continue')" style="padding:4px 8px;">
-                    <span class="s-title" style="font-size:11px;">🔄 作業継続 ➔ AI</span>
-                    <span class="s-desc">次工程へループ</span>
+                <foreignObject x="955" y="190" width="115" height="46">
+                  <div class="svg-node-card" id="node-continue" onclick="inspectNode('continue')" style="padding:3px 6px;">
+                    <span class="s-title" style="font-size:10.5px;">🔄 作業継続 ➔ AI</span>
+                    <span class="s-desc" style="font-size:9.5px;">次工程へループ</span>
                   </div>
                 </foreignObject>
 
                 <!-- 右側分岐: 人へ返却 -->
-                <foreignObject x="900" y="280" width="130" height="50">
-                  <div class="svg-node-card" id="node-return" onclick="inspectNode('return')" style="padding:4px 8px; border-color:var(--success-border); background:var(--success-bg);">
-                    <span class="s-title" style="font-size:11px; color:var(--success);">🎁 人へ返却 ➔ カシマ様</span>
-                    <span class="s-desc">完成納品 (PASS)</span>
+                <foreignObject x="955" y="255" width="115" height="46">
+                  <div class="svg-node-card" id="node-return" onclick="inspectNode('return')" style="padding:3px 6px; border-color:var(--success-border); background:var(--success-bg);">
+                    <span class="s-title" style="font-size:10.5px; color:var(--success);">🎁 完成納品</span>
+                    <span class="s-desc" style="font-size:9.5px;">カシマ様 (PASS)</span>
                   </div>
                 </foreignObject>
 
-                <!-- 下段: エージェント間通信 (サブAI) -->
-                <foreignObject x="490" y="350" width="160" height="60">
-                  <div class="svg-node-card card-ai" id="node-sub-ai" onclick="inspectNode('sub_ai')">
-                    <span class="s-icon">👥</span>
-                    <span class="s-title">エージェント間通信</span>
-                    <span class="s-desc">サブAI (Browser / Test)</span>
-                    <span class="s-badge">協調実行</span>
+                <!-- 下段: ブラウザ検証サブエージェント -->
+                <foreignObject x="480" y="355" width="240" height="60">
+                  <div class="svg-node-card card-ai" id="node-sub-ai" onclick="inspectNode('sub_ai')" style="flex-direction:row; justify-content:space-between; padding:8px 14px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:18px;">🌐</span>
+                      <div style="text-align:left;">
+                        <div class="s-title" style="font-size:11px;">ブラウザ検証サブエージェント</div>
+                        <div class="s-desc" style="font-size:9.5px; margin:0;">実機DOM幾何検査 ＆ デモ撮影</div>
+                      </div>
+                    </div>
+                    <span class="s-badge" style="background:#e0f2fe; color:#0369a1; font-size:9px;">Browser Tester</span>
                   </div>
                 </foreignObject>
 
@@ -1651,10 +1522,9 @@
                       <span class="s-title" style="font-size:12px;">セッション全体の監視 (HealthAuditor v5.0)</span>
                       <span class="s-desc" style="font-size:11px; margin-top:0;">タイムアウト防止・メモリリーク検知・境界ルール常時スキャン</span>
                     </div>
-                    <span class="code-badge" style="color:var(--success);">常時監視中 (NORMAL)</span>
+                    <span class="s-badge" style="background:var(--success-bg); color:var(--success);">常時監視中 (NORMAL)</span>
                   </div>
                 </foreignObject>
-
               </svg>
             </div>
 
@@ -1951,11 +1821,13 @@
             ]
           },
           ai: {
-            title: '🤖 AI (Antigravity 執行エンジン)',
-            badge: 'EXECUTOR',
+            title: '🤖 マルチエージェント執行クラスタ (親・実装・記事)',
+            badge: 'CLUSTER (3 Agents)',
             items: [
-              { label: 'モデル役割', val: 'ペアプログラミング＆自律コード実装 (Single Responsibility)' },
-              { label: '執行内容', val: 'Code.js生成、article.mdドラフト作成、テストハーネス適合' }
+              { label: '👑 親: Orchestrator', val: '全体工程管理、プロンプト解釈、ステート維持、タスク委任' },
+              { label: '💻 実装AI (GAS Coder)', val: '1ツール1フォルダ規律の遵守、Code.js・appsscript.jsonの生成' },
+              { label: '📝 記事AI (Note Writer)', val: '非エンジニア向け共感ストーリー導入・3ステップ設定手順の執筆' },
+              { label: '通信プロトコル', val: '親から子へのタスク配分、子から親への成果物返却、外部漏出ゼロ' }
             ]
           },
           gate: {
@@ -1983,20 +1855,21 @@
             ]
           },
           sub_ai: {
-            title: '👥 エージェント間通信 (Subagent)',
-            badge: 'COLLABORATIVE',
+            title: '🌐 ブラウザ検証サブエージェント (Browser Tester)',
+            badge: 'BROWSER AGENT',
             items: [
-              { label: 'サブエージェント', val: 'Browser Subagent / Test Grader' },
-              { label: '責務', val: '実機ブラウザでの撮影・画面遷移検証の自律遂行' }
+              { label: '発火タイミング', val: '事後ガードの第1層・第2層審査に合格後、実機テストフェーズで起動' },
+              { label: '検証アクション', val: 'Googleスプレッドシート公式DOM幾何崩れ検査、トースト通知発火確認' },
+              { label: '納品アセット撮影', val: '実機GIF動画・スクリーンショットの自動撮影、成果物フォルダ隔離' }
             ]
           },
           post_guard: {
-            title: '⚖️ 事後ガード (Post-Execution Guardrails)',
-            badge: 'ALL PASS (100%)',
+            title: '⚖️ 事後ガード (2層審査: コードテスト ＋ 審査AI)',
+            badge: '2-LAYER PASS',
             items: [
-              { label: '検証 1: 安全解除', val: 'uninstallTool() 関数がCode.jsに存在し、deleteTriggerが実装されているか' },
-              { label: '検証 2: note採点', val: 'タイトル文字数、導入、デモGIFリンク、免責事項の網羅性チェック' },
-              { label: '検証 3: ログ規律', val: 'logs/trace.md に「失敗・解決・教訓」の3段階が記録されているか' }
+              { label: '🛡️ 第1層: コードテスト', val: '改ざん不可の外部ハーネススクリプト（14項目）、uninstallTool()存在、境界AST検査' },
+              { label: '👨‍⚖️ 第2層: 審査AI (Critic)', val: '独立プロセス（temp:0.0）がルーブリック採点表を読み込み、定性・文章品質を1〜5点で厳格採点' },
+              { label: '差戻し制御 (Reflexion)', val: '4点未満の場合は理由付きで実装AIへ自動差戻し（最大3回リトライ上限で人間エスカレーション）' }
             ]
           },
           continue: {
