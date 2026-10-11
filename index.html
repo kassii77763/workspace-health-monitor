@@ -861,7 +861,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-11 13:03:24</div>
+        <div>最終同期: 2026-10-11 13:13:12</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -1280,28 +1280,43 @@
       <div id="view-harness" class="view-panel">
         <div class="harness-matrix-container">
           
-          <!-- セクション1: メタハーネス自己進化ループ（全体セクション） -->
           <div class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <h3 class="section-title" style="margin-bottom:0;">🧠 メタハーネス全体像（失敗回収 ➔ 知恵圧縮 ➔ 次期ガード再注入ループ）</h3>
-              <span class="code-badge" style="color:var(--success);">自己進化サイクル稼働中</span>
+              <h3 class="section-title" style="margin-bottom:0;">🧭 プロジェクト別 エージェントハーネス全体像マッピング</h3>
+              <span id="active-project-badge" class="code-badge">minitool_001_unreplied_emails</span>
             </div>
-            <p style="font-size:13px; color:var(--text-muted); margin-bottom:18px;">
-              全プロジェクト横断の自己進化ハーネス回路です。現場で発生した失敗がどのように集約・圧縮され、次期プロジェクトのガードレールへ自動再注入されるかを規定します。
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">
+              入力〜出力までの行動パス、事前/事後ガードレール、承認ゲート、MCP、記憶の接続関係をマッピングしています。タブを切り替えると各ツールの個別仕様とインスペクターが更新されます。
             </p>
 
-            <!-- 完全SVGベクター配線キャンバス: メタハーネス全体像マッピング -->
+            <!-- プロジェクト選択タブ ＆ 検索バー -->
+            <div class="tab-controller" style="margin-bottom: 22px;">
+              <div class="search-box-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="project-search-input" placeholder="プロジェクトを検索..." oninput="filterProjectTabs(this.value)">
+              </div>
+              <div class="p-tabs-scroll" id="project-tabs-container">
+                <button class="p-tab-btn active" data-pname="minitool_001_unreplied_emails" onclick="selectProjectHarness('p1')">📧 minitool_001_unreplied_emails</button>
+                <button class="p-tab-btn" data-pname="minitool_002_sheets_to_calendar" onclick="selectProjectHarness('p2')">📅 minitool_002_sheets_to_calendar</button>
+                <button class="p-tab-btn" data-pname="workspace_health_monitor" onclick="selectProjectHarness('p3')">📈 workspace_health_monitor</button>
+              </div>
+            </div>
+
+            <!-- 完全SVGベクター配線キャンバス: プロジェクト別トポロジー -->
             <div class="topology-canvas" style="margin-bottom: 24px;">
-              <svg class="topology-svg" viewBox="0 0 1080 340">
+              <svg class="topology-svg" viewBox="0 0 1080 510">
                 <defs>
-                  <marker id="meta-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+                  <!-- 標準配線矢印マーカー -->
+                  <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
                     <path d="M 0 0 L 10 4 L 0 8 Z" fill="#8c8275" />
                   </marker>
-                  <marker id="meta-arrow-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#2e7d32" />
+                  <!-- 差戻しReflexionループマーカー（アンバー色） -->
+                  <marker id="arrow-retry" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#b45309" />
                   </marker>
-                  <marker id="meta-arrow-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#7c3aed" />
+                  <!-- 再帰ループマーカー（フォレストグリーン） -->
+                  <marker id="arrow-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+                    <path d="M 0 0 L 10 4 L 0 8 Z" fill="#2e7d32" />
                   </marker>
                 </defs>
 
