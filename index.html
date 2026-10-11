@@ -267,7 +267,7 @@
       stroke-width: 12;
       stroke-linecap: round;
       stroke-dasharray: 439.822971502571;
-      stroke-dashoffset: 17.592918860102884;
+      stroke-dashoffset: 0;
       transition: stroke-dashoffset 1s ease;
     }
     .circle-content {
@@ -861,7 +861,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-11 13:13:12</div>
+        <div>最終同期: 2026-10-11 13:16:01</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -897,7 +897,7 @@
                 <circle class="circle-progress" cx="85" cy="85" r="70"></circle>
               </svg>
               <div class="circle-content">
-                <span class="score-number">96</span>
+                <span class="score-number">100</span>
                 <span class="score-grade">GRADE S</span>
               </div>
             </div>
@@ -922,10 +922,10 @@
               <div class="metric-row">
                 <div class="metric-header">
                   <span>一時スクラッチ完全隔離</span>
-                  <span class="metric-status status-WARN">WARN</span>
+                  <span class="metric-status status-PASS">PASS</span>
                 </div>
-                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
-                <div class="metric-detail"><span>残骸ファイル: 1 件</span><span>16 / 20 pt</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
+                <div class="metric-detail"><span>残骸ファイル: 0 件</span><span>20 / 20 pt</span></div>
               </div>
 
               <div class="metric-row">
@@ -2177,14 +2177,18 @@
       const data = PROJECT_HARNESS_DATA[pKey];
       if (!data) return;
 
-      // ラベル更新
-      document.getElementById('active-project-badge').innerText = data.name;
-      document.getElementById('lbl-context').innerText = data.lblContext;
-      document.getElementById('lbl-pre-guard').innerText = data.lblPreGuard;
-      document.getElementById('lbl-gate').innerText = data.lblGate;
-      document.getElementById('lbl-mcp').innerText = data.lblMcp;
-      document.getElementById('lbl-memory').innerText = data.lblMemory;
-      document.getElementById('lbl-post-guard').innerText = data.lblPostGuard;
+      // ラベル更新 (null安全)
+      const setLabel = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = val;
+      };
+      setLabel('active-project-badge', data.name);
+      setLabel('lbl-context', data.lblContext);
+      setLabel('lbl-pre-guard', data.lblPreGuard);
+      setLabel('lbl-gate', data.lblGate);
+      setLabel('lbl-mcp', data.lblMcp);
+      setLabel('lbl-memory', data.lblMemory);
+      setLabel('lbl-post-guard', data.lblPostGuard);
 
       // 現在選択中のノードを再描画
       inspectNode(currentSelectedNode);

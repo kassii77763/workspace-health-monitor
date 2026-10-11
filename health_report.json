@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-10-11T13:13:12.605Z",
-  "score": 96,
+  "timestamp": "2026-10-11T13:16:01.326Z",
+  "score": 100,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
   "metrics": {
@@ -18,11 +18,11 @@
       "status": "PASS"
     },
     "scratchHygiene": {
-      "score": 16,
+      "score": 20,
       "max": 20,
-      "filesCount": 1,
+      "filesCount": 0,
       "totalBytes": 0,
-      "status": "WARN"
+      "status": "PASS"
     },
     "metaHarness": {
       "score": 15,
@@ -451,7 +451,7 @@
       "name": "projects",
       "path": "projects",
       "isDir": true,
-      "sizeBytes": 815402,
+      "sizeBytes": 815364,
       "itemCount": 7,
       "status": "healthy",
       "note": "",
@@ -845,7 +845,7 @@
           "name": "workspace_health_monitor",
           "path": "projects/workspace_health_monitor",
           "isDir": true,
-          "sizeBytes": 162292,
+          "sizeBytes": 162254,
           "itemCount": 10,
           "status": "healthy",
           "note": "",
@@ -874,7 +874,7 @@
               "name": "generate_dashboard.js",
               "path": "projects/workspace_health_monitor/generate_dashboard.js",
               "isDir": false,
-              "sizeBytes": 131440,
+              "sizeBytes": 131402,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1343,7 +1343,7 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 367611,
+      "sizeBytes": 367558,
       "itemCount": 6,
       "status": "healthy",
       "note": "",
@@ -1423,7 +1423,7 @@
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 140846,
+          "sizeBytes": 140793,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1475,22 +1475,11 @@
       "name": "scratch",
       "path": "scratch",
       "isDir": true,
-      "sizeBytes": 6688,
-      "itemCount": 1,
-      "status": "warning",
-      "note": "残骸 1 件放置中",
-      "children": [
-        {
-          "name": "restore_project_harness.js",
-          "path": "scratch/restore_project_harness.js",
-          "isDir": false,
-          "sizeBytes": 6688,
-          "itemCount": 0,
-          "status": "healthy",
-          "note": "",
-          "children": []
-        }
-      ]
+      "sizeBytes": 0,
+      "itemCount": 0,
+      "status": "healthy",
+      "note": "",
+      "children": []
     },
     {
       "name": "archive",
@@ -5866,11 +5855,9 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-11T13:13:12.605Z",
+    "lastCheck": "2026-10-11T13:16:01.326Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
-  "recommendations": [
-    "scratch/ に放置された検証ファイルが 1 件あります。即時破棄または archive/ へ隔離してください。"
-  ]
+  "recommendations": []
 }
