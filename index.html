@@ -606,6 +606,109 @@
       line-height: 1.4;
     }
 
+    /* Rubric Matrix Styles */
+    .rubric-tab-bar {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid var(--card-border);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      overflow-x: auto;
+    }
+    .rubric-tab-btn {
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+    .rubric-tab-btn:hover {
+      background: var(--card-bg-subtle);
+      color: var(--text-main);
+    }
+    .rubric-tab-btn.active {
+      background: #ffffff;
+      color: var(--accent);
+      border-color: var(--card-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .rubric-panel {
+      display: none;
+    }
+    .rubric-panel.active {
+      display: block;
+    }
+    .rubric-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .rubric-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .rubric-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rubric-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .rubric-badge {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .rubric-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 14px;
+    }
+    .rubric-table th, .rubric-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--card-border);
+      text-align: left;
+    }
+    .rubric-table th {
+      background: var(--card-bg-subtle);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .score-cell {
+      font-weight: 800;
+      width: 65px;
+      text-align: center;
+    }
+    .score-5 { background: #f0fdf4; color: #166534; }
+    .score-4 { background: #f0fdf4; color: #15803d; }
+    .score-3 { background: #fefce8; color: #854d0e; }
+    .score-2 { background: #fff7ed; color: #9a3412; }
+    .score-1 { background: #fef2f2; color: #991b1b; }
+
     /* Meta-Harness Loop Diagram */
     .meta-loop-diagram {
       display: flex;
@@ -697,7 +800,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-11 07:30:49</div>
+        <div>最終同期: 2026-10-11 07:38:17</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -1507,6 +1610,252 @@
 
           </div>
 
+          <!-- セクション3: ハーネス・ノード別 ルーブリック評価マトリックス -->
+          <div class="card" id="section-rubrics" style="margin-top: 24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h3 class="section-title" style="margin-bottom:0;">📊 ハーネス・ノード別 ルーブリック評価マトリックス（1〜5点 採点基準表カタログ）</h3>
+              <span class="code-badge" style="color:var(--accent);">Model Grader 仕様書</span>
+            </div>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:18px;">
+              各ハーネス工程（事前ガード・AI推論・事後ガード・メタ進化）において、審査員AIが合否や自律リトライを判定する具体的な「採点基準表（ルーブリック）」です。タブを切り替えて各ノードの採点基準を確認できます。
+            </p>
+
+            <!-- ルーブリック用タブバー -->
+            <div class="rubric-tab-bar">
+              <button class="rubric-tab-btn active" id="btn-rubric-preguard" onclick="switchRubricTab('rubric-preguard')">
+                <span>🛡️</span> 事前ガード (Pre-Guard)
+              </button>
+              <button class="rubric-tab-btn" id="btn-rubric-ai" onclick="switchRubricTab('rubric-ai')">
+                <span>🤖</span> AI推論・回答 (AI Core)
+              </button>
+              <button class="rubric-tab-btn" id="btn-rubric-postguard" onclick="switchRubricTab('rubric-postguard')">
+                <span>⚖️</span> 事後ガード (Post-Guard)
+              </button>
+              <button class="rubric-tab-btn" id="btn-rubric-meta" onclick="switchRubricTab('rubric-meta')">
+                <span>🔄</span> メタ自己進化 (Meta-Harness)
+              </button>
+            </div>
+
+            <!-- タブ1: 事前ガード -->
+            <div class="rubric-panel active" id="rubric-preguard">
+              <div class="rubric-card">
+                <div class="rubric-header">
+                  <div class="rubric-title">
+                    <span>1. プロンプト・要件定義の明確性 (Spec & Prompt Clarity)</span>
+                  </div>
+                  <div class="rubric-meta">
+                    <span class="rubric-badge" style="background:#eff6ff; color:#1d4ed8;">配備先: 👤 人間 ➔ 🛡️ 事前ガード</span>
+                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                  エージェントが開発に着手する前に、ユーザーの指示やPRD（設計書）に致命的な曖昧さがないかを審査。3点以下の場合は勝手に作らず明確化質問を返す。
+                </p>
+                <table class="rubric-table">
+                  <thead>
+                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="score-cell score-1">1点</td><td>致命的 (Vague)</td><td>「いい感じのGASを作って」等、目的や仕様、データ元が完全に不明。</td><td>即時拒絶・質問要求</td></tr>
+                    <tr><td class="score-cell score-2">2点</td><td>不十分 (Incomplete)</td><td>やりたいことは分かるが、対象ファイル形式や操作対象（Gmail/Sheets）が欠落。</td><td>補足確認を挟む</td></tr>
+                    <tr><td class="score-cell score-3">3点</td><td>許容 (Acceptable)</td><td>基本要件はあるが、エラー時挙動や削除ポリシーなどの境界条件が未定義。</td><td>前提を宣言して着手</td></tr>
+                    <tr><td class="score-cell score-4">4点</td><td>良好 (Clear)</td><td>目的、対象サービス、入出力フォーマットが過不足なく明記されている。</td><td><strong>PASS (開発着手)</strong></td></tr>
+                    <tr><td class="score-cell score-5">5点</td><td>模範 (Perfect)</td><td>非機能要件、セキュリティ境界、例外フロー、完了定義まで完全に定義。</td><td><strong>PASS (即時実行)</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="rubric-card">
+                <div class="rubric-header">
+                  <div class="rubric-title">
+                    <span>2. ワークスペース境界防御規律 (Workspace Boundary Protection)</span>
+                  </div>
+                  <div class="rubric-meta">
+                    <span class="rubric-badge" style="background:#eff6ff; color:#1d4ed8;">配備先: 🛡️ 事前ガード (check_architecture_guard)</span>
+                    <span class="rubric-badge" style="background:#fef2f2; color:#b91c1c;">合格ライン: スコア 5 のみ (絶対遵守)</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                  1ツール1フォルダカプセル化（<code>gas_project/*/</code>）を厳守し、ルート直下に単発スクリプトを散乱させないか、隠しファイル実行を強要しないかを事前検査。
+                </p>
+                <table class="rubric-table">
+                  <thead>
+                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="score-cell score-1">1点</td><td>違反 (Violation)</td><td>ルート直下に一時スクリプトを作成しようとしたり、隠しフォルダの手動実行を要求。</td><td><strong>即時BLOCK</strong></td></tr>
+                    <tr><td class="score-cell score-3">3点</td><td>境界グレー (Uncertain)</td><td><code>scratch/</code> に作成したが、検証完了後の破棄または <code>archive/</code> 隔離ルールが不明。</td><td>警告・隔離指示</td></tr>
+                    <tr><td class="score-cell score-5">5点</td><td>完全統制 (Clean)</td><td>指定されたカプセル化フォルダ内に全成果物を閉じ込め、外部漏出がゼロ。</td><td><strong>PASS</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- タブ2: AI推論・回答 -->
+            <div class="rubric-panel" id="rubric-ai">
+              <div class="rubric-card">
+                <div class="rubric-header">
+                  <div class="rubric-title">
+                    <span>3. 情報鮮度・時間軸整合性 (Freshness & Temporal Grounding)</span>
+                  </div>
+                  <div class="rubric-meta">
+                    <span class="rubric-badge" style="background:#f5f3ff; color:#7c3aed;">配備先: 🤖 AI (Antigravity 執行エンジン)</span>
+                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                  ★今回の教訓から策定。現在システム時刻（2026年）と一次情報を照合し、旧世代モデル（Gemini 1.5 Flash等）の知識をそのまま出力するのを防止。
+                </p>
+                <table class="rubric-table">
+                  <thead>
+                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="score-cell score-1">1点</td><td>致命的 (Stale)</td><td>2〜3年以上前の旧モデル（Gemini 1.5 Flash等）を現行最新と断定して回答。</td><td><strong>即時FAIL（自律リトライ）</strong></td></tr>
+                    <tr><td class="score-cell score-2">2点</td><td>不十分 (Mixed)</td><td>最新状況に触れつつも、過去の料金体系や前提が混在して誤認を与える。</td><td>要修正・再生成</td></tr>
+                    <tr><td class="score-cell score-3">3点</td><td>許容 (Contextual)</td><td>古い情報であることを明記し、歴史的経緯として現行最新と区別して言及。</td><td>条件付きPASS</td></tr>
+                    <tr><td class="score-cell score-4">4点</td><td>良好 (Fresh)</td><td>現在（2026年）の最新モデル（Gemini 3.8 Flash等）をベースに論理を展開。</td><td><strong>PASS</strong></td></tr>
+                    <tr><td class="score-cell score-5">5点</td><td>模範 (Exceptional)</td><td>現行最新の仕様・料金を一次情報に即して提示し、将来リスクまで客観言及。</td><td><strong>PASS (EXCELLENT)</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="rubric-card">
+                <div class="rubric-header">
+                  <div class="rubric-title">
+                    <span>4. 自己欺瞞テスト排除 (Anti-Self-Deception & Objective Verification)</span>
+                  </div>
+                  <div class="rubric-meta">
+                    <span class="rubric-badge" style="background:#f5f3ff; color:#7c3aed;">配備先: 🤖 AI ➔ ⚖️ 事後ガード</span>
+                    <span class="rubric-badge" style="background:#fef2f2; color:#b91c1c;">合格ライン: スコア 5 のみ (絶対遵守)</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                  AI自身が都合の良いモックを作って「合格しました」と自己判定するエコーチェンバーを根絶。外部の客観的検証ハーネスのみで判定を確定させる。
+                </p>
+                <table class="rubric-table">
+                  <thead>
+                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="score-cell score-1">1点</td><td>自己欺瞞 (Deceptive)</td><td>自作HTMLモック等で動いたように見せかけ、実機公式DOMの崩れを無視して合格判定。</td><td><strong>即時FAIL</strong></td></tr>
+                    <tr><td class="score-cell score-3">3点</td><td>部分検証 (Partial)</td><td>テストはあるが、境界値やエッジケース（空配列、権限エラー）がモックされている。</td><td>追加テスト要求</td></tr>
+                    <tr><td class="score-cell score-5">5点</td><td>客観立証 (Sound)</td><td>改ざん不可の外部ハーネススクリプトにより、本物実機・公式仕様で100%適合を証明。</td><td><strong>PASS</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- タブ3: 事後ガード -->
+            <div class="rubric-panel" id="rubric-postguard">
+              <div class="rubric-card">
+                <div class="rubric-header">
+                  <div class="rubric-title">
+                    <span>5. システム回路図・UIの認知的明確性 (Cognitive Clarity Rubric)</span>
+                  </div>
+                  <div class="rubric-meta">
+                    <span class="rubric-badge" style="background:#ecfdf5; color:#047857;">配備先: ⚖️ 事後ガード ➔ 🎁 人へ返却</span>
+                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                  ★今回のダッシュボード改修で適用。単なるカード列ではなく、トポロジー配線・有向矢印・再帰フィードバック・インスペクターが機能しているかを審査。
+                </p>
+                <table class="rubric-table">
+                  <thead>
+                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="score-cell score-1">1点</td><td>致命的 (Flat)</td><td>単なる静的カード列や箇条書きで、データの流れやノード間の因果関係が見えない。</td><td><strong>即時FAIL（再設計）</strong></td></tr>
+                    <tr><td class="score-cell score-2">2点</td><td>不十分 (Broken)</td><td>矢印はあるが上下左右の接続関係が断絶し、どこへ流れるか追うのに強い負荷がかかる。</td><td>配線再修正</td></tr>
+                    <tr><td class="score-cell score-3">3点</td><td>許容 (Basic)</td><td>主幹線の流れは分かるが、例外処理やフィードバック再帰ループが省略されている。</td><td>ループ線追加指示</td></tr>
+                    <tr><td class="score-cell score-4">4点</td><td>良好 (Clear)</td><td>ベクター配線と矢印で入力〜ガード〜AI〜出力〜再帰ループが整理され、迷わず追える。</td><td><strong>PASS</strong></td></tr>
+                    <tr><td class="score-cell score-5">5点</td><td>模範 (Interactive)</td><td>全体サイクルが一目で直感でき、各ノードクリックで詳細が展開される最高水準の体験。</td><td><strong>PASS (EXCELLENT)</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="rubric-card">
+                <div class="rubric-header">
+                  <div class="rubric-title">
+                    <span>6. GAS安全性＆ライフサイクル管理 (GAS Safety & Lifecycle)</span>
+                  </div>
+                  <div class="rubric-meta">
+                    <span class="rubric-badge" style="background:#ecfdf5; color:#047857;">配備先: ⚖️ 事後ガード (evaluator_gas_minitool)</span>
+                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                  minitool_001の教訓より。「安全に使い始める」だけでなく、「安全にトリガーを解除してやめる（uninstall）」機能が実装されているかを検査。
+                </p>
+                <table class="rubric-table">
+                  <thead>
+                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="score-cell score-1">1点</td><td>致命的 (Dangerous)</td><td>自動トリガーを作成するが、ユーザーが解除する <code>uninstallTool</code> 関数が存在しない。</td><td><strong>即時FAIL</strong></td></tr>
+                    <tr><td class="score-cell score-3">3点</td><td>許容 (Basic)</td><td>uninstall関数はあるが、エラーハンドリングや通知機能が欠落している。</td><td>補正要求</td></tr>
+                    <tr><td class="score-cell score-5">5点</td><td>完全適合 (Safe)</td><td>uninstall関数、OAuth最小権限、全エラー捕捉通知、実行クォータ管理が完備。</td><td><strong>PASS (納品可能)</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- タブ4: メタ自己進化 -->
+            <div class="rubric-panel" id="rubric-meta">
+              <div class="rubric-card">
+                <div class="rubric-header">
+                  <div class="rubric-title">
+                    <span>7. 局所教訓ログの圧縮品質 (Trace Summary Quality)</span>
+                  </div>
+                  <div class="rubric-meta">
+                    <span class="rubric-badge" style="background:#fffbeb; color:#b45309;">配備先: 📝 局所教訓ログ ➔ ⚙️ メタ回収バッチ</span>
+                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                  各プロジェクトの <code>logs/trace.md</code> に巨大な生ログを放置せず、「1. 失敗 / 2. 解決 / 3. 教訓」の3段階で高密度圧縮されているかを審査。
+                </p>
+                <table class="rubric-table">
+                  <thead>
+                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="score-cell score-1">1点</td><td>低品質 (Bloated)</td><td>数十KBのスタックトレースやチャット全文を生のまま貼り付けて放置。</td><td>即時要約要求</td></tr>
+                    <tr><td class="score-cell score-3">3点</td><td>許容 (Narrative)</td><td>経緯は書かれているが、他のプロジェクトで再利用可能な「普遍的教訓」に抽象化されていない。</td><td>教訓の再抽象化指示</td></tr>
+                    <tr><td class="score-cell score-5">5点</td><td>模範 (Distilled)</td><td>3段階フォーマットで数KB以内に要約され、即座に次期ガードレールへ変換可能。</td><td><strong>PASS (DB昇格)</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="rubric-card">
+                <div class="rubric-header">
+                  <div class="rubric-title">
+                    <span>8. ルーブリック自動蒸留＆マージ性 (Auto-Rubric Distillation)</span>
+                  </div>
+                  <div class="rubric-meta">
+                    <span class="rubric-badge" style="background:#fffbeb; color:#b45309;">配備先: ⚡ メタ生成エンジン ➔ 🛡️ 次期事前/事後ガード</span>
+                    <span class="rubric-badge" style="background:var(--success-bg); color:var(--success);">合格ライン: スコア 4 以上</span>
+                  </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+                  ★カシマさんが指摘された「生ログから採点表を更新する流れ」。失敗を単なるテキストで終わらせず、1〜5点の判定刻み幅を持つルーブリックとして再生成・統合できるかを審査。
+                </p>
+                <table class="rubric-table">
+                  <thead>
+                    <tr><th class="score-cell">スコア</th><th style="width:120px;">判定ランク</th><th>定義・評価基準</th><th style="width:140px;">判定アクション</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="score-cell score-1">1点</td><td>未反映 (Static)</td><td>失敗しても採点表が更新されず、同じ失敗が次期案件でも再発可能な状態。</td><td><strong>即時FAIL</strong></td></tr>
+                    <tr><td class="score-cell score-3">3点</td><td>新規乱立 (Bloating)</td><td>採点表は作ったが、既存の類似ルーブリック（Freshness等）と統合されず別ファイルが乱立。</td><td>既存ファイルへマージ</td></tr>
+                    <tr><td class="score-cell score-5">5点</td><td>完全自己進化 (Self-Evolved)</td><td>失敗からスコア1〜5点の判定条件を自動生成し、既存ルーブリックへ差分マージ完了。</td><td><strong>PASS (次世代展開)</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
@@ -1621,7 +1970,7 @@
       const titleMap = {
         'view-overview': ['🏠 ワークスペース総合ヘルス概要', '境界防御・ディレクトリ健全性・全プロジェクト状況のリアルタイム監視'],
         'view-projects': ['🚀 全プロジェクト進捗・完成度トラッカー', '各ツールの成果物構成・仕様書・テスト適合状況の客観判定'],
-        'view-harness': ['🛡️ エージェントハーネス全体像マッピング', 'プロジェクト別行動トポロジー（入力・ガード・AI・MCP・記憶・出力）＆メタ進化ループ'],
+        'view-harness': ['🛡️ エージェントハーネス全体像 ＆ ルーブリック評価基準', '行動トポロジー（入力・ガード・AI・出力）＆ ノード別1〜5点採点基準表カタログ'],
         'view-tree': ['🌲 ワークスペース階層構造エクスプローラー', '主要フォルダの展開・容量・衛生度マップ'],
         'view-logs': ['📜 失敗と教訓の完全アーカイブ', '各プロジェクトの trace.md から抽出された恒久教訓一覧'],
         'view-automation': ['⏰ 自動巡回＆定期スキャン運用', 'GitHub Actions日次巡回およびローカル常時統制の構成']
@@ -2156,6 +2505,16 @@
           btn.style.display = 'none';
         }
       });
+    }
+
+    // ルーブリックタブの切り替え
+    function switchRubricTab(tabKey) {
+      document.querySelectorAll('.rubric-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.rubric-tab-btn').forEach(b => b.classList.remove('active'));
+      const activePanel = document.getElementById(tabKey);
+      if (activePanel) activePanel.classList.add('active');
+      const activeBtn = document.getElementById('btn-' + tabKey);
+      if (activeBtn) activeBtn.classList.add('active');
     }
 
     // 初期化
