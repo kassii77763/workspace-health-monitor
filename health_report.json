@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-11T23:36:22.059Z",
+  "timestamp": "2026-10-11T23:39:44.880Z",
   "score": 95,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
@@ -64,7 +64,7 @@
       "hasDocs": true,
       "hasTests": true,
       "hasArtifacts": true,
-      "updatedAt": "2026-10-11T23:36:22.029Z",
+      "updatedAt": "2026-10-11T23:39:36.546Z",
       "path": "gas_project/minitool_002_sheets_to_calendar"
     },
     {
@@ -243,7 +243,7 @@
       "name": "gas_project",
       "path": "gas_project",
       "isDir": true,
-      "sizeBytes": 1099772,
+      "sizeBytes": 1100100,
       "itemCount": 3,
       "status": "healthy",
       "note": "GASミニツール本番 (3 ツール完全カプセル化)",
@@ -363,8 +363,8 @@
           "name": "minitool_002_sheets_to_calendar",
           "path": "gas_project/minitool_002_sheets_to_calendar",
           "isDir": true,
-          "sizeBytes": 535226,
-          "itemCount": 12,
+          "sizeBytes": 535554,
+          "itemCount": 13,
           "status": "healthy",
           "note": "",
           "children": [
@@ -392,7 +392,7 @@
               "name": "Code.js",
               "path": "gas_project/minitool_002_sheets_to_calendar/Code.js",
               "isDir": false,
-              "sizeBytes": 16570,
+              "sizeBytes": 12712,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -442,7 +442,7 @@
               "name": "README.md",
               "path": "gas_project/minitool_002_sheets_to_calendar/README.md",
               "isDir": false,
-              "sizeBytes": 1328,
+              "sizeBytes": 1758,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -452,7 +452,17 @@
               "name": "spec.md",
               "path": "gas_project/minitool_002_sheets_to_calendar/spec.md",
               "isDir": false,
-              "sizeBytes": 1218,
+              "sizeBytes": 2863,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "test_unit.js",
+              "path": "gas_project/minitool_002_sheets_to_calendar/test_unit.js",
+              "isDir": false,
+              "sizeBytes": 2111,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1469,7 +1479,7 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 415906,
+      "sizeBytes": 415928,
       "itemCount": 6,
       "status": "healthy",
       "note": "",
@@ -1549,7 +1559,7 @@
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 189141,
+          "sizeBytes": 189163,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -5960,9 +5970,9 @@
       "toolId": "minitool_002_sheets_to_calendar",
       "category": "GAS MiniTool",
       "path": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md",
-      "sizeKB": 1.3,
-      "lines": 20,
-      "updatedAt": "2026-10-08T05:56:20.906Z",
+      "sizeKB": 2.1,
+      "lines": 26,
+      "updatedAt": "2026-10-11T23:39:15.101Z",
       "isComplete": true,
       "status": "optimal",
       "note": "軽量（3段階形式で圧縮保存済み）"
@@ -5992,7 +6002,7 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-11T23:36:22.059Z",
+    "lastCheck": "2026-10-11T23:39:44.880Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
@@ -6412,7 +6422,7 @@
             },
             {
               "label": "ツール固有ログ",
-              "val": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md (1349 bytes)"
+              "val": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md (2180 bytes)"
             },
             {
               "label": "ロードされた教訓",
