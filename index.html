@@ -1490,7 +1490,7 @@
                 
                 <div class="tree-item">
                   <span>📄 index.html</span>
-                  <span style="color: var(--text-muted); font-size: 11px;">84.7 KB</span>
+                  <span style="color: var(--text-muted); font-size: 11px;">86.0 KB</span>
                 </div>
                 
                 <div class="tree-item">
@@ -1688,7 +1688,14 @@
       document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
 
-      event.currentTarget.classList.add('active');
+      // ボタンのアクティブ化
+      const btns = document.querySelectorAll('.nav-btn');
+      btns.forEach(btn => {
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(viewId)) {
+          btn.classList.add('active');
+        }
+      });
+
       const target = document.getElementById(viewId);
       if (target) target.classList.add('active');
 
@@ -1705,6 +1712,10 @@
       if (titleMap[viewId]) {
         document.getElementById('page-title').innerText = titleMap[viewId][0];
         document.getElementById('page-sub').innerText = titleMap[viewId][1];
+      }
+
+      if (viewId === 'view-harness') {
+        setTimeout(function() { selectCastleLayer(currentLayer); }, 50);
       }
     }
 
@@ -1927,26 +1938,45 @@
     // LEVEL 1: 城郭レイヤー選択
     function selectCastleLayer(layerId) {
       currentLayer = layerId;
-      document.querySelectorAll('.castle-layer-card').forEach(c => c.classList.remove('active-layer'));
+      document.querySelectorAll('.castle-layer-card').forEach(function(c) {
+        c.classList.remove('active-layer');
+      });
       const activeCard = document.getElementById('cl-' + layerId);
       if (activeCard) activeCard.classList.add('active-layer');
 
       const data = CONVEYOR_DATA[layerId];
       if (!data) return;
 
-      document.getElementById('conveyor-title').innerText = data.title;
+      const titleEl = document.getElementById('conveyor-title');
+      if (titleEl) titleEl.innerText = data.title;
 
       // LEVEL 2: コンベアライン再描画
       const lineContainer = document.getElementById('conveyor-line-content');
-      lineContainer.innerHTML = data.stations.map((st, idx) => {
-        const activeCls = (idx === 0) ? 'active-station' : '';
-        const arrow = (idx < data.stations.length - 1) ? '<div class="conveyor-arrow">➔</div>' : '';
-        return '<div class="conveyor-station ' + activeCls + '" id="cs-' + st.id + '" onclick="selectConveyorStation('' + st.id + '')">' +
+      if (!lineContainer) return;
+
+      let html = '';
+      for (let i = 0; i < data.stations.length; i++) {
+        const st = data.stations[i];
+        const activeCls = (i === 0) ? 'active-station' : '';
+        html += '<div class="conveyor-station ' + activeCls + '" data-sid="' + st.id + '">' +
           '<span class="station-num">' + st.num + '</span>' +
           '<div class="station-name">' + st.name + '</div>' +
           '<span class="station-sub">' + st.sub + '</span>' +
-        '</div>' + arrow;
-      }).join('');
+        '</div>';
+        if (i < data.stations.length - 1) {
+          html += '<div class="conveyor-arrow">➔</div>';
+        }
+      }
+      lineContainer.innerHTML = html;
+
+      // クリックイベントの登録（イベント委任）
+      lineContainer.onclick = function(e) {
+        const stCard = e.target.closest('.conveyor-station');
+        if (stCard) {
+          const sid = stCard.getAttribute('data-sid');
+          if (sid) selectConveyorStation(sid);
+        }
+      };
 
       // デフォルトで第1ステーションを選択
       if (data.stations.length > 0) {
@@ -1956,40 +1986,61 @@
 
     // LEVEL 2: コンベアステーション選択 (LEVEL 3詳細表示)
     function selectConveyorStation(stationId) {
-      document.querySelectorAll('.conveyor-station').forEach(s => s.classList.remove('active-station'));
-      const activeStation = document.getElementById('cs-' + stationId);
+      document.querySelectorAll('.conveyor-station').forEach(function(s) {
+        s.classList.remove('active-station');
+      });
+      const activeStation = document.querySelector('.conveyor-station[data-sid="' + stationId + '"]');
       if (activeStation) activeStation.classList.add('active-station');
 
       const data = CONVEYOR_DATA[currentLayer];
       if (!data) return;
-      const st = data.stations.find(s => s.id === stationId);
-      if (!st) return;
+      let targetSt = null;
+      for (let i = 0; i < data.stations.length; i++) {
+        if (data.stations[i].id === stationId) {
+          targetSt = data.stations[i];
+          break;
+        }
+      }
+      if (!targetSt) return;
 
-      const detail = st.detail;
-      document.getElementById('inspector-title').innerHTML = detail.title;
-      document.getElementById('inspector-status').innerText = detail.status.includes('PASS') ? 'PASS' : 'ACTIVE';
+      const detail = targetSt.detail;
+      const titleEl = document.getElementById('inspector-title');
+      const statusEl = document.getElementById('inspector-status');
+      const gridEl = document.getElementById('inspector-grid');
 
-      document.getElementById('inspector-grid').innerHTML = 
-        '<div>' +
-          '<div class="detail-item-title">【担当役割・機能】</div>' +
-          '<div class="detail-item-val">' + detail.role + '</div>' +
-        '</div>' +
-        '<div>' +
-          '<div class="detail-item-title">【対象ファイル / スクリプト】</div>' +
-          '<div class="detail-item-val"><span class="code-badge">' + detail.target + '</span></div>' +
-        '</div>' +
-        '<div>' +
-          '<div class="detail-item-title">【判定ルール・検証基準】</div>' +
-          '<div class="detail-item-val">' + detail.rules + '</div>' +
-        '</div>' +
-        '<div>' +
-          '<div class="detail-item-title">【現在の稼働ステータス】</div>' +
-          '<div class="detail-item-val" style="color: var(--success); font-weight: 700;">● ' + detail.status + '</div>' +
-        '</div>';
+      if (titleEl) titleEl.innerHTML = detail.title;
+      if (statusEl) {
+        statusEl.innerText = detail.status.indexOf('PASS') !== -1 ? 'PASS' : 'ACTIVE';
+      }
+
+      if (gridEl) {
+        gridEl.innerHTML = 
+          '<div>' +
+            '<div class="detail-item-title">【担当役割・機能】</div>' +
+            '<div class="detail-item-val">' + detail.role + '</div>' +
+          '</div>' +
+          '<div>' +
+            '<div class="detail-item-title">【対象ファイル / スクリプト】</div>' +
+            '<div class="detail-item-val"><span class="code-badge">' + detail.target + '</span></div>' +
+          '</div>' +
+          '<div>' +
+            '<div class="detail-item-title">【判定ルール・検証基準】</div>' +
+            '<div class="detail-item-val">' + detail.rules + '</div>' +
+          '</div>' +
+          '<div>' +
+            '<div class="detail-item-title">【現在の稼働ステータス】</div>' +
+            '<div class="detail-item-val" style="color: var(--success); font-weight: 700;">● ' + detail.status + '</div>' +
+          '</div>';
+      }
     }
 
-    // 初期化: ページ読み込み時に城郭外郭を初期選択
-    setTimeout(() => { selectCastleLayer('guard'); }, 100);
+    // 初期化
+    window.addEventListener('DOMContentLoaded', function() {
+      selectCastleLayer('guard');
+    });
+    setTimeout(function() {
+      selectCastleLayer('guard');
+    }, 200);
   </script>
 </body>
 </html>
