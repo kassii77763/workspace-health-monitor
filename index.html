@@ -378,101 +378,177 @@
     }
     .mini-badge.ok { color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); }
 
-    /* Harness Flow Diagram (2D Pipeline Architecture) */
-    .flow-diagram-container {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 28px 20px;
-      margin-bottom: 28px;
-      position: relative;
-      overflow-x: auto;
-    }
-    .flow-pipeline {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-width: 860px;
-      gap: 12px;
-      position: relative;
-    }
-    .flow-node {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 16px 14px;
+    /* 3-Tier Zoom Architecture: Castle Macro -> Conveyor Micro -> Detail */
+    .drilldown-container {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      position: relative;
+      gap: 24px;
+      margin-bottom: 32px;
     }
-    .flow-node:hover, .flow-node.active-node {
-      border-color: var(--accent);
-      background: rgba(14, 165, 233, 0.08);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.2);
-    }
-    .flow-node-header {
+
+    /* Pattern 1: Castle Multi-Layer Defense (Macro View) */
+    .castle-box {
+      background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, rgba(0, 0, 0, 0.4) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 24px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      gap: 14px;
     }
-    .flow-node-icon { font-size: 20px; }
-    .flow-node-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.3;
-    }
-    .flow-node-role {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-    .flow-arrow {
-      color: var(--accent);
-      font-size: 20px;
-      font-weight: bold;
-      user-select: none;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-    }
-    .flow-branches-container {
+    .castle-layers-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 20px;
-      min-width: 860px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
     }
-    .branch-card {
+    .castle-layer-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       padding: 16px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px dashed rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+    .castle-layer-card:hover, .castle-layer-card.active-layer {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(14, 165, 233, 0.2);
+    }
+    .castle-layer-card.active-layer {
+      border-color: var(--accent);
+      background: rgba(14, 165, 233, 0.1);
+    }
+    .castle-layer-card.layer-1 { border-left: 4px solid var(--accent); }
+    .castle-layer-card.layer-2 { border-left: 4px solid var(--success); }
+    .castle-layer-card.layer-3 { border-left: 4px solid #f59e0b; }
+    .castle-layer-card.layer-4 { border-left: 4px solid #818cf8; }
+
+    .layer-badge {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .layer-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .layer-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Pattern 2: Conveyor Belt Micro Line (Factory Flow) */
+    .conveyor-box {
+      background: rgba(10, 15, 26, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-x: auto;
+    }
+    .conveyor-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 820px;
+      padding: 10px 4px;
+    }
+    .conveyor-station {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 14px 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
-    .branch-card.danger {
-      border-color: rgba(239, 68, 68, 0.4);
-      background: rgba(239, 68, 68, 0.03);
+    .conveyor-station:hover, .conveyor-station.active-station {
+      background: rgba(14, 165, 233, 0.12);
+      border-color: var(--accent);
+      transform: scale(1.02);
     }
-    .branch-card.loop {
-      border-color: rgba(129, 140, 248, 0.4);
-      background: rgba(129, 140, 248, 0.03);
+    .station-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
     }
-    .node-detail-box {
-      margin-top: 20px;
-      padding: 18px;
-      border-radius: 12px;
-      background: rgba(14, 165, 233, 0.05);
-      border: 1px solid rgba(14, 165, 233, 0.2);
-      display: none;
+    .station-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
     }
-    .node-detail-box.show { display: block; }
+    .station-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .conveyor-arrow {
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: bold;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Level 3: Inspector Deep Detail */
+    .inspector-detail-box {
+      background: rgba(14, 165, 233, 0.04);
+      border: 1px solid rgba(14, 165, 233, 0.25);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .detail-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 10px;
+    }
+    .detail-heading h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      font-size: 12px;
+    }
+    .detail-item-title {
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .detail-item-val {
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
 
     /* Harness Center Cards */
     .harness-card {
@@ -1057,104 +1133,74 @@
             AIの生成行動がどのように2つの防壁を通過し、失敗がどうメタハーネスへ循環学習されるかを視覚化したアーキテクチャ回路です。各ノードをクリックすると詳細が展開されます。
           </p>
 
-          <!-- 2D フロー図コンテナ -->
-          <div class="flow-diagram-container">
-            <div style="font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">
-              ◀ MAIN PIPELINE: 左から右へ流れる防御・検証ライン ▶
+          <!-- 3階層ズームイン防衛アーキテクチャ (Castle Macro -> Conveyor Micro -> Inspector Deep) -->
+          <div class="drilldown-container">
+            
+            <!-- LEVEL 1: 城郭・多重防衛マップ (マクロ全体像) -->
+            <div class="castle-box">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h4 style="font-size:15px; font-weight:700; color:#fff;">🏰 LEVEL 1: 城郭・多重防衛マップ（マクロ全体像）</h4>
+                <span style="font-size:11px; color:var(--text-muted);">各レイヤーをクリックして検査ラインを展開 ▼</span>
+              </div>
+
+              <div class="castle-layers-grid">
+                
+                <div class="castle-layer-card layer-1 active-layer" id="cl-guard" onclick="selectCastleLayer('guard')">
+                  <span class="layer-badge">第1防壁 / 憲法</span>
+                  <div class="layer-title">🛡️ 外郭 城壁</div>
+                  <p class="layer-desc">未許可ファイル・散乱を外で弾く物理境界ガード</p>
+                  <span class="mini-badge ok" style="margin-top:auto;">● 違反 0件 (100% 健全)</span>
+                </div>
+
+                <div class="castle-layer-card layer-2" id="cl-harness" onclick="selectCastleLayer('harness')">
+                  <span class="layer-badge">第2防壁 / 個別法</span>
+                  <div class="layer-title">⚖️ 内郭 関所</div>
+                  <p class="layer-desc">偽モック・手抜きコードを弾く16基準品質検査</p>
+                  <span class="mini-badge ok" style="margin-top:auto;">● 16/16 全PASS (2ツール)</span>
+                </div>
+
+                <div class="castle-layer-card layer-3" id="cl-deploy" onclick="selectCastleLayer('deploy')">
+                  <span class="layer-badge">最終ゴール / 本丸</span>
+                  <div class="layer-title">👑 本丸 完成品</div>
+                  <p class="layer-desc">note記事・デモ動画・GitHub Pages本番配備</p>
+                  <span class="mini-badge ok" style="margin-top:auto;">● 納品配備完了</span>
+                </div>
+
+                <div class="castle-layer-card layer-4" id="cl-meta" onclick="selectCastleLayer('meta')">
+                  <span class="layer-badge">自己進化 / 地下壕</span>
+                  <div class="layer-title">🧠 地下 学習壕</div>
+                  <p class="layer-desc">弾かれた失敗を回収し次代の城壁を強化する知恵DB</p>
+                  <span class="mini-badge ok" style="margin-top:auto;">● 3教訓蓄積済み</span>
+                </div>
+
+              </div>
             </div>
 
-            <div class="flow-pipeline">
-              
-              <!-- Node 1: AI Generator -->
-              <div class="flow-node active-node" id="fn-generator" onclick="selectFlowNode('generator')">
-                <div class="flow-node-header">
-                  <span class="flow-node-icon">🤖</span>
-                  <span class="mini-badge ok">STEP 1</span>
-                </div>
-                <div class="flow-node-title">AIエージェント自律生成</div>
-                <div class="flow-node-role">コード / 記事 / 動画生成</div>
-                <div style="font-size: 10px; color: var(--success); font-weight: 700;">● READY</div>
+            <!-- LEVEL 2: ベルトコンベア・工場検査ライン (工程詳細) -->
+            <div class="conveyor-box">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h4 id="conveyor-title" style="font-size:15px; font-weight:700; color:var(--accent);">
+                  🏭 LEVEL 2: 【外郭 城壁】境界防御ライン（ベルトコンベア検査工程）
+                </h4>
+                <span style="font-size:11px; color:var(--text-muted);">検査ステーションをクリックして詳細ルールを表示 ▼</span>
               </div>
 
-              <div class="flow-arrow">➔</div>
-
-              <!-- Node 2: Guardrail (憲法) -->
-              <div class="flow-node" id="fn-guard" onclick="selectFlowNode('guard')">
-                <div class="flow-node-header">
-                  <span class="flow-node-icon">🛡️</span>
-                  <span class="mini-badge ok">第1防壁</span>
-                </div>
-                <div class="flow-node-title">アーキテクチャ境界ガード</div>
-                <div class="flow-node-role">憲法: ルート汚染・散乱遮断</div>
-                <div style="font-size: 10px; color: var(--success); font-weight: 700;">● PASS (違反 0件)</div>
+              <div class="conveyor-line" id="conveyor-line-content">
+                <!-- 動的に生成される検査ステーション -->
               </div>
-
-              <div class="flow-arrow">➔</div>
-
-              <!-- Node 3: 16-Rule Harness (個別法) -->
-              <div class="flow-node" id="fn-harness" onclick="selectFlowNode('harness')">
-                <div class="flow-node-header">
-                  <span class="flow-node-icon">⚖️</span>
-                  <span class="mini-badge ok">第2防壁</span>
-                </div>
-                <div class="flow-node-title">16基準品質ハーネス</div>
-                <div class="flow-node-role">個別法: 実機DOM幾何/GAS検証</div>
-                <div style="font-size: 10px; color: var(--success); font-weight: 700;">● 100% PASS (2/2)</div>
-              </div>
-
-              <div class="flow-arrow">➔</div>
-
-              <!-- Node 4: Output -->
-              <div class="flow-node" id="fn-deploy" onclick="selectFlowNode('deploy')">
-                <div class="flow-node-header">
-                  <span class="flow-node-icon">🚀</span>
-                  <span class="mini-badge ok">GOAL</span>
-                </div>
-                <div class="flow-node-title">本番デプロイ・公開</div>
-                <div class="flow-node-role">note下書き / GitHub Pages</div>
-                <div style="font-size: 10px; color: var(--success); font-weight: 700;">● 納品完了</div>
-              </div>
-
             </div>
 
-            <!-- 分岐・フィードバック回路 -->
-            <div class="flow-branches-container">
-              
-              <!-- 遮断分岐 -->
-              <div class="branch-card danger">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <span style="font-size: 12px; font-weight: 700; color: var(--danger);">❌ 境界違反時の即時遮断分岐 (Exit Code 1)</span>
-                  <span class="code-badge" style="color: var(--danger);">BLOCKED</span>
-                </div>
-                <p style="font-size: 11px; color: var(--text-muted);">
-                  第1防壁で未許可ファイルや散乱を検知した瞬間、ビルド・テストを強制終了しPCの安全を死守します。
-                </p>
+            <!-- LEVEL 3: インスペクター詳細（ナノコード＆ルール） -->
+            <div class="inspector-detail-box" id="inspector-detail-box">
+              <div class="detail-heading">
+                <h4 id="inspector-title">🔍 LEVEL 3: 検査ステーション詳細</h4>
+                <span class="code-badge" id="inspector-status" style="color:var(--success);">PASS</span>
               </div>
-
-              <!-- メタ進化循環ループ -->
-              <div class="branch-card loop" id="fn-meta" style="cursor: pointer;" onclick="selectFlowNode('meta')">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <span style="font-size: 12px; font-weight: 700; color: #818cf8;">🧠 メタハーネス自己進化ループ (循環フィードバック)</span>
-                  <span class="code-badge" style="color: #818cf8;">FEEDBACK</span>
-                </div>
-                <p style="font-size: 11px; color: var(--text-muted);">
-                  第2防壁で失敗した教訓は <span class="code-badge">trace.md</span> ➔ <span class="code-badge">meta_knowledge.json</span> 経由でAIへフィードバックされ、次回以降のハーネス設計へ自動注入されます。
-                </p>
+              <div class="detail-grid" id="inspector-grid">
+                <!-- 動的に挿入される詳細情報 -->
               </div>
-
             </div>
 
-            <!-- ノードクリック詳細表示ボックス -->
-            <div id="flow-node-detail" class="node-detail-box show">
-              <h4 id="detail-title" style="font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">
-                🤖 AIエージェント自律生成 (Generator Node)
-              </h4>
-              <p id="detail-desc" style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
-                【役割】ユーザーのプロンプトを受け、GASコード、note記事原稿、実機デモ動画などを自律的に生成する最前線のステップ。<br>
-                【担当ファイル】ワークスペース全域のスクリプト生成<br>
-                【現在ステータス】稼働準備完了（Ready）
-              </p>
-            </div>
           </div>
 
           <h4 style="font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 12px;">【階層1】システム全体ガードレール (憲法レベル)</h4>
@@ -1444,7 +1490,7 @@
                 
                 <div class="tree-item">
                   <span>📄 index.html</span>
-                  <span style="color: var(--text-muted); font-size: 11px;">74.6 KB</span>
+                  <span style="color: var(--text-muted); font-size: 11px;">84.7 KB</span>
                 </div>
                 
                 <div class="tree-item">
@@ -1670,45 +1716,280 @@
       }
     }
 
-    // 2D フローノード選択
-    function selectFlowNode(nodeId) {
-      document.querySelectorAll('.flow-node').forEach(n => n.classList.remove('active-node'));
-      const activeEl = document.getElementById('fn-' + nodeId);
-      if (activeEl) activeEl.classList.add('active-node');
+    // 3階層ズーム防衛アーキテクチャ データ定義
+    const CONVEYOR_DATA = {
+      'guard': {
+        title: '🏭 LEVEL 2: 【外郭 城壁】境界防御ライン（ベルトコンベア検査工程）',
+        stations: [
+          {
+            id: 'g1',
+            num: 'STATION 01',
+            name: '📥 材料搬入 (AI生成)',
+            sub: 'ファイル受け入れ',
+            detail: {
+              title: '📥 材料搬入ステーション (AIファイル受入)',
+              role: 'AIエージェントが作成したコード、画像、スクリプトを受け取る最初のゲート。',
+              target: 'ワークスペース全域 (ルート / gas_project / projects)',
+              rules: 'ファイル命名規則、配置パスの受領確認',
+              status: 'READY (受入準備完了)'
+            }
+          },
+          {
+            id: 'g2',
+            num: 'STATION 02',
+            name: '⚖️ ホワイトリスト照合',
+            sub: 'ルート36品目検査',
+            detail: {
+              title: '⚖️ ホワイトリスト照合ステーション (厳格境界検査)',
+              role: 'ルート直下に置かれた全ファイルを許可リスト（36アイテム）と機械的に照合。',
+              target: 'harness/global_rules/check_architecture_guard.js',
+              rules: 'Set(ALLOWED_ROOT_ITEMS) と完全一致比較。1件でも未許可なら減点。',
+              status: 'PASS (違反 0件 / 25点満点)'
+            }
+          },
+          {
+            id: 'g3',
+            num: 'STATION 03',
+            name: '🚨 散乱遮断アーム',
+            sub: 'Exit Code 1 強制遮断',
+            detail: {
+              title: '🚨 散乱遮断アーム (物理的セーフティ機構)',
+              role: '未許可ファイルやカプセル化違反を検知した瞬間、プロセスを強制終了させて散乱を防止。',
+              target: 'Node.js process.exit(1)',
+              rules: '違反アイテムを検知した場合に即時ビルド・テストを中断。',
+              status: 'ACTIVE (異常なし・待機中)'
+            }
+          },
+          {
+            id: 'g4',
+            num: 'STATION 04',
+            name: '✅ クリーン通過',
+            sub: '第1防壁突破承認',
+            detail: {
+              title: '✅ クリーン通過ステーション (第1防壁クリア)',
+              role: '境界規律を100%遵守した成果物のみを次の「内郭 関所」へ送り出す。',
+              target: 'gas_project/*, projects/*',
+              rules: 'カプセル化完全性 25/25 pt 達成。',
+              status: 'PASS (第1防壁 突破承認)'
+            }
+          }
+        ]
+      },
+      'harness': {
+        title: '🏭 LEVEL 2: 【内郭 関所】16基準品質ライン（ベルトコンベア検査工程）',
+        stations: [
+          {
+            id: 'h1',
+            num: 'STATION 01',
+            name: '📷 DOM幾何光学スキャン',
+            sub: '偽モック完全排除',
+            detail: {
+              title: '📷 DOM幾何光学スキャン (Anti-Mock Guard)',
+              role: 'Googleスプレッドシート公式の下部タブ座標を判定し、AIの自作HTML偽モックを永久排除。',
+              target: 'harness/gas_minitool/evaluator_gas_minitool.js (R14)',
+              rules: 'Google公式DOMセレクタ・座標幾何判定で本物実機UIでのみ合格判定。',
+              status: 'PASS (偽モック排除 100%)'
+            }
+          },
+          {
+            id: 'h2',
+            num: 'STATION 02',
+            name: '🔧 uninstall作動テスト',
+            sub: '安全な解除機能',
+            detail: {
+              title: '🔧 uninstall作動テストステーション (トリガー解除)',
+              role: 'GASの自動トリガーをユーザーが安全に解除できる手段が標準実装されているか検証。',
+              target: 'gas_project/*/Code.js (uninstallTool)',
+              rules: 'ScriptApp.deleteTrigger() の実装をコード構文解析で確認。',
+              status: 'PASS (全ツール実装済み)'
+            }
+          },
+          {
+            id: 'h3',
+            num: 'STATION 03',
+            name: '📝 note下書き100点採点',
+            sub: '記事構成・導線検査',
+            detail: {
+              title: '📝 note下書き100点採点ステーション',
+              role: '記事タイトル（文字数・具体性）、導入文、デモGIF埋め込み、免責事項の網羅性を採点。',
+              target: 'gas_project/*/article.md',
+              rules: '文字数、見出し構造、GIFリンクの存在を正規表現で自動判定。',
+              status: 'PASS (合格水準達成)'
+            }
+          },
+          {
+            id: 'h4',
+            num: 'STATION 04',
+            name: '🎯 16基準合格刻印',
+            sub: '品質保証スタンプ',
+            detail: {
+              title: '🎯 16基準合格刻印ステーション (改ざん不能スタンプ)',
+              role: '全16の検査項目をオールクリアした成果物にのみ本番出荷の許可スタンプを押印。',
+              target: 'harness/gas_minitool/evaluator_gas_minitool.js',
+              rules: '16/16 基準オールPASS（現在の適合率: 100% 2/2ツール）。',
+              status: 'PASS (16/16 ALL PASSED)'
+            }
+          }
+        ]
+      },
+      'deploy': {
+        title: '🏭 LEVEL 2: 【本丸 完成品】出荷デプロイライン（ベルトコンベア検査工程）',
+        stations: [
+          {
+            id: 'd1',
+            num: 'STATION 01',
+            name: '📄 note下書き保存',
+            sub: 'クラウド同期',
+            detail: {
+              title: '📄 note下書き自動保存ステーション',
+              role: '完成した記事原稿をnoteの草稿へ自動的に下書き保存し、編集可能状態にする。',
+              target: 'mcp-note / gas_project/*/article.md',
+              rules: 'マークダウンのHTML変換と下書きAPI同期。',
+              status: 'READY (下書き保存完了)'
+            }
+          },
+          {
+            id: 'd2',
+            num: 'STATION 02',
+            name: '🌐 GitHub Pages公開',
+            sub: '独立Webサイト更新',
+            detail: {
+              title: '🌐 GitHub Pages公開ステーション',
+              role: '成果物および健康診断ダッシュボードをGitHub Pages上に全世界公開。',
+              target: 'https://kassii77763.github.io/workspace-health-monitor/',
+              rules: '静的HTML/JSONの独立リポジトリへの自動プッシュ＆デプロイ。',
+              status: 'LIVE (稼働中)'
+            }
+          },
+          {
+            id: 'd3',
+            num: 'STATION 03',
+            name: '📢 X告知ポスト出力',
+            sub: '140字投稿原稿',
+            detail: {
+              title: '📢 X告知ポスト出力ステーション',
+              role: 'SNSで注目を集めるための訴求ポイントと動画付きポスト文を自動生成。',
+              target: 'gas_project/*/x_post.md',
+              rules: '140字以内、フック・課題・解決・リンクの構成比率確認。',
+              status: 'READY (原稿配備完了)'
+            }
+          }
+        ]
+      },
+      'meta': {
+        title: '🏭 LEVEL 2: 【地下 学習壕】知恵抽出ループライン（ベルトコンベア検査工程）',
+        stations: [
+          {
+            id: 'm1',
+            num: 'STATION 01',
+            name: '🔍 破片回収 (trace.md)',
+            sub: '3段階教訓の抽出',
+            detail: {
+              title: '🔍 破片回収ステーション (trace.md 解析)',
+              role: '各ツール開発時に記録された「失敗」「解決」「恒久教訓」の3段階テキストを回収。',
+              target: 'gas_project/*/logs/trace.md',
+              rules: '1.失敗 2.解決 3.教訓 の見出しが存在することを正規表現で検出。',
+              status: 'OPTIMAL (全3ファイル回収完了)'
+            }
+          },
+          {
+            id: 'm2',
+            num: 'STATION 02',
+            name: '🧠 ナレッジDB集約',
+            sub: 'meta_knowledge.json',
+            detail: {
+              title: '🧠 ナレッジDB集約ステーション',
+              role: '回収した教訓を構造化JSONへ自動集約し、AIが1発で読み込める形に圧縮保存。',
+              target: 'harness/meta_knowledge.json',
+              rules: '集約エンジン: harness/meta_harness_collector.js',
+              status: 'SYNCED (3件の教訓集約済み)'
+            }
+          },
+          {
+            id: 'm3',
+            num: 'STATION 03',
+            name: '⚡ 次世代AIへ再注入',
+            sub: 'プロンプト自己進化',
+            detail: {
+              title: '⚡ 次世代AIへ再注入ステーション (自己進化ループ)',
+              role: '蓄積された失敗パターンを親AI（Proposer）のシステム指示に組み込み、二度と同じ過ちを犯さない。',
+              target: 'AGENTS.md & 次期ハーネス自動設計',
+              rules: '過去失敗のチェックリスト化による自動予防。',
+              status: 'ACTIVE (自己進化ループ稼働中)'
+            }
+          }
+        ]
+      }
+    };
 
-      const titleEl = document.getElementById('detail-title');
-      const descEl = document.getElementById('detail-desc');
-      const detailBox = document.getElementById('flow-node-detail');
-      if (detailBox) detailBox.classList.add('show');
+    let currentLayer = 'guard';
 
-      const details = {
-        'generator': {
-          title: '🤖 STEP 1: AIエージェント自律生成 (Generator Node)',
-          desc: '【役割】ユーザーのプロンプトを受け、GASコード、note記事原稿、実機デモ動画などを自律的に生成する最前線のステップ。<br>【担当ファイル】ワークスペース全域のスクリプト生成<br>【現在ステータス】稼働準備完了（Ready）'
-        },
-        'guard': {
-          title: '🛡️ 第1防壁: アーキテクチャ境界ガード (Architecture Guardrail - 憲法)',
-          desc: '【役割】AIが手軽さを優先してルート直下や未許可領域にファイルを散乱させるのを物理遮断する機械的防壁。<br>【担当ファイル】<span class="code-badge">harness/global_rules/check_architecture_guard.js</span><br>【現在ステータス】PASS（ホワイトリスト照合：違反 0 件）'
-        },
-        'harness': {
-          title: '⚖️ 第2防壁: 16基準品質ハーネス (16-Rule Domain Quality - 個別法)',
-          desc: '【役割】成果物が「本物実機UI」で撮影されているか、uninstall関数が実装されているか、note記事が100点基準を満たしているかを改ざん不能テストで検証。<br>【担当ファイル】<span class="code-badge">harness/gas_minitool/evaluator_gas_minitool.js</span><br>【現在ステータス】PASS（全2ツール 16/16 項目完全適合）'
-        },
-        'deploy': {
-          title: '🚀 GOAL: 本番デプロイ・公開 (Verified Output)',
-          desc: '【役割】2つの防壁を完全に突破した検証済み成果物のみを、note下書き保存、GitHub Pages、X告知ポストとして正式納品。<br>【担当ファイル】note記事 / デモ動画 / GitHub Pages<br>【現在ステータス】納品完了（Live Deployed）'
-        },
-        'meta': {
-          title: '🧠 循環ループ: メタハーネス自己進化エンジン (Feedback Loop)',
-          desc: '【役割】第2防壁で発生した失敗パターンを各ツールの trace.md から自動抽出・集約し、次回以降のハーネスやAIプロンプトへ注入して再発を永久防止する学習機構。<br>【担当ファイル】<span class="code-badge">harness/meta_knowledge.json</span><br>【現在ステータス】3件の教訓を集約・蓄積完了'
-        }
-      };
+    // LEVEL 1: 城郭レイヤー選択
+    function selectCastleLayer(layerId) {
+      currentLayer = layerId;
+      document.querySelectorAll('.castle-layer-card').forEach(c => c.classList.remove('active-layer'));
+      const activeCard = document.getElementById('cl-' + layerId);
+      if (activeCard) activeCard.classList.add('active-layer');
 
-      if (details[nodeId]) {
-        titleEl.innerHTML = details[nodeId].title;
-        descEl.innerHTML = details[nodeId].desc;
+      const data = CONVEYOR_DATA[layerId];
+      if (!data) return;
+
+      document.getElementById('conveyor-title').innerText = data.title;
+
+      // LEVEL 2: コンベアライン再描画
+      const lineContainer = document.getElementById('conveyor-line-content');
+      lineContainer.innerHTML = data.stations.map((st, idx) => {
+        const activeCls = (idx === 0) ? 'active-station' : '';
+        const arrow = (idx < data.stations.length - 1) ? '<div class="conveyor-arrow">➔</div>' : '';
+        return '<div class="conveyor-station ' + activeCls + '" id="cs-' + st.id + '" onclick="selectConveyorStation('' + st.id + '')">' +
+          '<span class="station-num">' + st.num + '</span>' +
+          '<div class="station-name">' + st.name + '</div>' +
+          '<span class="station-sub">' + st.sub + '</span>' +
+        '</div>' + arrow;
+      }).join('');
+
+      // デフォルトで第1ステーションを選択
+      if (data.stations.length > 0) {
+        selectConveyorStation(data.stations[0].id);
       }
     }
+
+    // LEVEL 2: コンベアステーション選択 (LEVEL 3詳細表示)
+    function selectConveyorStation(stationId) {
+      document.querySelectorAll('.conveyor-station').forEach(s => s.classList.remove('active-station'));
+      const activeStation = document.getElementById('cs-' + stationId);
+      if (activeStation) activeStation.classList.add('active-station');
+
+      const data = CONVEYOR_DATA[currentLayer];
+      if (!data) return;
+      const st = data.stations.find(s => s.id === stationId);
+      if (!st) return;
+
+      const detail = st.detail;
+      document.getElementById('inspector-title').innerHTML = detail.title;
+      document.getElementById('inspector-status').innerText = detail.status.includes('PASS') ? 'PASS' : 'ACTIVE';
+
+      document.getElementById('inspector-grid').innerHTML = 
+        '<div>' +
+          '<div class="detail-item-title">【担当役割・機能】</div>' +
+          '<div class="detail-item-val">' + detail.role + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div class="detail-item-title">【対象ファイル / スクリプト】</div>' +
+          '<div class="detail-item-val"><span class="code-badge">' + detail.target + '</span></div>' +
+        '</div>' +
+        '<div>' +
+          '<div class="detail-item-title">【判定ルール・検証基準】</div>' +
+          '<div class="detail-item-val">' + detail.rules + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div class="detail-item-title">【現在の稼働ステータス】</div>' +
+          '<div class="detail-item-val" style="color: var(--success); font-weight: 700;">● ' + detail.status + '</div>' +
+        '</div>';
+    }
+
+    // 初期化: ページ読み込み時に城郭外郭を初期選択
+    setTimeout(() => { selectCastleLayer('guard'); }, 100);
   </script>
 </body>
 </html>
