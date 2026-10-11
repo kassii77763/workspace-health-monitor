@@ -1,14 +1,16 @@
 {
-  "timestamp": "2026-10-11T23:01:45.991Z",
-  "score": 100,
+  "timestamp": "2026-10-11T23:36:22.059Z",
+  "score": 95,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
   "metrics": {
     "rootBoundary": {
-      "score": 25,
+      "score": 20,
       "max": 25,
-      "violations": [],
-      "status": "PASS"
+      "violations": [
+        "未許可アイテム: create-project.bat"
+      ],
+      "status": "FAIL"
     },
     "capsuleIntegrity": {
       "score": 25,
@@ -62,7 +64,7 @@
       "hasDocs": true,
       "hasTests": true,
       "hasArtifacts": true,
-      "updatedAt": "2026-10-08T05:56:20.899Z",
+      "updatedAt": "2026-10-11T23:36:22.029Z",
       "path": "gas_project/minitool_002_sheets_to_calendar"
     },
     {
@@ -241,7 +243,7 @@
       "name": "gas_project",
       "path": "gas_project",
       "isDir": true,
-      "sizeBytes": 1091502,
+      "sizeBytes": 1099772,
       "itemCount": 3,
       "status": "healthy",
       "note": "GASミニツール本番 (3 ツール完全カプセル化)",
@@ -361,8 +363,8 @@
           "name": "minitool_002_sheets_to_calendar",
           "path": "gas_project/minitool_002_sheets_to_calendar",
           "isDir": true,
-          "sizeBytes": 526956,
-          "itemCount": 9,
+          "sizeBytes": 535226,
+          "itemCount": 12,
           "status": "healthy",
           "note": "",
           "children": [
@@ -397,6 +399,26 @@
               "children": []
             },
             {
+              "name": "eval.js",
+              "path": "gas_project/minitool_002_sheets_to_calendar/eval.js",
+              "isDir": false,
+              "sizeBytes": 4178,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "harness_config.json",
+              "path": "gas_project/minitool_002_sheets_to_calendar/harness_config.json",
+              "isDir": false,
+              "sizeBytes": 2874,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
               "name": "logs",
               "path": "gas_project/minitool_002_sheets_to_calendar/logs",
               "isDir": true,
@@ -421,6 +443,16 @@
               "path": "gas_project/minitool_002_sheets_to_calendar/README.md",
               "isDir": false,
               "sizeBytes": 1328,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "spec.md",
+              "path": "gas_project/minitool_002_sheets_to_calendar/spec.md",
+              "isDir": false,
+              "sizeBytes": 1218,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1123,7 +1155,7 @@
       "name": "harness",
       "path": "harness",
       "isDir": true,
-      "sizeBytes": 157089,
+      "sizeBytes": 158929,
       "itemCount": 22,
       "status": "healthy",
       "note": "16基準評価＆メタ集約エンジン",
@@ -1132,7 +1164,7 @@
           "name": "bootstrap_project.js",
           "path": "harness/bootstrap_project.js",
           "isDir": false,
-          "sizeBytes": 11592,
+          "sizeBytes": 13432,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -5960,11 +5992,13 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-11T23:01:45.991Z",
+    "lastCheck": "2026-10-11T23:36:22.059Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
-  "recommendations": [],
+  "recommendations": [
+    "ルート直下に未許可アイテムが 1 件あります。archive/ 配下に退避してください。"
+  ],
   "projectHarnesses": {
     "p1": {
       "key": "p1",
@@ -6221,7 +6255,7 @@
       "icon": "📅",
       "category": "GAS MiniTool",
       "path": "gas_project/minitool_002_sheets_to_calendar",
-      "lblContext": "README.md",
+      "lblContext": "spec.md & 設計書",
       "lblPreGuard": "境界防御 & カプセル化規律",
       "lblGate": "Googleカレンダー登録承認",
       "lblMcp": "Calendar API / Playwright DOMスキャン",
@@ -6278,7 +6312,7 @@
           "items": [
             {
               "label": "読み込み実ファイル",
-              "val": "gas_project/minitool_002_sheets_to_calendar/README.md"
+              "val": "gas_project/minitool_002_sheets_to_calendar/spec.md"
             },
             {
               "label": "全体憲法",
