@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-11T23:39:44.880Z",
+  "timestamp": "2026-10-11T23:47:06.975Z",
   "score": 95,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
@@ -29,8 +29,8 @@
     "metaHarness": {
       "score": 15,
       "max": 15,
-      "traceCount": 3,
-      "lessonsCount": 3,
+      "traceCount": 5,
+      "lessonsCount": 5,
       "status": "PASS"
     },
     "storageCleanliness": {
@@ -1165,8 +1165,8 @@
       "name": "harness",
       "path": "harness",
       "isDir": true,
-      "sizeBytes": 158929,
-      "itemCount": 22,
+      "sizeBytes": 160689,
+      "itemCount": 23,
       "status": "healthy",
       "note": "16基準評価＆メタ集約エンジン",
       "children": [
@@ -1174,7 +1174,7 @@
           "name": "bootstrap_project.js",
           "path": "harness/bootstrap_project.js",
           "isDir": false,
-          "sizeBytes": 13432,
+          "sizeBytes": 11584,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1333,10 +1333,31 @@
           "children": []
         },
         {
+          "name": "logs",
+          "path": "harness/logs",
+          "isDir": true,
+          "sizeBytes": 1600,
+          "itemCount": 1,
+          "status": "healthy",
+          "note": "",
+          "children": [
+            {
+              "name": "trace.md",
+              "path": "harness/logs/trace.md",
+              "isDir": false,
+              "sizeBytes": 1600,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            }
+          ]
+        },
+        {
           "name": "meta_harness_collector.js",
           "path": "harness/meta_harness_collector.js",
           "isDir": false,
-          "sizeBytes": 2896,
+          "sizeBytes": 3096,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1346,7 +1367,7 @@
           "name": "meta_harness_generator.js",
           "path": "harness/meta_harness_generator.js",
           "isDir": false,
-          "sizeBytes": 5034,
+          "sizeBytes": 6502,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1356,7 +1377,7 @@
           "name": "meta_knowledge.json",
           "path": "harness/meta_knowledge.json",
           "isDir": false,
-          "sizeBytes": 2225,
+          "sizeBytes": 2565,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -6002,7 +6023,7 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-11T23:39:44.880Z",
+    "lastCheck": "2026-10-11T23:47:06.975Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
@@ -7002,14 +7023,16 @@
   "metaHarnessTopology": {
     "title": "🧠 メタハーネス自己進化＆動的生成アーキテクチャ",
     "status": "ACTIVE",
-    "lessonsCount": 3,
+    "lessonsCount": 5,
     "rubricsCount": 6,
     "liveExecution": {
-      "collectorLastRun": "2026-10-11T22:41:59.308Z",
+      "collectorLastRun": "2026-10-11T23:47:02.305Z",
       "collectedTools": [
         "minitool_001_unreplied_emails",
         "minitool_002_sheets_to_calendar",
-        "workspace_health_monitor"
+        "minitool_003_gmail_summarizer",
+        "workspace_health_monitor",
+        "meta_harness_architecture"
       ],
       "testSuiteStatus": "PASS",
       "passedChecks": "4 / 4 項目適合 (harness/test_meta_harness.js 完備)",
@@ -7093,7 +7116,7 @@
         "details": [
           {
             "label": "スクリプト実体",
-            "val": "harness/meta_harness_collector.js (2896 bytes)"
+            "val": "harness/meta_harness_collector.js (3096 bytes)"
           },
           {
             "label": "動作方式",
@@ -7106,19 +7129,19 @@
         "title": "🗄️ 構造化ナレッジDB (Knowledge Base)",
         "badge": "WISDOM DB",
         "file": "harness/meta_knowledge.json",
-        "desc": "蓄積された恒久知恵 (3 件)",
+        "desc": "蓄積された恒久知恵 (5 件)",
         "details": [
           {
             "label": "DBファイル実体",
-            "val": "harness/meta_knowledge.json (2225 bytes)"
+            "val": "harness/meta_knowledge.json (2565 bytes)"
           },
           {
             "label": "蓄積教訓数",
-            "val": "3 件の恒久教訓を構造化保存"
+            "val": "5 件の恒久教訓を構造化保存"
           },
           {
             "label": "最新教訓",
-            "val": "- **「監視ツール自身が自己欺瞞を持たないこと」**: 監視・ヘルスチェックを行うシステムは、自身のパースエラーや思い込みによる誤診を排するため、データ構造の"
+            "val": "未登録"
           }
         ]
       },
@@ -7148,7 +7171,7 @@
         "details": [
           {
             "label": "エンジン実体",
-            "val": "harness/meta_harness_generator.js (5034 bytes)"
+            "val": "harness/meta_harness_generator.js (6502 bytes)"
           },
           {
             "label": "コア機能",
