@@ -861,7 +861,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-11 13:22:29</div>
+        <div>最終同期: 2026-10-11 13:30:41</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -1793,6 +1793,18 @@
         lblMcp: 'Gmail API / Google Sheets API',
         lblMemory: 'uninstall忘れ防止教訓 (meta_knowledge)',
         lblPostGuard: 'uninstallTool()存在 & note100点',
+        agentCluster: {
+          clusterBadge: '親＋2サブ',
+          parentRole: '👑 親: Factory Orchestrator',
+          sub1Role: '💻 GAS実装AI',
+          sub2Role: '📝 note記事AI',
+          postBadge: '2層審査',
+          postLayer1: '🛡️ 1層: コードテスト (14項目)',
+          postLayer2: '👨‍⚖️ 2層: 審査AI (Critic採点)',
+          subaiTitle: 'ブラウザ検証サブエージェント',
+          subaiDesc: 'Googleスプレッドシート実機DOM検査',
+          subaiBadge: 'Browser Tester'
+        },
         nodes: {
           human: {
             title: '👤 人間 (カシマ様)',
@@ -1922,6 +1934,18 @@
         lblMcp: 'Calendar API / Playwright DOMスキャン',
         lblMemory: 'DOM幾何光学判定教訓 (meta_knowledge)',
         lblPostGuard: '実機DOM下部タブ判定 & uninstall',
+        agentCluster: {
+          clusterBadge: '親＋2サブ',
+          parentRole: '👑 親: Factory Orchestrator',
+          sub1Role: '💻 GAS実装AI',
+          sub2Role: '📝 note記事AI',
+          postBadge: '2層審査',
+          postLayer1: '🛡️ 1層: 公式DOM幾何テスト',
+          postLayer2: '👨‍⚖️ 2層: 審査AI (Critic採点)',
+          subaiTitle: 'ブラウザ検証サブエージェント',
+          subaiDesc: 'Googleカレンダー実機同期・撮影',
+          subaiBadge: 'Browser Tester'
+        },
         nodes: {
           human: {
             title: '👤 人間 (カシマ様)',
@@ -2047,6 +2071,18 @@
         lblMcp: 'Node.js fs / git / GitHub API',
         lblMemory: '監視自己欺瞞防止教訓 (meta_knowledge)',
         lblPostGuard: '自己テスト (test_monitor.js) PASS',
+        agentCluster: {
+          clusterBadge: '親＋2サブ',
+          parentRole: '👑 親: Monitor Orchestrator',
+          sub1Role: '⚙️ 診断エンジン (Node.js)',
+          sub2Role: '🎨 UI/SVGビルダー (Vanilla)',
+          postBadge: '2層審査',
+          postLayer1: '🛡️ 1層: test_monitor.js (改ざん不可)',
+          postLayer2: '⚖️ 2層: architecture_guard (境界)',
+          subaiTitle: 'ブラウザ検証サブエージェント',
+          subaiDesc: 'GitHub Pages実機DOM ＆ トポロジー検証',
+          subaiBadge: 'Browser Tester'
+        },
         nodes: {
           human: {
             title: '👤 人間 (カシマ様)',
@@ -2089,11 +2125,13 @@
             ]
           },
           ai: {
-            title: '🤖 AI (Antigravity 執行エンジン)',
-            badge: 'EXECUTOR',
+            title: '🤖 マルチエージェント執行クラスタ (親・診断・UI/SVG)',
+            badge: 'CLUSTER (3 Agents)',
             items: [
-              { label: 'モデル役割', val: '監視エンジン (monitor.js) & ダッシュボード生成器の構築' },
-              { label: '執行内容', val: 'ナチュラルベージュUI、エージェントハーネストポロジー図のレンダリング' }
+              { label: '👑 親: Monitor Orchestrator', val: 'ヘルス監視サイクル統括、ビルド・デプロイパイプライン管理' },
+              { label: '⚙️ 診断AI (Audit Engine)', val: 'monitor.js によるワークスペース走査、14項目健全性スコアの客観算出' },
+              { label: '🎨 UI/SVGビルダーAI', val: 'generate_dashboard.js によるピクセルパーフェクトSVGトポロジー＆2ペインルーブリック生成' },
+              { label: '※ 記事AIの不在理由', val: '本ツールはワークスペース常時監視システムのため、note記事AIは編成から除外' }
             ]
           },
           gate: {
