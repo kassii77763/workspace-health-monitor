@@ -378,7 +378,103 @@
     }
     .mini-badge.ok { color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); }
 
-    /* Harness Center */
+    /* Harness Flow Diagram (2D Pipeline Architecture) */
+    .flow-diagram-container {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 28px 20px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow-x: auto;
+    }
+    .flow-pipeline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 860px;
+      gap: 12px;
+      position: relative;
+    }
+    .flow-node {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .flow-node:hover, .flow-node.active-node {
+      border-color: var(--accent);
+      background: rgba(14, 165, 233, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.2);
+    }
+    .flow-node-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .flow-node-icon { font-size: 20px; }
+    .flow-node-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+    .flow-node-role {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .flow-arrow {
+      color: var(--accent);
+      font-size: 20px;
+      font-weight: bold;
+      user-select: none;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+    .flow-branches-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+      min-width: 860px;
+    }
+    .branch-card {
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .branch-card.danger {
+      border-color: rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.03);
+    }
+    .branch-card.loop {
+      border-color: rgba(129, 140, 248, 0.4);
+      background: rgba(129, 140, 248, 0.03);
+    }
+    .node-detail-box {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 12px;
+      background: rgba(14, 165, 233, 0.05);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      display: none;
+    }
+    .node-detail-box.show { display: block; }
+
+    /* Harness Center Cards */
     .harness-card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -521,7 +617,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>監査日時: <span class="code-badge">2026-10-08</span></div>
+        <div>監査日時: <span class="code-badge">2026-10-11</span></div>
         <div>GitHub Pages: <span style="color: var(--success);">ACTIVE</span></div>
       </div>
     </aside>
@@ -956,10 +1052,110 @@
       <!-- ============================================== -->
       <div id="view-harness" class="view-panel">
         <div class="card">
-          <h3 class="section-title">🛡️ 2階層ハーネス稼働センター</h3>
+          <h3 class="section-title">🛡️ ハーネス統制トポロジー（2Dノード間フロー図）</h3>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">
-            「AIの自己欺瞞（Echo Chamber Eval）の根絶」のため、システム全体統制（憲法）と成果物品質判定（個別法）の2階層で機械判定を行っています。
+            AIの生成行動がどのように2つの防壁を通過し、失敗がどうメタハーネスへ循環学習されるかを視覚化したアーキテクチャ回路です。各ノードをクリックすると詳細が展開されます。
           </p>
+
+          <!-- 2D フロー図コンテナ -->
+          <div class="flow-diagram-container">
+            <div style="font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">
+              ◀ MAIN PIPELINE: 左から右へ流れる防御・検証ライン ▶
+            </div>
+
+            <div class="flow-pipeline">
+              
+              <!-- Node 1: AI Generator -->
+              <div class="flow-node active-node" id="fn-generator" onclick="selectFlowNode('generator')">
+                <div class="flow-node-header">
+                  <span class="flow-node-icon">🤖</span>
+                  <span class="mini-badge ok">STEP 1</span>
+                </div>
+                <div class="flow-node-title">AIエージェント自律生成</div>
+                <div class="flow-node-role">コード / 記事 / 動画生成</div>
+                <div style="font-size: 10px; color: var(--success); font-weight: 700;">● READY</div>
+              </div>
+
+              <div class="flow-arrow">➔</div>
+
+              <!-- Node 2: Guardrail (憲法) -->
+              <div class="flow-node" id="fn-guard" onclick="selectFlowNode('guard')">
+                <div class="flow-node-header">
+                  <span class="flow-node-icon">🛡️</span>
+                  <span class="mini-badge ok">第1防壁</span>
+                </div>
+                <div class="flow-node-title">アーキテクチャ境界ガード</div>
+                <div class="flow-node-role">憲法: ルート汚染・散乱遮断</div>
+                <div style="font-size: 10px; color: var(--success); font-weight: 700;">● PASS (違反 0件)</div>
+              </div>
+
+              <div class="flow-arrow">➔</div>
+
+              <!-- Node 3: 16-Rule Harness (個別法) -->
+              <div class="flow-node" id="fn-harness" onclick="selectFlowNode('harness')">
+                <div class="flow-node-header">
+                  <span class="flow-node-icon">⚖️</span>
+                  <span class="mini-badge ok">第2防壁</span>
+                </div>
+                <div class="flow-node-title">16基準品質ハーネス</div>
+                <div class="flow-node-role">個別法: 実機DOM幾何/GAS検証</div>
+                <div style="font-size: 10px; color: var(--success); font-weight: 700;">● 100% PASS (2/2)</div>
+              </div>
+
+              <div class="flow-arrow">➔</div>
+
+              <!-- Node 4: Output -->
+              <div class="flow-node" id="fn-deploy" onclick="selectFlowNode('deploy')">
+                <div class="flow-node-header">
+                  <span class="flow-node-icon">🚀</span>
+                  <span class="mini-badge ok">GOAL</span>
+                </div>
+                <div class="flow-node-title">本番デプロイ・公開</div>
+                <div class="flow-node-role">note下書き / GitHub Pages</div>
+                <div style="font-size: 10px; color: var(--success); font-weight: 700;">● 納品完了</div>
+              </div>
+
+            </div>
+
+            <!-- 分岐・フィードバック回路 -->
+            <div class="flow-branches-container">
+              
+              <!-- 遮断分岐 -->
+              <div class="branch-card danger">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 12px; font-weight: 700; color: var(--danger);">❌ 境界違反時の即時遮断分岐 (Exit Code 1)</span>
+                  <span class="code-badge" style="color: var(--danger);">BLOCKED</span>
+                </div>
+                <p style="font-size: 11px; color: var(--text-muted);">
+                  第1防壁で未許可ファイルや散乱を検知した瞬間、ビルド・テストを強制終了しPCの安全を死守します。
+                </p>
+              </div>
+
+              <!-- メタ進化循環ループ -->
+              <div class="branch-card loop" id="fn-meta" style="cursor: pointer;" onclick="selectFlowNode('meta')">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 12px; font-weight: 700; color: #818cf8;">🧠 メタハーネス自己進化ループ (循環フィードバック)</span>
+                  <span class="code-badge" style="color: #818cf8;">FEEDBACK</span>
+                </div>
+                <p style="font-size: 11px; color: var(--text-muted);">
+                  第2防壁で失敗した教訓は <span class="code-badge">trace.md</span> ➔ <span class="code-badge">meta_knowledge.json</span> 経由でAIへフィードバックされ、次回以降のハーネス設計へ自動注入されます。
+                </p>
+              </div>
+
+            </div>
+
+            <!-- ノードクリック詳細表示ボックス -->
+            <div id="flow-node-detail" class="node-detail-box show">
+              <h4 id="detail-title" style="font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">
+                🤖 AIエージェント自律生成 (Generator Node)
+              </h4>
+              <p id="detail-desc" style="font-size: 12px; color: #cbd5e1; line-height: 1.5;">
+                【役割】ユーザーのプロンプトを受け、GASコード、note記事原稿、実機デモ動画などを自律的に生成する最前線のステップ。<br>
+                【担当ファイル】ワークスペース全域のスクリプト生成<br>
+                【現在ステータス】稼働準備完了（Ready）
+              </p>
+            </div>
+          </div>
 
           <h4 style="font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 12px;">【階層1】システム全体ガードレール (憲法レベル)</h4>
           
@@ -1236,14 +1432,19 @@
                 </div>
                 <div style="display: flex; gap: 10px; align-items: center;">
                   <span class="metric-status status-PASS">HEALTHY</span>
-                  <span style="font-size: 12px; color: var(--text-muted);">5 項目 ▼</span>
+                  <span style="font-size: 12px; color: var(--text-muted);">6 項目 ▼</span>
                 </div>
               </div>
               <div id="tree-sec-3" class="tree-body">
                 
                 <div class="tree-item">
+                  <span>📂 anatomy_quiz_20261022</span>
+                  <span style="color: var(--text-muted); font-size: 11px;">6 項目</span>
+                </div>
+                
+                <div class="tree-item">
                   <span>📄 index.html</span>
-                  <span style="color: var(--text-muted); font-size: 11px;">63.2 KB</span>
+                  <span style="color: var(--text-muted); font-size: 11px;">74.6 KB</span>
                 </div>
                 
                 <div class="tree-item">
@@ -1466,6 +1667,46 @@
       const el = document.getElementById(id);
       if (el) {
         el.style.display = (el.style.display === 'none') ? 'flex' : 'none';
+      }
+    }
+
+    // 2D フローノード選択
+    function selectFlowNode(nodeId) {
+      document.querySelectorAll('.flow-node').forEach(n => n.classList.remove('active-node'));
+      const activeEl = document.getElementById('fn-' + nodeId);
+      if (activeEl) activeEl.classList.add('active-node');
+
+      const titleEl = document.getElementById('detail-title');
+      const descEl = document.getElementById('detail-desc');
+      const detailBox = document.getElementById('flow-node-detail');
+      if (detailBox) detailBox.classList.add('show');
+
+      const details = {
+        'generator': {
+          title: '🤖 STEP 1: AIエージェント自律生成 (Generator Node)',
+          desc: '【役割】ユーザーのプロンプトを受け、GASコード、note記事原稿、実機デモ動画などを自律的に生成する最前線のステップ。<br>【担当ファイル】ワークスペース全域のスクリプト生成<br>【現在ステータス】稼働準備完了（Ready）'
+        },
+        'guard': {
+          title: '🛡️ 第1防壁: アーキテクチャ境界ガード (Architecture Guardrail - 憲法)',
+          desc: '【役割】AIが手軽さを優先してルート直下や未許可領域にファイルを散乱させるのを物理遮断する機械的防壁。<br>【担当ファイル】<span class="code-badge">harness/global_rules/check_architecture_guard.js</span><br>【現在ステータス】PASS（ホワイトリスト照合：違反 0 件）'
+        },
+        'harness': {
+          title: '⚖️ 第2防壁: 16基準品質ハーネス (16-Rule Domain Quality - 個別法)',
+          desc: '【役割】成果物が「本物実機UI」で撮影されているか、uninstall関数が実装されているか、note記事が100点基準を満たしているかを改ざん不能テストで検証。<br>【担当ファイル】<span class="code-badge">harness/gas_minitool/evaluator_gas_minitool.js</span><br>【現在ステータス】PASS（全2ツール 16/16 項目完全適合）'
+        },
+        'deploy': {
+          title: '🚀 GOAL: 本番デプロイ・公開 (Verified Output)',
+          desc: '【役割】2つの防壁を完全に突破した検証済み成果物のみを、note下書き保存、GitHub Pages、X告知ポストとして正式納品。<br>【担当ファイル】note記事 / デモ動画 / GitHub Pages<br>【現在ステータス】納品完了（Live Deployed）'
+        },
+        'meta': {
+          title: '🧠 循環ループ: メタハーネス自己進化エンジン (Feedback Loop)',
+          desc: '【役割】第2防壁で発生した失敗パターンを各ツールの trace.md から自動抽出・集約し、次回以降のハーネスやAIプロンプトへ注入して再発を永久防止する学習機構。<br>【担当ファイル】<span class="code-badge">harness/meta_knowledge.json</span><br>【現在ステータス】3件の教訓を集約・蓄積完了'
+        }
+      };
+
+      if (details[nodeId]) {
+        titleEl.innerHTML = details[nodeId].title;
+        descEl.innerHTML = details[nodeId].desc;
       }
     }
   </script>

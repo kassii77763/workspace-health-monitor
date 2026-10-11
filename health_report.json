@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-08T06:50:20.413Z",
+  "timestamp": "2026-10-11T06:05:03.677Z",
   "score": 100,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
@@ -451,7 +451,7 @@
       "name": "projects",
       "path": "projects",
       "isDir": true,
-      "sizeBytes": 720633,
+      "sizeBytes": 732097,
       "itemCount": 7,
       "status": "healthy",
       "note": "",
@@ -845,7 +845,7 @@
           "name": "workspace_health_monitor",
           "path": "projects/workspace_health_monitor",
           "isDir": true,
-          "sizeBytes": 67523,
+          "sizeBytes": 78987,
           "itemCount": 10,
           "status": "healthy",
           "note": "",
@@ -874,7 +874,7 @@
               "name": "generate_dashboard.js",
               "path": "projects/workspace_health_monitor/generate_dashboard.js",
               "isDir": false,
-              "sizeBytes": 36671,
+              "sizeBytes": 48135,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1272,16 +1272,87 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 102466,
-      "itemCount": 5,
+      "sizeBytes": 303150,
+      "itemCount": 6,
       "status": "healthy",
       "note": "",
       "children": [
         {
+          "name": "anatomy_quiz_20261022",
+          "path": "docs/anatomy_quiz_20261022",
+          "isDir": true,
+          "sizeBytes": 188997,
+          "itemCount": 6,
+          "status": "healthy",
+          "note": "",
+          "children": [
+            {
+              "name": "quiz_set_01_to_07.md",
+              "path": "docs/anatomy_quiz_20261022/quiz_set_01_to_07.md",
+              "isDir": false,
+              "sizeBytes": 67899,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "quiz_set_08_to_14.md",
+              "path": "docs/anatomy_quiz_20261022/quiz_set_08_to_14.md",
+              "isDir": false,
+              "sizeBytes": 71487,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "README.md",
+              "path": "docs/anatomy_quiz_20261022/README.md",
+              "isDir": false,
+              "sizeBytes": 6285,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "source_brain_anatomy.md",
+              "path": "docs/anatomy_quiz_20261022/source_brain_anatomy.md",
+              "isDir": false,
+              "sizeBytes": 12025,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "source_development_ventricles_csf.md",
+              "path": "docs/anatomy_quiz_20261022/source_development_ventricles_csf.md",
+              "isDir": false,
+              "sizeBytes": 14328,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "studio_quiz_notebooklm.md",
+              "path": "docs/anatomy_quiz_20261022/studio_quiz_notebooklm.md",
+              "isDir": false,
+              "sizeBytes": 16973,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            }
+          ]
+        },
+        {
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 64698,
+          "sizeBytes": 76385,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -5713,7 +5784,7 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-08T06:50:20.413Z",
+    "lastCheck": "2026-10-11T06:05:03.677Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
