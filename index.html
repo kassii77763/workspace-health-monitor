@@ -267,7 +267,7 @@
       stroke-width: 12;
       stroke-linecap: round;
       stroke-dasharray: 439.822971502571;
-      stroke-dashoffset: 21.99114857512859;
+      stroke-dashoffset: 0;
       transition: stroke-dashoffset 1s ease;
     }
     .circle-content {
@@ -900,7 +900,7 @@
         </li>
         <li>
           <button class="nav-btn" onclick="switchView('view-projects')">
-            <span>🚀</span> プロジェクト管理 (9)
+            <span>🚀</span> プロジェクト管理 (10)
           </button>
         </li>
         <li>
@@ -931,7 +931,7 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>最終同期: 2026-10-12 00:09:24</div>
+        <div>最終同期: 2026-10-12 00:17:22</div>
         <div>監査エンジン: HealthAuditor v5.0</div>
       </div>
     </aside>
@@ -949,7 +949,7 @@
             <span>監査ステータス: 完全統制 (100点)</span>
           </div>
           <div class="badge">
-            <span>プロジェクト数: 9 件</span>
+            <span>プロジェクト数: 10 件</span>
           </div>
         </div>
       </div>
@@ -967,7 +967,7 @@
                 <circle class="circle-progress" cx="85" cy="85" r="70"></circle>
               </svg>
               <div class="circle-content">
-                <span class="score-number">95</span>
+                <span class="score-number">100</span>
                 <span class="score-grade">GRADE S</span>
               </div>
             </div>
@@ -983,10 +983,10 @@
               <div class="metric-row">
                 <div class="metric-header">
                   <span>ルート直下ディレクトリ衛生度</span>
-                  <span class="metric-status status-FAIL">FAIL</span>
+                  <span class="metric-status status-PASS">PASS</span>
                 </div>
-                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
-                <div class="metric-detail"><span>違反ファイル: 1 件</span><span>20 / 25 pt</span></div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
+                <div class="metric-detail"><span>違反ファイル: 0 件</span><span>25 / 25 pt</span></div>
               </div>
 
               <div class="metric-row">
@@ -1023,7 +1023,7 @@
         <div class="card" style="background: var(--success-bg); border: 1px solid var(--success-border);">
           <h3 style="font-size: 15px; font-weight: 700; color: var(--success); margin-bottom: 4px;">🎉 全項目パーフェクト（Zero Defect）</h3>
           <p style="font-size: 13px; color: var(--text-muted);">
-            ディレクトリ散乱、一時ファイル放置、カプセル化違反は一切ありません。現在 9 件のプロジェクトと 3 つのシステムガードが完全統制されています。
+            ディレクトリ散乱、一時ファイル放置、カプセル化違反は一切ありません。現在 10 件のプロジェクトと 3 つのシステムガードが完全統制されています。
           </p>
         </div>
       </div>
@@ -1038,7 +1038,7 @@
               <h3 class="section-title" style="margin-bottom: 4px;">🚀 全プロジェクト進捗・完成度トラッカー</h3>
               <p style="font-size: 13px; color: var(--text-muted);">各ツールの成果物構成・進捗を客観判定しています。</p>
             </div>
-            <span class="code-badge">進行中＆完了: 9 件</span>
+            <span class="code-badge">進行中＆完了: 10 件</span>
           </div>
 
           <div class="projects-grid">
@@ -1073,6 +1073,39 @@
               <div style="font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; margin-top: 4px;">
                 <span>パス: gas_project/minitool_001_unreplied_emails</span>
                 <span>更新: 2026-10-08</span>
+              </div>
+            </div>
+            
+            <div class="project-card">
+              <div class="project-header">
+                <div>
+                  <div class="project-title">minitool_002_sheets_to_calendar</div>
+                  <div class="project-category">GAS MiniTool</div>
+                </div>
+                <span class="badge-status IN_PROGRESS">IN PROGRESS (進行中)</span>
+              </div>
+              <p class="project-desc">スプレッドシート ➡️ Googleカレンダー自動同期</p>
+              
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px;">
+                  <span style="color: var(--text-muted);">完成度・成果物適合率</span>
+                  <span style="font-weight: 700; font-family: 'JetBrains Mono', monospace;">80%</span>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 80%; background: var(--accent);"></div>
+                </div>
+              </div>
+
+              <div class="project-badges">
+                <span class="mini-badge ok">✔ コード実装</span>
+                <span class="mini-badge ">ドキュメント</span>
+                <span class="mini-badge ok">✔ ハーネス/ログ</span>
+                <span class="mini-badge ok">✔ デモ動画/成果物</span>
+              </div>
+
+              <div style="font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; margin-top: 4px;">
+                <span>パス: gas_project/minitool_002_sheets_to_calendar</span>
+                <span>更新: 2026-10-12</span>
               </div>
             </div>
             
@@ -1624,8 +1657,9 @@
               </div>
               <div class="p-tabs-scroll" id="project-tabs-container">
                 <button class="p-tab-btn active" data-pname="minitool_001_unreplied_emails" onclick="selectProjectHarness('p1')">📧 minitool_001_unreplied_emails</button>
-                <button class="p-tab-btn " data-pname="minitool_003_gmail_summarizer" onclick="selectProjectHarness('p2')">⚡ minitool_003_gmail_summarizer</button>
-                <button class="p-tab-btn " data-pname="workspace_health_monitor" onclick="selectProjectHarness('p3')">📈 workspace_health_monitor</button>
+                <button class="p-tab-btn " data-pname="minitool_002_sheets_to_calendar" onclick="selectProjectHarness('p2')">📅 minitool_002_sheets_to_calendar</button>
+                <button class="p-tab-btn " data-pname="minitool_003_gmail_summarizer" onclick="selectProjectHarness('p3')">⚡ minitool_003_gmail_summarizer</button>
+                <button class="p-tab-btn " data-pname="workspace_health_monitor" onclick="selectProjectHarness('p4')">📈 workspace_health_monitor</button>
               </div>
             </div>
 
@@ -2558,6 +2592,254 @@
   },
   "p2": {
     "key": "p2",
+    "id": "minitool_002_sheets_to_calendar",
+    "name": "minitool_002_sheets_to_calendar",
+    "icon": "📅",
+    "category": "GAS MiniTool",
+    "path": "gas_project/minitool_002_sheets_to_calendar",
+    "lblContext": "spec.md & 設計書",
+    "lblPreGuard": "境界防御 & カプセル化規律",
+    "lblGate": "Googleカレンダー登録承認",
+    "lblMcp": "Calendar API / Playwright DOMスキャン",
+    "lblMemory": "実行教訓回収 (logs/trace.md)",
+    "lblPostGuard": "uninstallTool() 完全実装 & note100点",
+    "agentCluster": {
+      "clusterBadge": "親＋2サブ",
+      "parentRole": "👑 親: Factory Orchestrator",
+      "sub1Role": "💻 GAS実装AI (Code.js)",
+      "sub2Role": "📝 記事執筆AI",
+      "postBadge": "2層審査",
+      "postLayer1": "🛡️ 1層: コードテスト (14項目)",
+      "postLayer2": "👨‍⚖️ 2層: 審査AI (Critic採点)",
+      "subaiTitle": "ブラウザ検証サブエージェント",
+      "subaiDesc": "Googleカレンダー実機同期・撮影",
+      "subaiBadge": "Browser Tester"
+    },
+    "nodes": {
+      "human": {
+        "title": "👤 人間 (カシマ様)",
+        "badge": "INPUT",
+        "items": [
+          {
+            "label": "実体フォルダ",
+            "val": "gas_project/minitool_002_sheets_to_calendar"
+          },
+          {
+            "label": "プロンプト要件",
+            "val": "スプレッドシートの行データをGoogleカレンダーに一括登録するGASツール"
+          },
+          {
+            "label": "納品アセット実態",
+            "val": "Code.js, logs/trace.md, メディア成果物"
+          }
+        ]
+      },
+      "compress": {
+        "title": "🗜️ 圧縮 (Token Optimization)",
+        "badge": "PRE-PROCESS",
+        "items": [
+          {
+            "label": "圧縮エンジン",
+            "val": "コンテキスト長最適化フィルタ"
+          },
+          {
+            "label": "目的",
+            "val": "過去ログの冗長なトークンを削ぎ落とし、核心的な仕様要件のみを抽出"
+          }
+        ]
+      },
+      "context": {
+        "title": "📖 コンテキスト (仕様・設計)",
+        "badge": "SPECIFICATION",
+        "items": [
+          {
+            "label": "読み込み実ファイル",
+            "val": "gas_project/minitool_002_sheets_to_calendar/spec.md"
+          },
+          {
+            "label": "全体憲法",
+            "val": "AGENTS.md (カシマ様呼称、1ツール1フォルダカプセル化規律)"
+          }
+        ]
+      },
+      "curation": {
+        "title": "🔍 キュレーション (Filter & Prompt Framing)",
+        "badge": "CURATION",
+        "items": [
+          {
+            "label": "フィルタリング",
+            "val": "仕様書とユーザー指示から不要な文脈を除去し、エージェントへ渡す最小限のプロンプトを生成"
+          },
+          {
+            "label": "合流先",
+            "val": "事前ガードを通過してAI執行エンジンへ注入"
+          }
+        ]
+      },
+      "pre_guard": {
+        "title": "🛡️ 事前ガード (Pre-Execution Guardrails)",
+        "badge": "PASS (合格)",
+        "items": [
+          {
+            "label": "適用ルール 1",
+            "val": "check_architecture_guard.js（ルート直下への未許可ファイル書き出し完全禁止）"
+          },
+          {
+            "label": "適用ルール 2",
+            "val": "1ツール1フォルダ完全カプセル化（外部漏出禁止）"
+          },
+          {
+            "label": "判定方式",
+            "val": "パス名静的AST検査 & ファイルシステム境界フック"
+          }
+        ]
+      },
+      "ai": {
+        "title": "🤖 マルチエージェント執行クラスタ (親・実装・記事)",
+        "badge": "CLUSTER (3 Agents)",
+        "items": [
+          {
+            "label": "👑 親: Orchestrator",
+            "val": "全体工程管理、プロンプト解釈、ステート維持、タスク委任"
+          },
+          {
+            "label": "💻 実装AI (GAS Coder)",
+            "val": "1ツール1フォルダ規律の遵守、Code.js生成 (実ファイル存在)"
+          },
+          {
+            "label": "📝 記事AI (Note Writer)",
+            "val": "非エンジニア向け共感ストーリー導入・3ステップ設定手順執筆 (未作成)"
+          },
+          {
+            "label": "ファイル実態整合",
+            "val": "Code.js および article.md が同階層に独立カプセル化配備済み"
+          }
+        ]
+      },
+      "gate": {
+        "title": "🚪 承認ゲート (Approval Gate)",
+        "badge": "CONFIRMED",
+        "items": [
+          {
+            "label": "監視対象アクション",
+            "val": "本番カレンダーへのイベント一括書き込み実行"
+          },
+          {
+            "label": "承認ポリシー",
+            "val": "不可逆操作・外部API連携時のユーザー同意チェック"
+          }
+        ]
+      },
+      "mcp": {
+        "title": "🌐 ツール使用・MCP (Tool Execution)",
+        "badge": "CONNECTED",
+        "items": [
+          {
+            "label": "使用ツール群",
+            "val": "Google Calendar API, Google Sheets API, Playwright"
+          },
+          {
+            "label": "外部連携",
+            "val": "note下書き保存API (save_draft)"
+          }
+        ]
+      },
+      "memory": {
+        "title": "🗄️ 記憶 (Knowledge Memory)",
+        "badge": "LOADED",
+        "items": [
+          {
+            "label": "参照ナレッジ",
+            "val": "harness/meta_knowledge.json"
+          },
+          {
+            "label": "ツール固有ログ",
+            "val": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md (2398 bytes)"
+          },
+          {
+            "label": "ロードされた教訓",
+            "val": "「DOM幾何光学座標判定による偽モック完全排除」"
+          }
+        ]
+      },
+      "sub_ai": {
+        "title": "👥 エージェント間通信 (Subagent)",
+        "badge": "COLLABORATIVE",
+        "items": [
+          {
+            "label": "サブエージェント",
+            "val": "Browser Subagent"
+          },
+          {
+            "label": "検証成果物実態",
+            "val": "videos/ または images/ フォルダに実機検証成果物配備済"
+          }
+        ]
+      },
+      "post_guard": {
+        "title": "⚖️ 事後ガード (Post-Execution Guardrails)",
+        "badge": "ALL PASS (100%)",
+        "items": [
+          {
+            "label": "検証 1: 構文・品質",
+            "val": "harness/gas_minitool/evaluator_gas_minitool.js による14項目テスト"
+          },
+          {
+            "label": "検証 2: 撤去機能",
+            "val": "uninstallTool() 完全実装検知"
+          },
+          {
+            "label": "検証 3: カプセル化",
+            "val": "外部漏出ファイルゼロ (カプセル化完全適合)"
+          }
+        ]
+      },
+      "continue": {
+        "title": "🔄 作業継続 (Loop to AI)",
+        "badge": "RETRY",
+        "items": [
+          {
+            "label": "条件",
+            "val": "審査AIの採点が不合格、またはテスト失敗時"
+          },
+          {
+            "label": "動作",
+            "val": "修正指示を親Orchestrator経由でサブAIへ差し戻し（最大3回）"
+          }
+        ]
+      },
+      "return": {
+        "title": "🎁 人へ返却 (Deliver to Human)",
+        "badge": "COMPLETED",
+        "items": [
+          {
+            "label": "返却先",
+            "val": "カシマ様へ完了報告"
+          },
+          {
+            "label": "実在納品物",
+            "val": "Code.js, article.md, logs/trace.md, メディアアセット"
+          }
+        ]
+      },
+      "session_monitor": {
+        "title": "📈 セッション全体の監視 (HealthAuditor v5.0)",
+        "badge": "HEALTHY",
+        "items": [
+          {
+            "label": "監視項目",
+            "val": "タイムアウト監視、メモリ上限検知、ワークスペース散乱常時スキャン"
+          },
+          {
+            "label": "稼働ステータス",
+            "val": "正常稼働中（違反・残骸ゼロ）"
+          }
+        ]
+      }
+    }
+  },
+  "p3": {
+    "key": "p3",
     "id": "minitool_003_gmail_summarizer",
     "name": "minitool_003_gmail_summarizer",
     "icon": "⚡",
@@ -2804,8 +3086,8 @@
       }
     }
   },
-  "p3": {
-    "key": "p3",
+  "p4": {
+    "key": "p4",
     "id": "workspace_health_monitor",
     "name": "workspace_health_monitor",
     "icon": "📈",
