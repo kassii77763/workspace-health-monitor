@@ -1,16 +1,14 @@
 {
-  "timestamp": "2026-10-11T23:47:06.975Z",
-  "score": 95,
+  "timestamp": "2026-10-12T00:05:38.999Z",
+  "score": 100,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
   "metrics": {
     "rootBoundary": {
-      "score": 20,
+      "score": 25,
       "max": 25,
-      "violations": [
-        "未許可アイテム: create-project.bat"
-      ],
-      "status": "FAIL"
+      "violations": [],
+      "status": "PASS"
     },
     "capsuleIntegrity": {
       "score": 25,
@@ -64,7 +62,7 @@
       "hasDocs": true,
       "hasTests": true,
       "hasArtifacts": true,
-      "updatedAt": "2026-10-11T23:39:36.546Z",
+      "updatedAt": "2026-10-11T23:56:13.944Z",
       "path": "gas_project/minitool_002_sheets_to_calendar"
     },
     {
@@ -243,7 +241,7 @@
       "name": "gas_project",
       "path": "gas_project",
       "isDir": true,
-      "sizeBytes": 1100100,
+      "sizeBytes": 634712,
       "itemCount": 3,
       "status": "healthy",
       "note": "GASミニツール本番 (3 ツール完全カプセル化)",
@@ -363,8 +361,8 @@
           "name": "minitool_002_sheets_to_calendar",
           "path": "gas_project/minitool_002_sheets_to_calendar",
           "isDir": true,
-          "sizeBytes": 535554,
-          "itemCount": 13,
+          "sizeBytes": 70166,
+          "itemCount": 11,
           "status": "healthy",
           "note": "",
           "children": [
@@ -372,7 +370,7 @@
               "name": "appsscript.json",
               "path": "gas_project/minitool_002_sheets_to_calendar/appsscript.json",
               "isDir": false,
-              "sizeBytes": 445,
+              "sizeBytes": 408,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -382,7 +380,7 @@
               "name": "article.md",
               "path": "gas_project/minitool_002_sheets_to_calendar/article.md",
               "isDir": false,
-              "sizeBytes": 20096,
+              "sizeBytes": 4016,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -392,7 +390,7 @@
               "name": "Code.js",
               "path": "gas_project/minitool_002_sheets_to_calendar/Code.js",
               "isDir": false,
-              "sizeBytes": 12712,
+              "sizeBytes": 9424,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -402,17 +400,17 @@
               "name": "eval.js",
               "path": "gas_project/minitool_002_sheets_to_calendar/eval.js",
               "isDir": false,
-              "sizeBytes": 4178,
+              "sizeBytes": 2125,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
               "children": []
             },
             {
-              "name": "harness_config.json",
-              "path": "gas_project/minitool_002_sheets_to_calendar/harness_config.json",
-              "isDir": false,
-              "sizeBytes": 2874,
+              "name": "images",
+              "path": "gas_project/minitool_002_sheets_to_calendar/images",
+              "isDir": true,
+              "sizeBytes": 0,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -429,20 +427,10 @@
               "children": []
             },
             {
-              "name": "Post_To_X.bat",
-              "path": "gas_project/minitool_002_sheets_to_calendar/Post_To_X.bat",
-              "isDir": false,
-              "sizeBytes": 1040,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
               "name": "README.md",
               "path": "gas_project/minitool_002_sheets_to_calendar/README.md",
               "isDir": false,
-              "sizeBytes": 1758,
+              "sizeBytes": 3584,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -452,17 +440,7 @@
               "name": "spec.md",
               "path": "gas_project/minitool_002_sheets_to_calendar/spec.md",
               "isDir": false,
-              "sizeBytes": 2863,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "test_unit.js",
-              "path": "gas_project/minitool_002_sheets_to_calendar/test_unit.js",
-              "isDir": false,
-              "sizeBytes": 2111,
+              "sizeBytes": 2903,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -472,7 +450,7 @@
               "name": "thumbnail.jpg",
               "path": "gas_project/minitool_002_sheets_to_calendar/thumbnail.jpg",
               "isDir": false,
-              "sizeBytes": 485341,
+              "sizeBytes": 46990,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -492,7 +470,7 @@
               "name": "x_post.md",
               "path": "gas_project/minitool_002_sheets_to_calendar/x_post.md",
               "isDir": false,
-              "sizeBytes": 2136,
+              "sizeBytes": 716,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1165,8 +1143,8 @@
       "name": "harness",
       "path": "harness",
       "isDir": true,
-      "sizeBytes": 160689,
-      "itemCount": 23,
+      "sizeBytes": 175151,
+      "itemCount": 25,
       "status": "healthy",
       "note": "16基準評価＆メタ集約エンジン",
       "children": [
@@ -1185,6 +1163,16 @@
           "path": "harness/evaluator_instagram_carousel.js",
           "isDir": false,
           "sizeBytes": 7315,
+          "itemCount": 0,
+          "status": "healthy",
+          "note": "",
+          "children": []
+        },
+        {
+          "name": "evaluator_meta_harness.js",
+          "path": "harness/evaluator_meta_harness.js",
+          "isDir": false,
+          "sizeBytes": 8100,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1264,7 +1252,7 @@
           "name": "gas_minitool",
           "path": "harness/gas_minitool",
           "isDir": true,
-          "sizeBytes": 14537,
+          "sizeBytes": 16074,
           "itemCount": 2,
           "status": "healthy",
           "note": "",
@@ -1273,7 +1261,7 @@
               "name": "evaluator_gas_minitool.js",
               "path": "harness/gas_minitool/evaluator_gas_minitool.js",
               "isDir": false,
-              "sizeBytes": 12379,
+              "sizeBytes": 13916,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1336,7 +1324,7 @@
           "name": "logs",
           "path": "harness/logs",
           "isDir": true,
-          "sizeBytes": 1600,
+          "sizeBytes": 2304,
           "itemCount": 1,
           "status": "healthy",
           "note": "",
@@ -1345,7 +1333,7 @@
               "name": "trace.md",
               "path": "harness/logs/trace.md",
               "isDir": false,
-              "sizeBytes": 1600,
+              "sizeBytes": 2304,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1357,7 +1345,7 @@
           "name": "meta_harness_collector.js",
           "path": "harness/meta_harness_collector.js",
           "isDir": false,
-          "sizeBytes": 3096,
+          "sizeBytes": 3235,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1377,7 +1365,7 @@
           "name": "meta_knowledge.json",
           "path": "harness/meta_knowledge.json",
           "isDir": false,
-          "sizeBytes": 2565,
+          "sizeBytes": 3110,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1455,6 +1443,27 @@
           "children": []
         },
         {
+          "name": "templates",
+          "path": "harness/templates",
+          "isDir": true,
+          "sizeBytes": 3437,
+          "itemCount": 1,
+          "status": "healthy",
+          "note": "",
+          "children": [
+            {
+              "name": "create_live_spreadsheet.py",
+              "path": "harness/templates/create_live_spreadsheet.py",
+              "isDir": false,
+              "sizeBytes": 3437,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            }
+          ]
+        },
+        {
           "name": "test_carousel_audit.js",
           "path": "harness/test_carousel_audit.js",
           "isDir": false,
@@ -1500,7 +1509,7 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 415928,
+      "sizeBytes": 415845,
       "itemCount": 6,
       "status": "healthy",
       "note": "",
@@ -1580,7 +1589,7 @@
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 189163,
+          "sizeBytes": 189080,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1642,11 +1651,21 @@
       "name": "archive",
       "path": "archive",
       "isDir": true,
-      "sizeBytes": 65518371,
-      "itemCount": 5,
+      "sizeBytes": 65518641,
+      "itemCount": 6,
       "status": "archived",
       "note": "過去アセット完全隔離 (111.9 MB)",
       "children": [
+        {
+          "name": "create-project.bat",
+          "path": "archive/create-project.bat",
+          "isDir": false,
+          "sizeBytes": 270,
+          "itemCount": 0,
+          "status": "healthy",
+          "note": "",
+          "children": []
+        },
         {
           "name": "experiments",
           "path": "archive/experiments",
@@ -5991,9 +6010,9 @@
       "toolId": "minitool_002_sheets_to_calendar",
       "category": "GAS MiniTool",
       "path": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md",
-      "sizeKB": 2.1,
-      "lines": 26,
-      "updatedAt": "2026-10-11T23:39:15.101Z",
+      "sizeKB": 2,
+      "lines": 20,
+      "updatedAt": "2026-10-12T00:05:17.231Z",
       "isComplete": true,
       "status": "optimal",
       "note": "軽量（3段階形式で圧縮保存済み）"
@@ -6023,13 +6042,11 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-11T23:47:06.975Z",
+    "lastCheck": "2026-10-12T00:05:38.999Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
-  "recommendations": [
-    "ルート直下に未許可アイテムが 1 件あります。archive/ 配下に退避してください。"
-  ],
+  "recommendations": [],
   "projectHarnesses": {
     "p1": {
       "key": "p1",
@@ -6443,7 +6460,7 @@
             },
             {
               "label": "ツール固有ログ",
-              "val": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md (2180 bytes)"
+              "val": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md (2061 bytes)"
             },
             {
               "label": "ロードされた教訓",
@@ -7026,7 +7043,7 @@
     "lessonsCount": 5,
     "rubricsCount": 6,
     "liveExecution": {
-      "collectorLastRun": "2026-10-11T23:47:02.305Z",
+      "collectorLastRun": "2026-10-12T00:05:23.746Z",
       "collectedTools": [
         "minitool_001_unreplied_emails",
         "minitool_002_sheets_to_calendar",
@@ -7116,7 +7133,7 @@
         "details": [
           {
             "label": "スクリプト実体",
-            "val": "harness/meta_harness_collector.js (3096 bytes)"
+            "val": "harness/meta_harness_collector.js (3235 bytes)"
           },
           {
             "label": "動作方式",
@@ -7133,7 +7150,7 @@
         "details": [
           {
             "label": "DBファイル実体",
-            "val": "harness/meta_knowledge.json (2565 bytes)"
+            "val": "harness/meta_knowledge.json (3110 bytes)"
           },
           {
             "label": "蓄積教訓数",
@@ -7141,7 +7158,7 @@
           },
           {
             "label": "最新教訓",
-            "val": "未登録"
+            "val": "- 「ハーネス自身を監視するハーネス（Meta-Harness Evaluator）」が存在しないシステムは、Goodhartの法則により必ず現場AIにハック（"
           }
         ]
       },
