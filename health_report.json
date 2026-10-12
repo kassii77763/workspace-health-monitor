@@ -1,20 +1,22 @@
 {
-  "timestamp": "2026-10-12T00:05:38.999Z",
-  "score": 100,
+  "timestamp": "2026-10-12T00:09:24.636Z",
+  "score": 95,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
   "metrics": {
     "rootBoundary": {
-      "score": 25,
+      "score": 20,
       "max": 25,
-      "violations": [],
-      "status": "PASS"
+      "violations": [
+        "未許可アイテム: create-project.bat"
+      ],
+      "status": "FAIL"
     },
     "capsuleIntegrity": {
       "score": 25,
       "max": 25,
       "violations": [],
-      "toolsChecked": 3,
+      "toolsChecked": 2,
       "status": "PASS"
     },
     "scratchHygiene": {
@@ -51,19 +53,6 @@
       "hasArtifacts": true,
       "updatedAt": "2026-10-08T05:56:07.727Z",
       "path": "gas_project/minitool_001_unreplied_emails"
-    },
-    {
-      "name": "minitool_002_sheets_to_calendar",
-      "category": "GAS MiniTool",
-      "description": "スプレッドシート ➡️ Googleカレンダー自動同期",
-      "status": "COMPLETED",
-      "progress": 100,
-      "hasCode": true,
-      "hasDocs": true,
-      "hasTests": true,
-      "hasArtifacts": true,
-      "updatedAt": "2026-10-11T23:56:13.944Z",
-      "path": "gas_project/minitool_002_sheets_to_calendar"
     },
     {
       "name": "minitool_003_gmail_summarizer",
@@ -241,10 +230,10 @@
       "name": "gas_project",
       "path": "gas_project",
       "isDir": true,
-      "sizeBytes": 634712,
-      "itemCount": 3,
+      "sizeBytes": 564546,
+      "itemCount": 2,
       "status": "healthy",
-      "note": "GASミニツール本番 (3 ツール完全カプセル化)",
+      "note": "GASミニツール本番 (2 ツール完全カプセル化)",
       "children": [
         {
           "name": "minitool_001_unreplied_emails",
@@ -350,127 +339,6 @@
               "path": "gas_project/minitool_001_unreplied_emails/x_post.md",
               "isDir": false,
               "sizeBytes": 2239,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "minitool_002_sheets_to_calendar",
-          "path": "gas_project/minitool_002_sheets_to_calendar",
-          "isDir": true,
-          "sizeBytes": 70166,
-          "itemCount": 11,
-          "status": "healthy",
-          "note": "",
-          "children": [
-            {
-              "name": "appsscript.json",
-              "path": "gas_project/minitool_002_sheets_to_calendar/appsscript.json",
-              "isDir": false,
-              "sizeBytes": 408,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "article.md",
-              "path": "gas_project/minitool_002_sheets_to_calendar/article.md",
-              "isDir": false,
-              "sizeBytes": 4016,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "Code.js",
-              "path": "gas_project/minitool_002_sheets_to_calendar/Code.js",
-              "isDir": false,
-              "sizeBytes": 9424,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "eval.js",
-              "path": "gas_project/minitool_002_sheets_to_calendar/eval.js",
-              "isDir": false,
-              "sizeBytes": 2125,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "images",
-              "path": "gas_project/minitool_002_sheets_to_calendar/images",
-              "isDir": true,
-              "sizeBytes": 0,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "logs",
-              "path": "gas_project/minitool_002_sheets_to_calendar/logs",
-              "isDir": true,
-              "sizeBytes": 0,
-              "itemCount": 1,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "README.md",
-              "path": "gas_project/minitool_002_sheets_to_calendar/README.md",
-              "isDir": false,
-              "sizeBytes": 3584,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "spec.md",
-              "path": "gas_project/minitool_002_sheets_to_calendar/spec.md",
-              "isDir": false,
-              "sizeBytes": 2903,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "thumbnail.jpg",
-              "path": "gas_project/minitool_002_sheets_to_calendar/thumbnail.jpg",
-              "isDir": false,
-              "sizeBytes": 46990,
-              "itemCount": 0,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "videos",
-              "path": "gas_project/minitool_002_sheets_to_calendar/videos",
-              "isDir": true,
-              "sizeBytes": 0,
-              "itemCount": 1,
-              "status": "healthy",
-              "note": "",
-              "children": []
-            },
-            {
-              "name": "x_post.md",
-              "path": "gas_project/minitool_002_sheets_to_calendar/x_post.md",
-              "isDir": false,
-              "sizeBytes": 716,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1509,7 +1377,7 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 415845,
+      "sizeBytes": 415994,
       "itemCount": 6,
       "status": "healthy",
       "note": "",
@@ -1589,7 +1457,7 @@
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 189080,
+          "sizeBytes": 189229,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1651,21 +1519,11 @@
       "name": "archive",
       "path": "archive",
       "isDir": true,
-      "sizeBytes": 65518641,
-      "itemCount": 6,
+      "sizeBytes": 65518371,
+      "itemCount": 5,
       "status": "archived",
       "note": "過去アセット完全隔離 (111.9 MB)",
       "children": [
-        {
-          "name": "create-project.bat",
-          "path": "archive/create-project.bat",
-          "isDir": false,
-          "sizeBytes": 270,
-          "itemCount": 0,
-          "status": "healthy",
-          "note": "",
-          "children": []
-        },
         {
           "name": "experiments",
           "path": "archive/experiments",
@@ -6007,17 +5865,6 @@
       "note": "軽量（3段階形式で圧縮保存済み）"
     },
     {
-      "toolId": "minitool_002_sheets_to_calendar",
-      "category": "GAS MiniTool",
-      "path": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md",
-      "sizeKB": 2,
-      "lines": 20,
-      "updatedAt": "2026-10-12T00:05:17.231Z",
-      "isComplete": true,
-      "status": "optimal",
-      "note": "軽量（3段階形式で圧縮保存済み）"
-    },
-    {
       "toolId": "minitool_003_gmail_summarizer",
       "category": "GAS MiniTool",
       "path": "gas_project/minitool_003_gmail_summarizer/logs/trace.md",
@@ -6042,11 +5889,13 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-12T00:05:38.999Z",
+    "lastCheck": "2026-10-12T00:09:24.636Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
-  "recommendations": [],
+  "recommendations": [
+    "ルート直下に未許可アイテムが 1 件あります。archive/ 配下に退避してください。"
+  ],
   "projectHarnesses": {
     "p1": {
       "key": "p1",
@@ -6298,254 +6147,6 @@
     },
     "p2": {
       "key": "p2",
-      "id": "minitool_002_sheets_to_calendar",
-      "name": "minitool_002_sheets_to_calendar",
-      "icon": "📅",
-      "category": "GAS MiniTool",
-      "path": "gas_project/minitool_002_sheets_to_calendar",
-      "lblContext": "spec.md & 設計書",
-      "lblPreGuard": "境界防御 & カプセル化規律",
-      "lblGate": "Googleカレンダー登録承認",
-      "lblMcp": "Calendar API / Playwright DOMスキャン",
-      "lblMemory": "実行教訓回収 (logs/trace.md)",
-      "lblPostGuard": "uninstallTool() 完全実装 & note100点",
-      "agentCluster": {
-        "clusterBadge": "親＋2サブ",
-        "parentRole": "👑 親: Factory Orchestrator",
-        "sub1Role": "💻 GAS実装AI (Code.js)",
-        "sub2Role": "📝 note記事AI (article.md)",
-        "postBadge": "2層審査",
-        "postLayer1": "🛡️ 1層: コードテスト (14項目)",
-        "postLayer2": "👨‍⚖️ 2層: 審査AI (Critic採点)",
-        "subaiTitle": "ブラウザ検証サブエージェント",
-        "subaiDesc": "Googleカレンダー実機同期・撮影",
-        "subaiBadge": "Browser Tester"
-      },
-      "nodes": {
-        "human": {
-          "title": "👤 人間 (カシマ様)",
-          "badge": "INPUT",
-          "items": [
-            {
-              "label": "実体フォルダ",
-              "val": "gas_project/minitool_002_sheets_to_calendar"
-            },
-            {
-              "label": "プロンプト要件",
-              "val": "スプレッドシートの行データをGoogleカレンダーに一括登録するGASツール"
-            },
-            {
-              "label": "納品アセット実態",
-              "val": "Code.js, article.md, logs/trace.md, メディア成果物"
-            }
-          ]
-        },
-        "compress": {
-          "title": "🗜️ 圧縮 (Token Optimization)",
-          "badge": "PRE-PROCESS",
-          "items": [
-            {
-              "label": "圧縮エンジン",
-              "val": "コンテキスト長最適化フィルタ"
-            },
-            {
-              "label": "目的",
-              "val": "過去ログの冗長なトークンを削ぎ落とし、核心的な仕様要件のみを抽出"
-            }
-          ]
-        },
-        "context": {
-          "title": "📖 コンテキスト (仕様・設計)",
-          "badge": "SPECIFICATION",
-          "items": [
-            {
-              "label": "読み込み実ファイル",
-              "val": "gas_project/minitool_002_sheets_to_calendar/spec.md"
-            },
-            {
-              "label": "全体憲法",
-              "val": "AGENTS.md (カシマ様呼称、1ツール1フォルダカプセル化規律)"
-            }
-          ]
-        },
-        "curation": {
-          "title": "🔍 キュレーション (Filter & Prompt Framing)",
-          "badge": "CURATION",
-          "items": [
-            {
-              "label": "フィルタリング",
-              "val": "仕様書とユーザー指示から不要な文脈を除去し、エージェントへ渡す最小限のプロンプトを生成"
-            },
-            {
-              "label": "合流先",
-              "val": "事前ガードを通過してAI執行エンジンへ注入"
-            }
-          ]
-        },
-        "pre_guard": {
-          "title": "🛡️ 事前ガード (Pre-Execution Guardrails)",
-          "badge": "PASS (合格)",
-          "items": [
-            {
-              "label": "適用ルール 1",
-              "val": "check_architecture_guard.js（ルート直下への未許可ファイル書き出し完全禁止）"
-            },
-            {
-              "label": "適用ルール 2",
-              "val": "1ツール1フォルダ完全カプセル化（外部漏出禁止）"
-            },
-            {
-              "label": "判定方式",
-              "val": "パス名静的AST検査 & ファイルシステム境界フック"
-            }
-          ]
-        },
-        "ai": {
-          "title": "🤖 マルチエージェント執行クラスタ (親・実装・記事)",
-          "badge": "CLUSTER (3 Agents)",
-          "items": [
-            {
-              "label": "👑 親: Orchestrator",
-              "val": "全体工程管理、プロンプト解釈、ステート維持、タスク委任"
-            },
-            {
-              "label": "💻 実装AI (GAS Coder)",
-              "val": "1ツール1フォルダ規律の遵守、Code.js生成 (実ファイル存在)"
-            },
-            {
-              "label": "📝 記事AI (Note Writer)",
-              "val": "非エンジニア向け共感ストーリー導入・3ステップ設定手順執筆 (article.md 存在)"
-            },
-            {
-              "label": "ファイル実態整合",
-              "val": "Code.js および article.md が同階層に独立カプセル化配備済み"
-            }
-          ]
-        },
-        "gate": {
-          "title": "🚪 承認ゲート (Approval Gate)",
-          "badge": "CONFIRMED",
-          "items": [
-            {
-              "label": "監視対象アクション",
-              "val": "本番カレンダーへのイベント一括書き込み実行"
-            },
-            {
-              "label": "承認ポリシー",
-              "val": "不可逆操作・外部API連携時のユーザー同意チェック"
-            }
-          ]
-        },
-        "mcp": {
-          "title": "🌐 ツール使用・MCP (Tool Execution)",
-          "badge": "CONNECTED",
-          "items": [
-            {
-              "label": "使用ツール群",
-              "val": "Google Calendar API, Google Sheets API, Playwright"
-            },
-            {
-              "label": "外部連携",
-              "val": "note下書き保存API (save_draft)"
-            }
-          ]
-        },
-        "memory": {
-          "title": "🗄️ 記憶 (Knowledge Memory)",
-          "badge": "LOADED",
-          "items": [
-            {
-              "label": "参照ナレッジ",
-              "val": "harness/meta_knowledge.json"
-            },
-            {
-              "label": "ツール固有ログ",
-              "val": "gas_project/minitool_002_sheets_to_calendar/logs/trace.md (2061 bytes)"
-            },
-            {
-              "label": "ロードされた教訓",
-              "val": "「DOM幾何光学座標判定による偽モック完全排除」"
-            }
-          ]
-        },
-        "sub_ai": {
-          "title": "👥 エージェント間通信 (Subagent)",
-          "badge": "COLLABORATIVE",
-          "items": [
-            {
-              "label": "サブエージェント",
-              "val": "Browser Subagent"
-            },
-            {
-              "label": "検証成果物実態",
-              "val": "videos/ または images/ フォルダに実機検証成果物配備済"
-            }
-          ]
-        },
-        "post_guard": {
-          "title": "⚖️ 事後ガード (Post-Execution Guardrails)",
-          "badge": "ALL PASS (100%)",
-          "items": [
-            {
-              "label": "検証 1: 構文・品質",
-              "val": "harness/gas_minitool/evaluator_gas_minitool.js による14項目テスト"
-            },
-            {
-              "label": "検証 2: 撤去機能",
-              "val": "uninstallTool() 完全実装検知"
-            },
-            {
-              "label": "検証 3: カプセル化",
-              "val": "外部漏出ファイルゼロ (カプセル化完全適合)"
-            }
-          ]
-        },
-        "continue": {
-          "title": "🔄 作業継続 (Loop to AI)",
-          "badge": "RETRY",
-          "items": [
-            {
-              "label": "条件",
-              "val": "審査AIの採点が不合格、またはテスト失敗時"
-            },
-            {
-              "label": "動作",
-              "val": "修正指示を親Orchestrator経由でサブAIへ差し戻し（最大3回）"
-            }
-          ]
-        },
-        "return": {
-          "title": "🎁 人へ返却 (Deliver to Human)",
-          "badge": "COMPLETED",
-          "items": [
-            {
-              "label": "返却先",
-              "val": "カシマ様へ完了報告"
-            },
-            {
-              "label": "実在納品物",
-              "val": "Code.js, article.md, logs/trace.md, メディアアセット"
-            }
-          ]
-        },
-        "session_monitor": {
-          "title": "📈 セッション全体の監視 (HealthAuditor v5.0)",
-          "badge": "HEALTHY",
-          "items": [
-            {
-              "label": "監視項目",
-              "val": "タイムアウト監視、メモリ上限検知、ワークスペース散乱常時スキャン"
-            },
-            {
-              "label": "稼働ステータス",
-              "val": "正常稼働中（違反・残骸ゼロ）"
-            }
-          ]
-        }
-      }
-    },
-    "p3": {
-      "key": "p3",
       "id": "minitool_003_gmail_summarizer",
       "name": "minitool_003_gmail_summarizer",
       "icon": "⚡",
@@ -6792,8 +6393,8 @@
         }
       }
     },
-    "p4": {
-      "key": "p4",
+    "p3": {
+      "key": "p3",
       "id": "workspace_health_monitor",
       "name": "workspace_health_monitor",
       "icon": "📈",
