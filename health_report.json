@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-12T00:17:22.453Z",
+  "timestamp": "2026-10-12T23:39:04.860Z",
   "score": 100,
   "grade": "S",
   "summary": "極めて健全です。境界規律・カプセル化・ハーネス蓄積ともに完璧に保たれています。",
@@ -56,13 +56,13 @@
       "name": "minitool_002_sheets_to_calendar",
       "category": "GAS MiniTool",
       "description": "スプレッドシート ➡️ Googleカレンダー自動同期",
-      "status": "IN_PROGRESS",
-      "progress": 80,
+      "status": "COMPLETED",
+      "progress": 100,
       "hasCode": true,
-      "hasDocs": false,
+      "hasDocs": true,
       "hasTests": true,
       "hasArtifacts": true,
-      "updatedAt": "2026-10-12T00:15:57.963Z",
+      "updatedAt": "2026-10-12T22:51:55.554Z",
       "path": "gas_project/minitool_002_sheets_to_calendar"
     },
     {
@@ -241,7 +241,7 @@
       "name": "gas_project",
       "path": "gas_project",
       "isDir": true,
-      "sizeBytes": 757707,
+      "sizeBytes": 777185,
       "itemCount": 3,
       "status": "healthy",
       "note": "GASミニツール本番 (3 ツール完全カプセル化)",
@@ -361,8 +361,8 @@
           "name": "minitool_002_sheets_to_calendar",
           "path": "gas_project/minitool_002_sheets_to_calendar",
           "isDir": true,
-          "sizeBytes": 193161,
-          "itemCount": 11,
+          "sizeBytes": 212639,
+          "itemCount": 14,
           "status": "healthy",
           "note": "",
           "children": [
@@ -371,6 +371,16 @@
               "path": "gas_project/minitool_002_sheets_to_calendar/appsscript.json",
               "isDir": false,
               "sizeBytes": 420,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "article.md",
+              "path": "gas_project/minitool_002_sheets_to_calendar/article.md",
+              "isDir": false,
+              "sizeBytes": 18308,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -472,6 +482,26 @@
               "isDir": true,
               "sizeBytes": 0,
               "itemCount": 1,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "worker_brief.md",
+              "path": "gas_project/minitool_002_sheets_to_calendar/worker_brief.md",
+              "isDir": false,
+              "sizeBytes": 0,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "x_post.md",
+              "path": "gas_project/minitool_002_sheets_to_calendar/x_post.md",
+              "isDir": false,
+              "sizeBytes": 1170,
+              "itemCount": 0,
               "status": "healthy",
               "note": "",
               "children": []
@@ -1143,7 +1173,7 @@
       "name": "harness",
       "path": "harness",
       "isDir": true,
-      "sizeBytes": 179126,
+      "sizeBytes": 199505,
       "itemCount": 25,
       "status": "healthy",
       "note": "16基準評価＆メタ集約エンジン",
@@ -1152,7 +1182,7 @@
           "name": "bootstrap_project.js",
           "path": "harness/bootstrap_project.js",
           "isDir": false,
-          "sizeBytes": 14327,
+          "sizeBytes": 15933,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1172,7 +1202,7 @@
           "name": "evaluator_meta_harness.js",
           "path": "harness/evaluator_meta_harness.js",
           "isDir": false,
-          "sizeBytes": 9332,
+          "sizeBytes": 9356,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1252,7 +1282,7 @@
           "name": "gas_minitool",
           "path": "harness/gas_minitool",
           "isDir": true,
-          "sizeBytes": 16074,
+          "sizeBytes": 21480,
           "itemCount": 2,
           "status": "healthy",
           "note": "",
@@ -1261,7 +1291,7 @@
               "name": "evaluator_gas_minitool.js",
               "path": "harness/gas_minitool/evaluator_gas_minitool.js",
               "isDir": false,
-              "sizeBytes": 13916,
+              "sizeBytes": 19322,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1324,7 +1354,7 @@
           "name": "logs",
           "path": "harness/logs",
           "isDir": true,
-          "sizeBytes": 2304,
+          "sizeBytes": 2563,
           "itemCount": 1,
           "status": "healthy",
           "note": "",
@@ -1333,7 +1363,7 @@
               "name": "trace.md",
               "path": "harness/logs/trace.md",
               "isDir": false,
-              "sizeBytes": 2304,
+              "sizeBytes": 2563,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1365,7 +1395,7 @@
           "name": "meta_knowledge.json",
           "path": "harness/meta_knowledge.json",
           "isDir": false,
-          "sizeBytes": 3110,
+          "sizeBytes": 3390,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -1446,16 +1476,36 @@
           "name": "templates",
           "path": "harness/templates",
           "isDir": true,
-          "sizeBytes": 3437,
-          "itemCount": 1,
+          "sizeBytes": 16241,
+          "itemCount": 3,
           "status": "healthy",
           "note": "",
           "children": [
+            {
+              "name": "capture_live_sheet.js",
+              "path": "harness/templates/capture_live_sheet.js",
+              "isDir": false,
+              "sizeBytes": 7397,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
             {
               "name": "create_live_spreadsheet.py",
               "path": "harness/templates/create_live_spreadsheet.py",
               "isDir": false,
               "sizeBytes": 3437,
+              "itemCount": 0,
+              "status": "healthy",
+              "note": "",
+              "children": []
+            },
+            {
+              "name": "verify_live_sheet.py",
+              "path": "harness/templates/verify_live_sheet.py",
+              "isDir": false,
+              "sizeBytes": 5407,
               "itemCount": 0,
               "status": "healthy",
               "note": "",
@@ -1509,7 +1559,7 @@
       "name": "docs",
       "path": "docs",
       "isDir": true,
-      "sizeBytes": 415830,
+      "sizeBytes": 415994,
       "itemCount": 6,
       "status": "healthy",
       "note": "",
@@ -1589,7 +1639,7 @@
           "name": "index.html",
           "path": "docs/index.html",
           "isDir": false,
-          "sizeBytes": 189065,
+          "sizeBytes": 189229,
           "itemCount": 0,
           "status": "healthy",
           "note": "",
@@ -6042,7 +6092,7 @@
   ],
   "patrol": {
     "schedule": "Daily (GitHub Actions 0:00 UTC) & On-Demand (.bat)",
-    "lastCheck": "2026-10-12T00:17:22.453Z",
+    "lastCheck": "2026-10-12T23:39:04.860Z",
     "status": "ACTIVE",
     "monitoredFoldersCount": 6
   },
@@ -6313,7 +6363,7 @@
         "clusterBadge": "親＋2サブ",
         "parentRole": "👑 親: Factory Orchestrator",
         "sub1Role": "💻 GAS実装AI (Code.js)",
-        "sub2Role": "📝 記事執筆AI",
+        "sub2Role": "📝 note記事AI (article.md)",
         "postBadge": "2層審査",
         "postLayer1": "🛡️ 1層: コードテスト (14項目)",
         "postLayer2": "👨‍⚖️ 2層: 審査AI (Critic採点)",
@@ -6336,7 +6386,7 @@
             },
             {
               "label": "納品アセット実態",
-              "val": "Code.js, logs/trace.md, メディア成果物"
+              "val": "Code.js, article.md, logs/trace.md, メディア成果物"
             }
           ]
         },
@@ -6414,7 +6464,7 @@
             },
             {
               "label": "📝 記事AI (Note Writer)",
-              "val": "非エンジニア向け共感ストーリー導入・3ステップ設定手順執筆 (未作成)"
+              "val": "非エンジニア向け共感ストーリー導入・3ステップ設定手順執筆 (article.md 存在)"
             },
             {
               "label": "ファイル実態整合",
@@ -7043,7 +7093,7 @@
     "lessonsCount": 5,
     "rubricsCount": 6,
     "liveExecution": {
-      "collectorLastRun": "2026-10-12T00:05:23.746Z",
+      "collectorLastRun": "2026-10-12T23:38:24.597Z",
       "collectedTools": [
         "minitool_001_unreplied_emails",
         "minitool_002_sheets_to_calendar",
@@ -7150,7 +7200,7 @@
         "details": [
           {
             "label": "DBファイル実体",
-            "val": "harness/meta_knowledge.json (3110 bytes)"
+            "val": "harness/meta_knowledge.json (3390 bytes)"
           },
           {
             "label": "蓄積教訓数",
@@ -7158,7 +7208,7 @@
           },
           {
             "label": "最新教訓",
-            "val": "- 「ハーネス自身を監視するハーネス（Meta-Harness Evaluator）」が存在しないシステムは、Goodhartの法則により必ず現場AIにハック（"
+            "val": "- **自作モック・Pillow偽装GIFの永久禁止**: 実機スプレッドシートのAPI読戻し検証（live_sheet_check.json）と実機撮影証跡（capture_log.json）を必須とし、自作ダミーによる偽装通過を完全に排除する。"
           }
         ]
       },
